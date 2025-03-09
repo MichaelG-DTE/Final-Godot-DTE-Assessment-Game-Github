@@ -14,6 +14,10 @@ config/name="DTE Final Assessment Godot Game"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_height=1780
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

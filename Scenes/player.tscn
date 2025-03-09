@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx4avp3lndswk"]
+
+[ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="1_rfm0q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voixq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vbp8"]
+atlas = ExtResource("1_rfm0q")
+region = Rect2(0, 0, 220, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2oso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vbp8")
+}],
+"loop": true,
+"name": &"Ship",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idwsp"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_voixq")
+
+[node name="Shiptexture" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w2oso")
+animation = &"Ship"
+autoplay = "Ship"
+
+[node name="Thrusters" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_idwsp")
