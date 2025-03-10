@@ -107,30 +107,35 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voixq"]
-radius = 41.0
-height = 158.0
+radius = 20.0
+height = 70.0
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(577, 1347)
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+position = Vector2(246, 589)
+scale = Vector2(1.22797, 1.22797)
 motion_mode = 1
 script = ExtResource("1_nwuut")
 
 [node name="Shiptexture" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.459091, 0.459091)
 sprite_frames = SubResource("SpriteFrames_w2oso")
 animation = &"Ship"
 autoplay = "Ship"
 
-[node name="Thrusters" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 133)
+[node name="Thrusters" type="AnimatedSprite2D" parent="Shiptexture"]
+position = Vector2(-1.08914, 134.396)
+scale = Vector2(0.994719, 1.01696)
 sprite_frames = SubResource("SpriteFrames_idwsp")
 animation = &"Thrusters"
 autoplay = "Thrusters"
+frame_progress = 0.329091
 
-[node name="Thrusters2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, 134)
-scale = Vector2(1, 1.25625)
+[node name="BankingThrusters" type="AnimatedSprite2D" parent="Shiptexture"]
+position = Vector2(-2.17822, 135.05)
+scale = Vector2(1.02104, 1.28268)
 sprite_frames = SubResource("SpriteFrames_5ygkx")
-animation = &"Thrusters_Left"
+animation = &"Thrusters_Right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_voixq")
