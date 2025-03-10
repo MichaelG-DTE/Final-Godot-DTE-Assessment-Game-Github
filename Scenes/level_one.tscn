@@ -48,7 +48,7 @@ script = ExtResource("1_8c86t")
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(-72, 0)
-scale = Vector2(3.346, 3.064)
+scale = Vector2(2.792, 2.55669)
 texture = ExtResource("2_oss7l")
 centered = false
 region_enabled = true

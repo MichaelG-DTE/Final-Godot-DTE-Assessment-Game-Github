@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dx4avp3lndswk"]
+[gd_scene load_steps=16 format=3 uid="uid://dx4avp3lndswk"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwuut"]
 [ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="1_rfm0q"]
@@ -62,49 +62,76 @@ animations = [{
 }],
 "loop": true,
 "name": &"Thrusters",
-"speed": 5.0
+"speed": 2.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wwn3b"]
-atlas = ExtResource("2_21gws")
-region = Rect2(300, 320, 300, 320)
+[sub_resource type="Animation" id="Animation_ovfbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Right:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shiptexture/Thrusters_Left:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3psbf"]
-atlas = ExtResource("2_21gws")
-region = Rect2(600, 320, 300, 320)
+[sub_resource type="Animation" id="Animation_he8vn"]
+resource_name = "RightThrusters"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Right:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q14vy"]
-atlas = ExtResource("2_21gws")
-region = Rect2(600, 0, 300, 320)
+[sub_resource type="Animation" id="Animation_cua7x"]
+resource_name = "LeftThrusters"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Left:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s17ol"]
-atlas = ExtResource("2_21gws")
-region = Rect2(0, 320, 300, 320)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5ygkx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wwn3b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3psbf")
-}],
-"loop": true,
-"name": &"Thrusters_Left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q14vy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s17ol")
-}],
-"loop": true,
-"name": &"Thrusters_Right",
-"speed": 5.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyucb"]
+_data = {
+"LeftThrusters": SubResource("Animation_cua7x"),
+"RESET": SubResource("Animation_ovfbu"),
+"RightThrusters": SubResource("Animation_he8vn")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voixq"]
 radius = 20.0
@@ -112,29 +139,45 @@ height = 70.0
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 position = Vector2(246, 589)
-scale = Vector2(1.22797, 1.22797)
+scale = Vector2(1.55642, 1.55642)
 motion_mode = 1
 script = ExtResource("1_nwuut")
 
 [node name="Shiptexture" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.459091, 0.459091)
 sprite_frames = SubResource("SpriteFrames_w2oso")
-animation = &"Ship"
+animation = &"Ship_Right"
 autoplay = "Ship"
 
 [node name="Thrusters" type="AnimatedSprite2D" parent="Shiptexture"]
-position = Vector2(-1.08914, 134.396)
-scale = Vector2(0.994719, 1.01696)
+position = Vector2(-1.77384, 141.907)
+scale = Vector2(0.995, 1.11627)
 sprite_frames = SubResource("SpriteFrames_idwsp")
 animation = &"Thrusters"
 autoplay = "Thrusters"
-frame_progress = 0.329091
+frame_progress = 0.499103
 
-[node name="BankingThrusters" type="AnimatedSprite2D" parent="Shiptexture"]
-position = Vector2(-2.17822, 135.05)
-scale = Vector2(1.02104, 1.28268)
-sprite_frames = SubResource("SpriteFrames_5ygkx")
-animation = &"Thrusters_Right"
+[node name="ThrustersAnimation" type="AnimationPlayer" parent="Shiptexture"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_pyucb")
+}
+
+[node name="Thrusters_Right" type="Sprite2D" parent="Shiptexture"]
+position = Vector2(0, 127.355)
+scale = Vector2(1.12535, 1.10591)
+texture = ExtResource("2_21gws")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="Thrusters_Left" type="Sprite2D" parent="Shiptexture"]
+position = Vector2(-2.79901, 125.955)
+scale = Vector2(1.125, 1.106)
+texture = ExtResource("2_21gws")
+hframes = 3
+vframes = 2
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
