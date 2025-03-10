@@ -155,7 +155,7 @@ scale = Vector2(0.995, 1.11627)
 sprite_frames = SubResource("SpriteFrames_idwsp")
 animation = &"Thrusters"
 autoplay = "Thrusters"
-frame_progress = 0.499103
+frame_progress = 0.698385
 
 [node name="ThrustersAnimation" type="AnimationPlayer" parent="Shiptexture"]
 root_node = NodePath("../..")
