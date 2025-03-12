@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://8yh1e8w55qfa"]
+
+[ext_resource type="Texture2D" uid="uid://c6ikl0fjjasc6" path="res://Assets/Game Assets/Enemy/Enemy Shooty Pew Pew Gun Pew Pew Shoot Bullet.png" id="1_ldq4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx0g1"]
+size = Vector2(16, 66)
+
+[node name="EnemyLaser" type="Area2D"]
+
+[node name="EnemyShootyPewPewGunPewPewShootBullet" type="Sprite2D" parent="."]
+position = Vector2(-1.52588e-05, 1)
+scale = Vector2(0.52381, 0.52381)
+texture = ExtResource("1_ldq4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xx0g1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -46.5833)
+scale = Vector2(2.19467, 0.558327)

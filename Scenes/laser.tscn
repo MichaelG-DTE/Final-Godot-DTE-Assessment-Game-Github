@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://boryddbq7au36"]
+
+[ext_resource type="Script" path="res://Scripts/laser.gd" id="1_2265a"]
+[ext_resource type="Texture2D" uid="uid://bekxg0ah7hqes" path="res://Assets/Game Assets/Player/Modified PEW PEW SHOOTY GUN BULLET PEW PEW.png" id="1_wwxj2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utaah"]
+size = Vector2(108, 130)
+
+[node name="Laser" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_2265a")
+
+[node name="LaserTexture" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_wwxj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_utaah")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.66893e-06, 84)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
