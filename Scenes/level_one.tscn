@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=8 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
 [ext_resource type="Texture2D" uid="uid://dh6yvhhiv3uli" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
 
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
@@ -65,6 +66,9 @@ autoplay = "Background"
 position = Vector2(151, 262)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(500, 800)
+position = Vector2(500, 950)
 
 [node name="laser_container" type="Node2D" parent="."]
+
+[node name="Xantarian Fightercraft" parent="." instance=ExtResource("4_vxc3a")]
+position = Vector2(701, 173)

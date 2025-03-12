@@ -1,8 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://4pwqojn2wtyb"]
+[gd_scene load_steps=12 format=3 uid="uid://4pwqojn2wtyb"]
 
 [ext_resource type="Script" path="res://Scripts/xantarian_fightercraft.gd" id="1_an2bu"]
 [ext_resource type="Texture2D" uid="uid://byc6y2vfy4n1g" path="res://Assets/Game Assets/Enemy/Xenos Fightercraft.png" id="1_b3syx"]
 [ext_resource type="Texture2D" uid="uid://dly3d6hhac0hj" path="res://Assets/Game Assets/Enemy/Enemy Thruster.png" id="2_q0416"]
+[ext_resource type="Texture2D" uid="uid://d2m8ulml1y3o5" path="res://Assets/Game Assets/Explosion (16 x 16).png" id="4_xrqmo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_slnxq"]
+radius = 53.0
+height = 126.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt4pw"]
+atlas = ExtResource("4_xrqmo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jhx7"]
+atlas = ExtResource("4_xrqmo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txxce"]
+atlas = ExtResource("4_xrqmo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot1lo"]
+atlas = ExtResource("4_xrqmo")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oay58"]
+atlas = ExtResource("4_xrqmo")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx61e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt4pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jhx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txxce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot1lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oay58")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 5.0
+}]
 
 [node name="Xantarian Fightercraft" type="Area2D"]
 script = ExtResource("1_an2bu")
@@ -10,8 +58,8 @@ script = ExtResource("1_an2bu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_b3syx")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6, -27, -27, -40, -31, -65, -43, -65, -49, -44, -42, -40, -20, -12, -26, -5, -41, -10, -49, -35, -60, -35, -67, -16, -67, -11, -63, -9, -70, 11, -76, 26, -57, 46, -53, 42, -62, 22, -48, 7, -41, 4, -25, 15, -16, 30, -24, 45, -13, 66, -5, 65, -5, 61, -11, 58, -14, 45, -11, 41, -7, 51, -4, 35, -2, 48, 2, 48, 4, 35, 7, 50, 11, 42, 15, 45, 11, 59, 5, 61, 5, 65, 14, 66, 24, 47, 16, 32, 26, 16, 40, 4, 48, 6, 62, 21, 52, 40, 59, 45, 76, 26, 70, 13, 62, -9, 66, -10, 69, -15, 60, -35, 49, -35, 43, -11, 27, -4, 21, -11, 42, -40, 49, -43, 44, -66, 31, -66, 26, -40, 6, -27)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_slnxq")
 
 [node name="EnemyThrusters" type="Node2D" parent="."]
 
@@ -34,3 +82,17 @@ texture = ExtResource("2_q0416")
 position = Vector2(-55, -75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_q0416")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53674e-07, -96)
+scale = Vector2(2.2, 1)
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1.90735e-06, -1)
+scale = Vector2(9.84375, 9.84375)
+sprite_frames = SubResource("SpriteFrames_dx61e")
+animation = &"Explosion"
+frame_progress = 0.709531
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
