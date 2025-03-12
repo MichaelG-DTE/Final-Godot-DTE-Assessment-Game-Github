@@ -65,6 +65,6 @@ autoplay = "Background"
 position = Vector2(151, 262)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(400, 800)
+position = Vector2(500, 800)
 
 [node name="laser_container" type="Node2D" parent="."]
