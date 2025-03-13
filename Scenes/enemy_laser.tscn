@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://8yh1e8w55qfa"]
+[gd_scene load_steps=4 format=3 uid="uid://8yh1e8w55qfa"]
 
 [ext_resource type="Texture2D" uid="uid://c6ikl0fjjasc6" path="res://Assets/Game Assets/Enemy/Enemy Shooty Pew Pew Gun Pew Pew Shoot Bullet.png" id="1_ldq4y"]
+[ext_resource type="Script" path="res://Scripts/enemy_laser.gd" id="1_xoj3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx0g1"]
 size = Vector2(16, 66)
 
 [node name="EnemyLaser" type="Area2D"]
+script = ExtResource("1_xoj3k")
 
 [node name="EnemyShootyPewPewGunPewPewShootBullet" type="Sprite2D" parent="."]
 position = Vector2(-1.52588e-05, 1)

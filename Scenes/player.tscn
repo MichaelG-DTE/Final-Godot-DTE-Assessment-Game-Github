@@ -140,6 +140,7 @@ height = 70.0
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 position = Vector2(246, 589)
 scale = Vector2(1.55642, 1.55642)
+collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_nwuut")
 
