@@ -46,6 +46,8 @@ _data = {
 [node name="Level_One" type="Node2D"]
 script = ExtResource("1_8c86t")
 
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(-72, 0)
@@ -71,4 +73,4 @@ position = Vector2(500, 950)
 [node name="laser_container" type="Node2D" parent="."]
 
 [node name="Xantarian Fightercraft" parent="." instance=ExtResource("4_vxc3a")]
-position = Vector2(701, 173)
+position = Vector2(683, -136)

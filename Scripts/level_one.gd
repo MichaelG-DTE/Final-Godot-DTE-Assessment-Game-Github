@@ -14,7 +14,7 @@ func _ready():
 	assert(player!=null)
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
-
+	player.killed.connect(_on_player_killed)
 #Why would you quit such an amazing game tho?
 func _process(_delta):
 	if Input.is_action_just_pressed("Quit"):
@@ -30,3 +30,6 @@ func _on_player_laser_shot(laser_scene, location):
 func _on_enemy_killed(points):
 	score += points
 	print(score)
+	
+func _on_player_killed():
+	queue_free()
