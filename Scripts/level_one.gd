@@ -8,6 +8,7 @@ var player = null
 var score := 0:
 	set(value):
 		score = value 
+
 #spawn da playa, and put him on his spawn pos
 func _ready():
 	player = get_tree().get_first_node_in_group("players")
@@ -26,6 +27,7 @@ func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
 	laser.global_position = location
 	laser_container.add_child(laser)
+
 #kill da enemy, get da points
 func _on_enemy_killed(points):
 	score += points

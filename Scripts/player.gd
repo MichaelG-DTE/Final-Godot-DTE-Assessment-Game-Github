@@ -50,4 +50,5 @@ func shoot():
 
 func die():
 	killed.emit()
+	print("Player Killed")
 	queue_free()

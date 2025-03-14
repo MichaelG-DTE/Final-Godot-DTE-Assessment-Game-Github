@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=9 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
+[ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="2_hpc5o"]
 [ext_resource type="Texture2D" uid="uid://dh6yvhhiv3uli" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
 
@@ -47,6 +48,10 @@ _data = {
 script = ExtResource("1_8c86t")
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=3 format=3 uid="uid://bxku0qlg6n3ny"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -17,5 +18,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 63.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yfgnw")
+theme_override_font_sizes/font_size = 45
 text = "Score: 9999"
 horizontal_alignment = 1
