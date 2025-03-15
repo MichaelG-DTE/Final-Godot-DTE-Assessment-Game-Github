@@ -4,7 +4,7 @@ signal laser_shot(laser_scene, location)
 signal killed
 
 @export var speed = 450
-@export var rate_of_fire = 0.20
+@export var rate_of_fire = 0.15
 
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew

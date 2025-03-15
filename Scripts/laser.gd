@@ -1,7 +1,7 @@
 extends Area2D
 
 #laser SPEEDY
-@export var speed = -550
+@export var speed = -1000
 @export var damage = 1
 
 #laser go up screen and kill enemies

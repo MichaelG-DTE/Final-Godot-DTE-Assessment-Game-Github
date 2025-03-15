@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=11 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
 [ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="2_hpc5o"]
 [ext_resource type="Texture2D" uid="uid://dh6yvhhiv3uli" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
+[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="6_j5xpc"]
+[ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="7_n2o8k"]
 
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
@@ -48,7 +50,6 @@ _data = {
 script = ExtResource("1_8c86t")
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 metadata/_edit_use_anchors_ = true
@@ -56,7 +57,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(-72, 0)
-scale = Vector2(4.08, 3.73614)
+scale = Vector2(4.328, 3.96324)
 texture = ExtResource("2_oss7l")
 centered = false
 region_enabled = true
@@ -73,9 +74,19 @@ autoplay = "Background"
 position = Vector2(151, 262)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(500, 950)
+position = Vector2(500, 1000)
 
 [node name="laser_container" type="Node2D" parent="."]
 
 [node name="Xantarian Fightercraft" parent="." instance=ExtResource("4_vxc3a")]
 position = Vector2(683, -136)
+
+[node name="Xantarian Fightercraft2" parent="." instance=ExtResource("6_j5xpc")]
+position = Vector2(213, -114)
+
+[node name="Xantarian Fightercraft3" parent="." instance=ExtResource("7_n2o8k")]
+position = Vector2(418, -93)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
