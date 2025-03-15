@@ -1,25 +1,120 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbjr3pu0m2hjr"]
+[gd_scene load_steps=18 format=3 uid="uid://cbjr3pu0m2hjr"]
 
-[ext_resource type="Script" path="res://Scripts/xantarian_fightercraft.gd" id="1_kgkix"]
+[ext_resource type="Script" path="res://Scripts/xantarian_skimmer.gd" id="1_gxtow"]
 [ext_resource type="Texture2D" uid="uid://dlkx0xpvr6v04" path="res://Assets/Game Assets/Enemy/Xantarian Skimmer.png" id="2_8ua7g"]
 [ext_resource type="Texture2D" uid="uid://dly3d6hhac0hj" path="res://Assets/Game Assets/Enemy/Enemy Thruster.png" id="3_2aju2"]
+[ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="3_qq7ia"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1vqe"]
+atlas = ExtResource("2_8ua7g")
+region = Rect2(0, 0, 240, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao77i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1vqe")
+}],
+"loop": true,
+"name": &"Ship",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul0a1"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwnmr"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6sb6"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n587c"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ko5o"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg2q5"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmw5d"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdeed"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1ruw"]
+atlas = ExtResource("3_qq7ia")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k14rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul0a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwnmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6sb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n587c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ko5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg2q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmw5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdeed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1ruw")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 10.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljk5b"]
 radius = 33.0
 height = 104.0
 
-[node name="Xantarian Fightercraft" type="Area2D"]
+[node name="Xantarian Skimmer" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_kgkix")
-speed = 500
-hp = 1
-points = 50
+script = ExtResource("1_gxtow")
 
-[node name="XantarianSkimmer" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.57628e-07, -5)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_8ua7g")
+sprite_frames = SubResource("SpriteFrames_ao77i")
+animation = &"Ship"
+autoplay = "Ship"
+frame_progress = 0.637136
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_k14rm")
+animation = &"Explosion"
+frame_progress = 0.455038
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -28,12 +123,12 @@ shape = SubResource("CapsuleShape2D_ljk5b")
 [node name="EnemyThrusters" type="Node2D" parent="."]
 
 [node name="EnemyThruster" type="Sprite2D" parent="EnemyThrusters"]
-position = Vector2(-12, -83)
+position = Vector2(-12, -86)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_2aju2")
 
 [node name="EnemyThruster3" type="Sprite2D" parent="EnemyThrusters"]
-position = Vector2(12, -83)
+position = Vector2(12, -86)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_2aju2")
 

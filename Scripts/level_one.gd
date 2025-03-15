@@ -1,7 +1,10 @@
 extends Node2D
 
+@export var enemy_scenes: Array[PackedScene] = []
+
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $laser_container
+@onready var enemy_container = $enemy_container
 @onready var screensize = get_viewport_rect().size
 @onready var level = 1
 
@@ -31,9 +34,12 @@ func _on_player_laser_shot(laser_scene, location):
 	laser.global_position = location
 	laser_container.add_child(laser)
 
+#spawnin enemias in dis house
 func _on_enemy_spawn_timer_timeout():
-	
-
+	var e = enemy_scenes.pick_random().instantiate()
+	e.global_position = Vector2(randf_range(50, screensize.x - 50), -50)
+	e.killed.connect(_on_enemy_killed)
+	enemy_container.add_child(e)
 
 #kill da enemy, get da points
 func _on_enemy_killed(points):
