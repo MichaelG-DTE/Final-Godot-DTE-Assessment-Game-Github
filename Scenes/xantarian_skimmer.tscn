@@ -5,20 +5,44 @@
 [ext_resource type="Texture2D" uid="uid://dly3d6hhac0hj" path="res://Assets/Game Assets/Enemy/Enemy Thruster.png" id="3_2aju2"]
 [ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="3_qq7ia"]
 
-[sub_resource type="Animation" id="Animation_76734"]
-resource_name = "Ship"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_e4ekv"]
+resource_name = "Explosion"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ship:texture")
+tracks/0/path = NodePath("Explosion:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_8ua7g"), ExtResource("2_8ua7g")]
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(36.7583, 1, 1, 1, 1, 1, 1, 1, 11.3137),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_4g1oe"]
@@ -72,44 +96,20 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_e4ekv"]
-resource_name = "Explosion"
-length = 0.9
+[sub_resource type="Animation" id="Animation_76734"]
+resource_name = "Ship"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/path = NodePath("Ship:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Explosion:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Explosion:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(36.7583, 1, 1, 1, 1, 1, 1, 1, 11.3137),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+"values": [ExtResource("2_8ua7g"), ExtResource("2_8ua7g")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ri1t"]
@@ -134,11 +134,6 @@ libraries = {
 }
 autoplay = "Ship"
 
-[node name="Ship" type="Sprite2D" parent="."]
-position = Vector2(-7.56979e-06, -5.00001)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_8ua7g")
-
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1.19209e-07, 9.09495e-13)
@@ -146,6 +141,11 @@ scale = Vector2(1.72, 1.72)
 texture = ExtResource("3_qq7ia")
 hframes = 3
 vframes = 3
+
+[node name="Ship" type="Sprite2D" parent="."]
+position = Vector2(-7.56979e-06, -5.00001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8ua7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ljk5b")
@@ -166,5 +166,15 @@ texture = ExtResource("3_2aju2")
 position = Vector2(-9.53674e-07, -96)
 scale = Vector2(2.2, 1)
 
+[node name="pewpew1" type="Marker2D" parent="."]
+position = Vector2(21, 27)
+
+[node name="pewpew2" type="Marker2D" parent="."]
+position = Vector2(-21, 27)
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

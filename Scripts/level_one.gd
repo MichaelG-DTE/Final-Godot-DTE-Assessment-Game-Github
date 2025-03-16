@@ -5,6 +5,7 @@ extends Node2D
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $laser_container
 @onready var enemy_container = $enemy_container
+@onready var hud = $UI_Layer/HUD
 @onready var screensize = get_viewport_rect().size
 @onready var level = 1
 
@@ -12,9 +13,11 @@ var player = null
 var score := 0:
 	set(value):
 		score = value 
+		hud.score = score
 
 #spawn da playa, and put him on his spawn pos
 func _ready():
+	score = 0
 	player = get_tree().get_first_node_in_group("players")
 	assert(player!=null)
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
@@ -27,7 +30,7 @@ func _process(_delta):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
-		
+
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
@@ -45,7 +48,7 @@ func _on_enemy_spawn_timer_timeout():
 func _on_enemy_killed(points):
 	score += points
 	print(score)
-	
+
+#womp womp you died
 func _on_player_killed():
 	print("game over")
-

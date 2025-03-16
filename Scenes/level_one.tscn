@@ -50,6 +50,7 @@ script = ExtResource("1_8c86t")
 enemy_scenes = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 metadata/_edit_use_anchors_ = true
@@ -71,7 +72,7 @@ libraries = {
 autoplay = "Background"
 
 [node name="Player" parent="." instance=ExtResource("1_620ks")]
-position = Vector2(151, 262)
+position = Vector2(500, 999)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
 position = Vector2(500, 1000)

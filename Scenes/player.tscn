@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dx4avp3lndswk"]
+[gd_scene load_steps=20 format=3 uid="uid://dx4avp3lndswk"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwuut"]
 [ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="1_rfm0q"]
 [ext_resource type="Texture2D" uid="uid://cbaegknj64ytf" path="res://Assets/Game Assets/Player/Completed Thrusters.png" id="2_21gws"]
+[ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="5_2g7y4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vbp8"]
 atlas = ExtResource("1_rfm0q")
@@ -133,6 +134,91 @@ _data = {
 "RightThrusters": SubResource("Animation_he8vn")
 }
 
+[sub_resource type="Animation" id="Animation_kjx8w"]
+resource_name = "Explosion"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_2aqh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyn1r"]
+_data = {
+"Explosion": SubResource("Animation_kjx8w"),
+"RESET": SubResource("Animation_2aqh4")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voixq"]
 radius = 20.0
 height = 70.0
@@ -179,6 +265,19 @@ texture = ExtResource("2_21gws")
 hframes = 3
 vframes = 2
 frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uyn1r")
+}
+autoplay = "Ship"
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.72, 1.72)
+texture = ExtResource("5_2g7y4")
+hframes = 3
+vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
