@@ -24,9 +24,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func take_damage(amount):
 	hp -= amount
 	if hp <= 0:
+		speed = 0
+		$Explosion.visible = true
+		$Ship.visible = false
+		$EnemyThrusters.visible = false
+		$CollisionShape2D.queue_free()
+		$AnimationPlayer.play("Explosion")
 		killed.emit(points)
+		await $AnimationPlayer.animation_finished
+		$Explosion.visible = false
+		set_deferred("monitoring", false)
 		die()
-
-func explode():
-	speed = 0
-	
