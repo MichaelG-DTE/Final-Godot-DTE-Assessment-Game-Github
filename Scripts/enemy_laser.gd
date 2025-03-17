@@ -15,6 +15,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_body_entered(body):
 	if body is Player:
-		body.die()
-		print("git gud")
+		body.take_damage(damage)
+		print("you got shot lol")
 		queue_free()

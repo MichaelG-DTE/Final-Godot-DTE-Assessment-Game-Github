@@ -6,10 +6,13 @@ signal killed
 #variables speed, fire, screen, pew pew
 @export var speed = 450
 @export var rate_of_fire = 0.15
+@export var health = 12
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew
+
 #preloading laser
 var laser_scene = preload("res://Scenes/laser.tscn")
+
 #shoot cooldown
 var shoot_cd := false
 
@@ -22,6 +25,7 @@ func _process(delta):
 			shoot()
 			await get_tree().create_timer(rate_of_fire).timeout
 			shoot_cd = false
+
 #movement and banking left and right
 func _physics_process(delta):
 	if !dead:
@@ -51,14 +55,18 @@ func _physics_process(delta):
 func shoot():
 	laser_shot.emit(laser_scene, pew_pew.global_position)
 
-func die():
-	dead = true
-	print("Player Killed")
-	$CollisionShape2D.queue_free()
-	$Shiptexture.visible = false
-	$Explosion.visible = true
-	$AnimationPlayer.play("Explosion")
-	killed.emit()
-	await $AnimationPlayer.animation_finished 
-	$Explosion.visible = false
-	queue_free()
+func take_damage(amount):
+	health -= amount
+	
+func die():  
+	if health <= 0:
+		dead = true
+		print("Player Killed")
+		$CollisionShape2D.queue_free()
+		$Shiptexture.visible = false
+		$Explosion.visible = true
+		$AnimationPlayer.play("Explosion")
+		killed.emit()
+		await $AnimationPlayer.animation_finished 
+		$Explosion.visible = false
+		queue_free()

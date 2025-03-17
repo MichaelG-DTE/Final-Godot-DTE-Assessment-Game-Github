@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
 [ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="2_hpc5o"]
-[ext_resource type="Texture2D" uid="uid://dh6yvhhiv3uli" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
+[ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
 [ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="6_j5xpc"]
 
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
-length = 0.5
+length = 0.9
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,10 +18,10 @@ tracks/0/path = NodePath("../Background:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Rect2(0, 0, 500, 800), Rect2(0, -64, 500, 800)]
+"values": [Rect2(0, 0, 500, 800), Rect2(0, -128, 500, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_7ga84"]
@@ -50,7 +50,6 @@ script = ExtResource("1_8c86t")
 enemy_scenes = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 metadata/_edit_use_anchors_ = true
@@ -83,6 +82,5 @@ position = Vector2(500, 1000)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

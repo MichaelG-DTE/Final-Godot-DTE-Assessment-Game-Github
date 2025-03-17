@@ -6,6 +6,7 @@ var bullet_scene = preload("res://Scenes/enemy_laser.tscn")
 
 @export var speed = 500
 @export var hp = 1
+@export var damage = 1
 @export var points = 50
 @export var rate_of_fire = 1
 @onready var pewpew_1 = $pewpew1
@@ -22,8 +23,8 @@ func die():
 
 func _on_body_entered(body):
 	if body is Player:
-		body.die()
-		print("Enemy Killed")
+		body.take_damage(damage)
+		print("Enemy Committed Die")
 		queue_free()
 
 func _on_shoot_timer_timeout():
