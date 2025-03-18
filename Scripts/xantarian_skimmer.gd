@@ -39,6 +39,7 @@ func shoot(location):
 	b.start(location)
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	GlobalVar.score -= points / 2
 	queue_free()
 	
 func take_damage(amount):

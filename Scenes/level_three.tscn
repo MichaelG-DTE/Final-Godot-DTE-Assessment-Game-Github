@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://5k3gfx2g4gbm"]
+
+[ext_resource type="PackedScene" uid="uid://ccci6yu4n1p5n" path="res://Scenes/level_one.tscn" id="1_57ftu"]
+
+[node name="Level_Three" instance=ExtResource("1_57ftu")]
+level = 3
+
+[node name="EnemySpawnTimer" parent="." index="7"]
+wait_time = 0.3

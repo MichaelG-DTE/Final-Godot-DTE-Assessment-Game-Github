@@ -6,6 +6,7 @@ var bullet_scene =  preload("res://Scenes/enemy_laser.tscn")
 
 @export var speed = 150
 @export var hp = 3
+@export var damage = 1
 @export var points = 150
 
 func _physics_process(delta):
@@ -22,11 +23,12 @@ func _on_shoot_timer_timeout():
 
 func _on_body_entered(body):
 	if body is Player:
-		body.die()
-		print("Enemy Killed")
+		body.take_damage(damage)
+		print("Enemy 3 Committed Die")
 		queue_free()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	GlobalVar.score -= points / 2
 	queue_free()
 	
 func take_damage(amount):

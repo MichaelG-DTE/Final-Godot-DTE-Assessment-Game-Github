@@ -7,17 +7,13 @@ extends Node2D
 @onready var enemy_container = $enemy_container
 @onready var hud = $UI_Layer/HUD
 @onready var screensize = get_viewport_rect().size
-@onready var level = 1
+@export var level = 1
+@export var waves = 3
 
 var player = null
-var score := 0:
-	set(value):
-		score = value 
-		hud.score = score
 
 #spawn da playa, and put him on his spawn pos
 func _ready():
-	score = 0
 	player = get_tree().get_first_node_in_group("players")
 	assert(player!=null)
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
@@ -46,9 +42,19 @@ func _on_enemy_spawn_timer_timeout():
 
 #kill da enemy, get da points
 func _on_enemy_killed(points):
-	score += points
-	print(score)
+	GlobalVar.score += points
 
 #womp womp you died
 func _on_player_killed():
 	print("game over")
+
+func _on_end_of_wave_timeout():
+	waves -= 1
+	print("wave finished")
+	if waves == 0:
+		if level == 1:
+			get_tree().change_scene_to_file("res://Scenes/level_two.tscn")
+		elif level == 2:
+			get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
+		else: 
+			pass

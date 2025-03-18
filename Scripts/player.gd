@@ -57,8 +57,6 @@ func shoot():
 
 func take_damage(amount):
 	health -= amount
-	
-func die():  
 	if health <= 0:
 		dead = true
 		print("Player Killed")

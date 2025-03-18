@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd4cpl1aa2bol"]
+
+[ext_resource type="PackedScene" uid="uid://ccci6yu4n1p5n" path="res://Scenes/level_one.tscn" id="1_f62v5"]
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="2_ry3bw"]
+[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="3_4slvd"]
+[ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="4_2pk2k"]
+
+[node name="Level_Two" instance=ExtResource("1_f62v5")]
+enemy_scenes = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("3_4slvd"), ExtResource("4_2pk2k")])
+level = 2
+
+[node name="EnemySpawnTimer" parent="." index="7"]
+wait_time = 0.4

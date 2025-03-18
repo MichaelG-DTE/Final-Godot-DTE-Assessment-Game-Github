@@ -1,5 +1,4 @@
 extends Control
 
-@onready var score = $Score:
-	set(value):
-		score.text = "Score: " + str(value)
+func _process(delta):
+	$Score.text = "Score: " + str(GlobalVar.score)
