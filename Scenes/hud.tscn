@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=7 format=3 uid="uid://bxku0qlg6n3ny"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
+[ext_resource type="Texture2D" uid="uid://bj5ljj6ayamt2" path="res://Assets/Game Assets/Health Bar.png" id="3_hun3x"]
+[ext_resource type="Texture2D" uid="uid://c2qfbgxom24r8" path="res://Assets/Game Assets/Shield Bar.png" id="4_wvwa5"]
+[ext_resource type="Texture2D" uid="uid://bwhrt5ovw38mj" path="res://Assets/Game Assets/Wave Warning.png" id="5_q32oo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgdsk"]
+font = ExtResource("2_yfgnw")
+font_size = 80
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -16,9 +25,45 @@ script = ExtResource("1_jma6v")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 63.0
+offset_left = 234.0
+offset_top = 25.0
+offset_right = 234.0
+offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_yfgnw")
 theme_override_font_sizes/font_size = 45
 text = "Score: 9999"
 horizontal_alignment = 1
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(231, 68)
+scale = Vector2(2.0625, 2.0625)
+texture = ExtResource("3_hun3x")
+hframes = 2
+vframes = 5
+
+[node name="ShieldBar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(224.406, 195.5)
+scale = Vector2(2.45313, 2.45313)
+texture = ExtResource("4_wvwa5")
+vframes = 6
+
+[node name="WaveWarning" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(449.137, 715.375)
+scale = Vector2(3.54798, 3.54798)
+texture = ExtResource("5_q32oo")
+
+[node name="Wave 1" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 286.0
+offset_top = 638.0
+offset_right = 613.0
+offset_bottom = 788.0
+text = "Wave 1"
+label_settings = SubResource("LabelSettings_qgdsk")
+horizontal_alignment = 1
+vertical_alignment = 1
