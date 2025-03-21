@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=13 format=3 uid="uid://bxku0qlg6n3ny"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
@@ -10,6 +10,134 @@
 font = ExtResource("2_yfgnw")
 font_size = 80
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ux418"]
+resource_name = "WarningFlashing"
+length = 0.9
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveWarning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gtm3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveWarning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave 1:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wave 2:label_settings:font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wave 3:label_settings:font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p7kx5"]
+resource_name = "Wave1Flash"
+length = 0.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave 1:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3m2et"]
+resource_name = "Wave2Flash"
+length = 0.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave 2:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rfmtw"]
+resource_name = "Wave3Flash"
+length = 0.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave 3:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0qlg"]
+_data = {
+"RESET": SubResource("Animation_gtm3d"),
+"WarningFlashing": SubResource("Animation_ux418"),
+"Wave1Flash": SubResource("Animation_p7kx5"),
+"Wave2Flash": SubResource("Animation_3m2et"),
+"Wave3Flash": SubResource("Animation_rfmtw")
+}
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -58,11 +186,39 @@ texture = ExtResource("5_q32oo")
 [node name="Wave 1" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 267.0
-offset_top = 638.0
-offset_right = 639.0
-offset_bottom = 788.0
+offset_left = 274.0
+offset_top = 643.0
+offset_right = 646.0
+offset_bottom = 793.0
 text = "Wave 1"
 label_settings = SubResource("LabelSettings_qgdsk")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Wave 2" type="Label" parent="."]
+visible = false
+offset_left = 267.0
+offset_top = 638.0
+offset_right = 639.0
+offset_bottom = 788.0
+text = "Wave 2"
+label_settings = SubResource("LabelSettings_qgdsk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave 3" type="Label" parent="."]
+visible = false
+offset_left = 267.0
+offset_top = 638.0
+offset_right = 639.0
+offset_bottom = 788.0
+text = "Wave 3
+"
+label_settings = SubResource("LabelSettings_qgdsk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveFlashing" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t0qlg")
+}

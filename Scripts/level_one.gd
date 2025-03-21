@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var enemy_scenes: Array[PackedScene] = []
+@export var wave1: Array[PackedScene] = []
+@export var wave2: Array[PackedScene] = []
+@export var wave3: Array[PackedScene] = []
 
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $laser_container
@@ -9,6 +11,7 @@ extends Node2D
 @onready var screensize = get_viewport_rect().size
 @export var level = 1
 @export var waves = 3
+@export var wave_warning_timer = 10
 
 var player = null
 
@@ -25,6 +28,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("Reset"):
+		GlobalVar.score = 0
 		get_tree().reload_current_scene()
 
 #shootin lasars in dis house
@@ -35,10 +39,29 @@ func _on_player_laser_shot(laser_scene, location):
 
 #spawnin enemias in dis house
 func _on_enemy_spawn_timer_timeout():
-	var e = enemy_scenes.pick_random().instantiate()
-	e.global_position = Vector2(randf_range(50, screensize.x - 50), -50)
-	e.killed.connect(_on_enemy_killed)
-	enemy_container.add_child(e)
+	if waves == 3:
+		var e = wave1.pick_random().instantiate()
+		e.global_position = Vector2(randf_range(50, screensize.x - 50), -50)
+		e.killed.connect(_on_enemy_killed)
+		enemy_container.add_child(e)
+	elif waves == 2:
+		var e = wave2.pick_random().instantiate()
+		e.global_position = Vector2(randf_range(50, screensize.x - 50), -50)
+		e.killed.connect(_on_enemy_killed)
+		enemy_container.add_child(e)
+	elif waves == 1:
+		var e = wave3.pick_random().instantiate()
+		e.global_position = Vector2(randf_range(50, screensize.x - 50), -50)
+		e.killed.connect(_on_enemy_killed)
+		enemy_container.add_child(e)
+	elif waves == 0:
+			print("level finished")
+			if level == 1:
+				get_tree().change_scene_to_file("res://Scenes/level_two.tscn")
+			elif level == 2:
+				get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
+			else: 
+				pass
 
 #kill da enemy, get da points
 func _on_enemy_killed(points):
@@ -50,11 +73,6 @@ func _on_player_killed():
 
 func _on_end_of_wave_timeout():
 	waves -= 1
+	for e in enemy_container.get_children():
+		e.queue_free()
 	print("wave finished")
-	if waves == 0:
-		if level == 1:
-			get_tree().change_scene_to_file("res://Scenes/level_two.tscn")
-		elif level == 2:
-			get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
-		else: 
-			pass

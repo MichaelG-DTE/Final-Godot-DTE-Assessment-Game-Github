@@ -47,7 +47,9 @@ _data = {
 
 [node name="Level_One" type="Node2D"]
 script = ExtResource("1_8c86t")
-enemy_scenes = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
+wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
+wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
+wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 

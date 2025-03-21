@@ -6,7 +6,7 @@ signal killed
 #variables speed, fire, screen, pew pew
 @export var speed = 450
 @export var rate_of_fire = 0.15
-@export var health = 12
+@export var health = 14
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew
 

@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="4_2pk2k"]
 
 [node name="Level_Two" instance=ExtResource("1_f62v5")]
-enemy_scenes = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("3_4slvd"), ExtResource("4_2pk2k")])
+wave1 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("3_4slvd"), ExtResource("4_2pk2k")])
+wave2 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw")])
+wave3 = Array[PackedScene]([ExtResource("4_2pk2k"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw")])
 level = 2
-
-[node name="EnemySpawnTimer" parent="." index="7"]
-wait_time = 0.4
