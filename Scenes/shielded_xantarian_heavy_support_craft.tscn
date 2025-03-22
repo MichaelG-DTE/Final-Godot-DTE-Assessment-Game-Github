@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://biwomlqx1u8br"]
+
+[ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="1_q4q03"]
+[ext_resource type="PackedScene" uid="uid://bowjomag12llh" path="res://Scenes/enemy_shield.tscn" id="2_3583t"]
+
+[node name="Xantarian Heavy Support Craft" instance=ExtResource("1_q4q03")]
+
+[node name="EnemyShield" parent="." index="8" instance=ExtResource("2_3583t")]
+position = Vector2(0, -16)
+scale = Vector2(1.71779, 1.71779)

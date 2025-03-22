@@ -18,3 +18,8 @@ func _on_body_entered(body):
 		body.take_damage(damage)
 		print("you got shot lol")
 		queue_free()
+
+func _on_area_entered(area):
+	if area is Shield:
+		area.take_damage(damage)
+		queue_free()

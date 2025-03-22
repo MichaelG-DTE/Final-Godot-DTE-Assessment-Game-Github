@@ -4,9 +4,8 @@ signal laser_shot(laser_scene, location)
 signal killed
 
 #variables speed, fire, screen, pew pew
-@export var speed = 450
+@export var speed = 600
 @export var rate_of_fire = 0.15
-@export var health = 14
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew
 
@@ -56,8 +55,8 @@ func shoot():
 	laser_shot.emit(laser_scene, pew_pew.global_position)
 
 func take_damage(amount):
-	health -= amount
-	if health <= 0:
+	GlobalVar.health -= amount
+	if GlobalVar.health <= 0:
 		dead = true
 		print("Player Killed")
 		$CollisionShape2D.queue_free()

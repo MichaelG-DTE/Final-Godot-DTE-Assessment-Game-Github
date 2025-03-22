@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://nktrlm6a8k8l"]
+[gd_scene load_steps=13 format=3 uid="uid://nktrlm6a8k8l"]
 
 [ext_resource type="Script" path="res://Scripts/xantarian_heavy_support.gd" id="1_sygy0"]
 [ext_resource type="Texture2D" uid="uid://dkywxyw07vu2r" path="res://Assets/Game Assets/Enemy/Heavy Support Craft (1).png" id="2_pqgra"]
-[ext_resource type="Texture2D" uid="uid://dly3d6hhac0hj" path="res://Assets/Game Assets/Enemy/Enemy Thruster.png" id="3_k7ir0"]
 [ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="3_o8hlh"]
+[ext_resource type="Texture2D" uid="uid://cfo6ws20ogdmq" path="res://Assets/Game Assets/Enemy/NEW Enemy Thruster.png" id="4_5bidm"]
 
 [sub_resource type="Animation" id="Animation_6pbak"]
 resource_name = "Explosion"
@@ -110,6 +110,28 @@ _data = {
 radius = 55.0
 height = 184.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t1c3"]
+atlas = ExtResource("4_5bidm")
+region = Rect2(0, 0, 128, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwfd4"]
+atlas = ExtResource("4_5bidm")
+region = Rect2(128, 0, 128, 408)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvt6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t1c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwfd4")
+}],
+"loop": true,
+"name": &"Thruster",
+"speed": 5.0
+}]
+
 [node name="Xantarian Heavy Support Craft" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
@@ -140,15 +162,19 @@ shape = SubResource("CapsuleShape2D_3yfbn")
 
 [node name="EnemyThrusters" type="Node2D" parent="."]
 
-[node name="EnemyThruster2" type="Sprite2D" parent="EnemyThrusters"]
-position = Vector2(16, -118)
-scale = Vector2(0.5625, 0.5625)
-texture = ExtResource("3_k7ir0")
+[node name="Thruster" type="AnimatedSprite2D" parent="EnemyThrusters"]
+position = Vector2(-16, -120)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_jvt6u")
+animation = &"Thruster"
+autoplay = "Thruster"
 
-[node name="EnemyThruster3" type="Sprite2D" parent="EnemyThrusters"]
-position = Vector2(-16, -118)
-scale = Vector2(0.5625, 0.5625)
-texture = ExtResource("3_k7ir0")
+[node name="Thruster2" type="AnimatedSprite2D" parent="EnemyThrusters"]
+position = Vector2(16, -120)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_jvt6u")
+animation = &"Thruster"
+autoplay = "Thruster"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-9.53674e-07, -96)

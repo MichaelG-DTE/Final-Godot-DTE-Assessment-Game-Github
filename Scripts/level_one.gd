@@ -9,6 +9,7 @@ extends Node2D
 @onready var enemy_container = $enemy_container
 @onready var hud = $UI_Layer/HUD
 @onready var gos = $UI_Layer/GameOverScreen
+@onready var lcs = $UI_Layer/LevelCompleteScreen
 @onready var screensize = get_viewport_rect().size
 @export var level = 1
 @export var waves = 3
@@ -23,6 +24,16 @@ func _ready():
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
+	$EnemySpawnTimer.stop()
+	if  waves == 3:
+		$UI_Layer/HUD/WaveWarning.visible = true
+		$UI_Layer/HUD/Wave1.visible = true
+		$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
+		await get_tree().create_timer(wave_warning_timer).timeout
+		await $UI_Layer/HUD/WaveFlashing.animation_finished
+		$UI_Layer/HUD/WaveWarning.visible = false
+		$UI_Layer/HUD/Wave1.visible = false
+		$EnemySpawnTimer.start()
 	
 #Why would you quit such an amazing game tho?
 func _process(_delta):
@@ -57,12 +68,8 @@ func _on_enemy_spawn_timer_timeout():
 		enemy_container.add_child(e)
 	elif waves == 0:
 			print("level finished")
-			if level == 1:
-				get_tree().change_scene_to_file("res://Scenes/level_two.tscn")
-			elif level == 2:
-				get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
-			else: 
-				pass
+			await get_tree().create_timer(2.25).timeout
+			lcs.visible = true
 
 #kill da enemy, get da points
 func _on_enemy_killed(points):
@@ -72,7 +79,7 @@ func _on_enemy_killed(points):
 func _on_player_killed():
 	print("game over")
 	gos.set_score(GlobalVar.score)
-	await get_tree().create_timer(2.25).timeout
+	await get_tree().create_timer(3.25).timeout
 	gos.visible = true
 
 func _on_end_of_wave_timeout():
@@ -80,5 +87,26 @@ func _on_end_of_wave_timeout():
 	print("wave finished")
 	$EnemySpawnTimer.stop()
 	await get_tree().create_timer(1).timeout
-	await get_tree().create_timer(wave_warning_timer).timeout
-	$EnemySpawnTimer.start()
+	if waves == 2:
+		$UI_Layer/HUD/WaveWarning.visible = true
+		$UI_Layer/HUD/Wave2.visible = true
+		$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
+		await get_tree().create_timer(wave_warning_timer).timeout
+		await $UI_Layer/HUD/WaveFlashing.animation_finished
+		$UI_Layer/HUD/WaveWarning.visible = false
+		$UI_Layer/HUD/Wave2.visible = false
+		$EnemySpawnTimer.start()
+	elif waves == 1:
+		$UI_Layer/HUD/WaveWarning.visible = true
+		$UI_Layer/HUD/Wave3.visible = true
+		$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
+		await get_tree().create_timer(wave_warning_timer).timeout
+		await $UI_Layer/HUD/WaveFlashing.animation_finished
+		$UI_Layer/HUD/WaveWarning.visible = false
+		$UI_Layer/HUD/Wave3.visible = false
+		$EnemySpawnTimer.start()
+	else:
+		if waves == 0:
+			print("level finished")
+			await get_tree().create_timer(3.25).timeout
+			lcs.visible = true

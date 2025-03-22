@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://cav32g27pjgwf"]
+
+[ext_resource type="Script" path="res://Scripts/level_complete_screen.gd" id="1_24na0"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="1_gxgfr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbxvx"]
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_6cy6u"]
+font = ExtResource("1_gxgfr")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0xjp"]
+font = ExtResource("1_gxgfr")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_l4sfo"]
+font = ExtResource("1_gxgfr")
+font_size = 55
+
+[node name="LevelCompleteScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_24na0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.494118)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -607.0
+offset_right = 339.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rbxvx")
+
+[node name="LevelComplete!" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -388.0
+offset_top = 9.0
+offset_right = 691.0
+offset_bottom = 192.0
+grow_horizontal = 2
+scale = Vector2(0.746555, 0.810293)
+text = "Mission 
+Succeeded!"
+label_settings = SubResource("LabelSettings_6cy6u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TerraisSafe" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 169.0
+offset_right = 540.0
+offset_bottom = 214.0
+text = "Terra is safe!"
+label_settings = SubResource("LabelSettings_k0xjp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -82.0
+offset_right = 222.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 9999"
+label_settings = SubResource("LabelSettings_l4sfo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLevel" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = 29.0
+offset_right = 245.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gxgfr")
+theme_override_font_sizes/font_size = 45
+text = "Next Level
+"
+
+[node name="QuitGame" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = 152.0
+offset_right = 242.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gxgfr")
+theme_override_font_sizes/font_size = 45
+text = "Quit Game"
+
+[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Panel/QuitGame" to="." method="_on_quit_game_pressed"]

@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://5k3gfx2g4gbm"]
+[gd_scene load_steps=8 format=3 uid="uid://5k3gfx2g4gbm"]
 
 [ext_resource type="PackedScene" uid="uid://ccci6yu4n1p5n" path="res://Scenes/level_one.tscn" id="1_57ftu"]
+[ext_resource type="PackedScene" uid="uid://c0bs8nfnwnwug" path="res://Scenes/shielded_xantarian_skimmer.tscn" id="2_mpa76"]
+[ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="3_8suaa"]
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_i0jv6"]
+[ext_resource type="PackedScene" uid="uid://dycbg8mlr2qav" path="res://Scenes/shielded_xantarian_fightercraft.tscn" id="5_2y4no"]
+[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="6_fwvvf"]
+[ext_resource type="PackedScene" uid="uid://biwomlqx1u8br" path="res://Scenes/shielded_xantarian_heavy_support_craft.tscn" id="7_3ac77"]
 
 [node name="Level_Three" instance=ExtResource("1_57ftu")]
+wave1 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("2_mpa76"), ExtResource("3_8suaa"), ExtResource("4_i0jv6")])
+wave2 = Array[PackedScene]([ExtResource("5_2y4no"), ExtResource("2_mpa76"), ExtResource("3_8suaa"), ExtResource("4_i0jv6"), ExtResource("6_fwvvf")])
+wave3 = Array[PackedScene]([ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("2_mpa76"), ExtResource("7_3ac77"), ExtResource("5_2y4no")])
 level = 3
 
 [node name="EnemySpawnTimer" parent="." index="7"]

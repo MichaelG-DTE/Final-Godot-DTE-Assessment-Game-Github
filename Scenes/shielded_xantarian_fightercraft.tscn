@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dycbg8mlr2qav"]
+
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="1_fh73p"]
+[ext_resource type="PackedScene" uid="uid://bowjomag12llh" path="res://Scenes/enemy_shield.tscn" id="2_7jwly"]
+
+[node name="Xantarian Fightercraft" instance=ExtResource("1_fh73p")]
+
+[node name="EnemyShield" parent="." index="8" instance=ExtResource("2_7jwly")]
+position = Vector2(4.76837e-07, -5.96046e-08)
+scale = Vector2(1.58442, 1.58442)

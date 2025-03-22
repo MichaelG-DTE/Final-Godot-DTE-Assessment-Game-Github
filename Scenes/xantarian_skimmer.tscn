@@ -183,12 +183,12 @@ autoplay = "Thrusters"
 frame_progress = 0.158074
 
 [node name="EnemyThruster2" type="AnimatedSprite2D" parent="EnemyThrusters"]
-position = Vector2(-11.5, -82.5938)
+position = Vector2(-12.5, -82.5938)
 scale = Vector2(0.195312, 0.195312)
 sprite_frames = SubResource("SpriteFrames_7oxdg")
 animation = &"Thrusters"
 autoplay = "Thrusters"
-frame_progress = 0.166423
+frame_progress = 0.158074
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-9.53674e-07, -96)

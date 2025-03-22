@@ -9,6 +9,8 @@ radius = 56.0357
 [node name="PlayerShield" type="Area2D"]
 modulate = Color(1, 1, 1, 0.564706)
 scale = Vector2(0.808414, 0.802799)
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("1_fyngq")
 
 [node name="Shield" type="Sprite2D" parent="."]
