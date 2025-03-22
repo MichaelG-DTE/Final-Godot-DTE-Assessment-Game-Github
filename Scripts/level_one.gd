@@ -8,10 +8,11 @@ extends Node2D
 @onready var laser_container = $laser_container
 @onready var enemy_container = $enemy_container
 @onready var hud = $UI_Layer/HUD
+@onready var gos = $UI_Layer/GameOverScreen
 @onready var screensize = get_viewport_rect().size
 @export var level = 1
 @export var waves = 3
-@export var wave_warning_timer = 10
+@export var wave_warning_timer = 7
 
 var player = null
 
@@ -70,9 +71,14 @@ func _on_enemy_killed(points):
 #womp womp you died
 func _on_player_killed():
 	print("game over")
+	gos.set_score(GlobalVar.score)
+	await get_tree().create_timer(2.25).timeout
+	gos.visible = true
 
 func _on_end_of_wave_timeout():
 	waves -= 1
-	for e in enemy_container.get_children():
-		e.queue_free()
 	print("wave finished")
+	$EnemySpawnTimer.stop()
+	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(wave_warning_timer).timeout
+	$EnemySpawnTimer.start()

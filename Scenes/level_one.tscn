@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=11 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
 [ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="2_hpc5o"]
 [ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
+[ext_resource type="PackedScene" uid="uid://covgw4e8wdvcr" path="res://Scenes/game_over_screen.tscn" id="5_s5oaj"]
 [ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="6_j5xpc"]
 
 [sub_resource type="Animation" id="Animation_gowww"]
@@ -56,10 +57,13 @@ wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtR
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 metadata/_edit_use_anchors_ = true
 
+[node name="GameOverScreen" parent="UI_Layer" instance=ExtResource("5_s5oaj")]
+visible = false
+
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(-72, 0)
-scale = Vector2(4.328, 3.96324)
+scale = Vector2(3.774, 3.45593)
 texture = ExtResource("2_oss7l")
 centered = false
 region_enabled = true
