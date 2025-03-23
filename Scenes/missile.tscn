@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctx2jg2u13m28"]
+
+[ext_resource type="Script" path="res://Scripts/missile.gd" id="1_6uxb5"]
+[ext_resource type="Texture2D" uid="uid://bgdwnuj4anj0c" path="res://Assets/Game Assets/Player/MissileThruster(1).png" id="1_ngnqj"]
+[ext_resource type="Texture2D" uid="uid://dlixg56hg1kag" path="res://Assets/Game Assets/Player/Missile.png" id="2_5gncn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvb4l"]
+atlas = ExtResource("1_ngnqj")
+region = Rect2(0, 0, 600, 420)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djgkm"]
+atlas = ExtResource("1_ngnqj")
+region = Rect2(0, 420, 600, 420)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctk2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvb4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djgkm")
+}],
+"loop": true,
+"name": &"Thruster",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yadky"]
+size = Vector2(72, 166)
+
+[node name="Missile" type="Area2D"]
+script = ExtResource("1_6uxb5")
+
+[node name="Thrusters" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 166.446)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ctk2i")
+animation = &"Thruster"
+autoplay = "Thruster"
+frame_progress = 0.623307
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5gncn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yadky")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.98023e-08, 119)
+scale = Vector2(3.45, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

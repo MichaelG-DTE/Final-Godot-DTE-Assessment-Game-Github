@@ -10,4 +10,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
+		if GlobalVar.health < 10:
+			GlobalVar.health += 1
 		queue_free()

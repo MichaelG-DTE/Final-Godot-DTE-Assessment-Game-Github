@@ -14,7 +14,7 @@ collision_mask = 4
 script = ExtResource("1_q5160")
 
 [node name="EnemyShield" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.701961)
+modulate = Color(1, 1, 1, 0.568627)
 texture = ExtResource("2_g37hf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

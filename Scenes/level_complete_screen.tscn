@@ -17,9 +17,9 @@ font_size = 80
 font = ExtResource("1_gxgfr")
 font_size = 40
 
-[sub_resource type="LabelSettings" id="LabelSettings_l4sfo"]
+[sub_resource type="LabelSettings" id="LabelSettings_m1oeq"]
 font = ExtResource("1_gxgfr")
-font_size = 55
+font_size = 50
 
 [node name="LevelCompleteScreen" type="Control"]
 layout_mode = 3
@@ -84,20 +84,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Score" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -82.0
-offset_right = 222.0
-offset_bottom = -19.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 145.0
+offset_top = 261.0
+offset_right = 553.0
+offset_bottom = 318.0
 text = "Score: 9999"
-label_settings = SubResource("LabelSettings_l4sfo")
+label_settings = SubResource("LabelSettings_m1oeq")
 horizontal_alignment = 1
 vertical_alignment = 1
 

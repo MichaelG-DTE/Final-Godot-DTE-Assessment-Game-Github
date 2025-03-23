@@ -7,6 +7,7 @@ extends Node2D
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $laser_container
 @onready var enemy_container = $enemy_container
+@onready var cc = $collectables_container
 @onready var hud = $UI_Layer/HUD
 @onready var gos = $UI_Layer/GameOverScreen
 @onready var lcs = $UI_Layer/LevelCompleteScreen
@@ -21,11 +22,13 @@ var player = null
 func _ready():
 	player = get_tree().get_first_node_in_group("players")
 	assert(player!=null)
+	GlobalVar.shield_health = 7
+	GlobalVar.health = 10
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
 	$EnemySpawnTimer.stop()
-	if  waves == 3:
+	if waves == 3:
 		$UI_Layer/HUD/WaveWarning.visible = true
 		$UI_Layer/HUD/Wave1.visible = true
 		$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
@@ -35,13 +38,9 @@ func _ready():
 		$UI_Layer/HUD/Wave1.visible = false
 		$EnemySpawnTimer.start()
 	
-#Why would you quit such an amazing game tho?
 func _process(_delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
-	elif Input.is_action_just_pressed("Reset"):
-		GlobalVar.score = 0
-		get_tree().reload_current_scene()
 
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
@@ -68,6 +67,7 @@ func _on_enemy_spawn_timer_timeout():
 		enemy_container.add_child(e)
 	elif waves == 0:
 			print("level finished")
+			lcs.set_score(GlobalVar.score)
 			await get_tree().create_timer(2.25).timeout
 			lcs.visible = true
 
@@ -79,7 +79,7 @@ func _on_enemy_killed(points):
 func _on_player_killed():
 	print("game over")
 	gos.set_score(GlobalVar.score)
-	await get_tree().create_timer(3.25).timeout
+	await get_tree().create_timer(2.25).timeout
 	gos.visible = true
 
 func _on_end_of_wave_timeout():
@@ -108,5 +108,6 @@ func _on_end_of_wave_timeout():
 	else:
 		if waves == 0:
 			print("level finished")
+			lcs.set_score(GlobalVar.score)
 			await get_tree().create_timer(3.25).timeout
 			lcs.visible = true

@@ -9,9 +9,10 @@ func _on_next_level_pressed():
 			get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
 	else: 
 		pass
-		
+
 func _on_quit_game_pressed():
 	get_tree().quit()
 	
+
 func set_score(score):
 	$Panel/Score.text = "Score: " + str(GlobalVar.score)

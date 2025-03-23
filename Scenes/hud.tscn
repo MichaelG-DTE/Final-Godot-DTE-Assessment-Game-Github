@@ -1,108 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=5 format=3 uid="uid://bxku0qlg6n3ny"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
-[ext_resource type="Texture2D" uid="uid://bdjh8os3wvcqc" path="res://Assets/Game Assets/Player/New Health Bar.png" id="4_ppd8s"]
-[ext_resource type="Texture2D" uid="uid://cjwcsr46m6s3m" path="res://Assets/Game Assets/Player/Updated Shield Bar(1).png" id="5_gfjk7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bygo6"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(0, 0, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipoc0"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(313, 0, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nuedp"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(0, 200, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2juv6"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(313, 200, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgjtw"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(0, 400, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3tosf"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(313, 400, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5h67"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(0, 600, 313, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfqph"]
-atlas = ExtResource("5_gfjk7")
-region = Rect2(313, 600, 313, 200)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xpoh8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bygo6")
-}],
-"loop": false,
-"name": &"Down0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ipoc0")
-}],
-"loop": false,
-"name": &"Down1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nuedp")
-}],
-"loop": false,
-"name": &"Down2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2juv6")
-}],
-"loop": false,
-"name": &"Down3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rgjtw")
-}],
-"loop": false,
-"name": &"Down4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3tosf")
-}],
-"loop": false,
-"name": &"Down5",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5h67")
-}],
-"loop": false,
-"name": &"Down6",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfqph")
-}],
-"loop": false,
-"name": &"Down7",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://43oeh6c1hywj" path="res://Scenes/texture_progress_bar.tscn" id="3_2q4kj"]
+[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/HealthBar.tscn" id="4_f305r"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -127,16 +28,16 @@ theme_override_font_sizes/font_size = 45
 text = "Score: 9999"
 horizontal_alignment = 1
 
-[node name="NewHealthBar" type="Sprite2D" parent="."]
-position = Vector2(212.094, 284.019)
-scale = Vector2(1.30562, 1.30562)
-texture = ExtResource("4_ppd8s")
-hframes = 2
-vframes = 6
+[node name="ShieldBar" parent="." instance=ExtResource("3_2q4kj")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 21.0
+offset_right = 505.0
+offset_bottom = 46.0
 
-[node name="ShieldBarDepletion" type="AnimatedSprite2D" parent="."]
-position = Vector2(212.775, 139)
-scale = Vector2(1.35, 1.35)
-sprite_frames = SubResource("SpriteFrames_xpoh8")
-animation = &"Down0"
-autoplay = "Down0"
+[node name="HealthBar" parent="." instance=ExtResource("4_f305r")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 63.0
+offset_right = 505.0
+offset_bottom = 88.0
