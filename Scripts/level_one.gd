@@ -26,6 +26,7 @@ func _ready():
 	GlobalVar.health = 10
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
 	player.laser_shot.connect(_on_player_laser_shot)
+	player.missile_shot.connect(_on_player_missile_shot)
 	player.killed.connect(_on_player_killed)
 	$EnemySpawnTimer.stop()
 	if waves == 3:

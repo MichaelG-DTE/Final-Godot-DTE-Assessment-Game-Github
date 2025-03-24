@@ -134,7 +134,7 @@ animations = [{
 
 [node name="Xantarian Heavy Support Craft" type="Area2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 133
 script = ExtResource("1_sygy0")
 speed = 200
 

@@ -17,7 +17,7 @@ func _physics_process(delta):
 	global_position.y += speed * delta
 
 func die():
-	if randf() >= 0.5:
+	if randf() >= 0.85:
 		if randf() >= 0.5:
 			var h = health_scene.instantiate()
 			get_tree().root.add_child(h)

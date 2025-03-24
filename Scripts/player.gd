@@ -7,7 +7,7 @@ signal killed
 #variables speed, fire, screen, pew pew
 @export var speed = 600
 @export var rate_of_fire = 0.15
-@export var missile_fire_rate = 1
+@export var missile_fire_rate = 1.5
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew
 @onready var ms = $missileshooty
@@ -29,13 +29,14 @@ func _process(delta):
 			shoot()
 			await get_tree().create_timer(rate_of_fire).timeout
 			shoot_cd = false
+	if Input.is_action_pressed("MissileShoot"):
+		if !missile_cd and !dead:
+			missile_cd = true
+			shoot2()
+			await get_tree().create_timer(missile_fire_rate).timeout
+			missile_cd = false
 	else:
-		if Input.is_action_pressed("MissileShoot"):
-			if !missile_cd and !dead:
-				missile_cd = true
-				shoot2()
-				await get_tree().create_timer(missile_fire_rate).timeout
-				missile_cd = true
+		pass
 
 #movement and banking left and right
 func _physics_process(delta):

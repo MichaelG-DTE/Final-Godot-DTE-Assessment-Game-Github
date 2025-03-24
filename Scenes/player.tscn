@@ -288,7 +288,9 @@ shape = SubResource("CapsuleShape2D_voixq")
 position = Vector2(0, -48.83)
 
 [node name="missileshooty" type="Marker2D" parent="."]
+position = Vector2(0, -69.495)
 
 [node name="PlayerShield" parent="." instance=ExtResource("5_x067j")]
+modulate = Color(1, 1, 1, 0.639216)
 position = Vector2(0, -9.6375)
 scale = Vector2(0.939924, 0.943312)
