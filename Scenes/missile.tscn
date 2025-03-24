@@ -30,6 +30,9 @@ animations = [{
 size = Vector2(72, 166)
 
 [node name="Missile" type="Area2D"]
+scale = Vector2(0.185958, 0.185958)
+collision_layer = 128
+collision_mask = 2
 script = ExtResource("1_6uxb5")
 
 [node name="Thrusters" type="AnimatedSprite2D" parent="."]

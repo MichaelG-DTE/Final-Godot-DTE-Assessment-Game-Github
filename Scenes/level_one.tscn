@@ -232,7 +232,7 @@ position = Vector2(500, 1000)
 
 [node name="enemy_container" type="Node2D" parent="."]
 
-[node name="collectables_container" type="Node2D" parent="."]
+[node name="missile_container" type="Node2D" parent="."]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 0.5

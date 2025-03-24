@@ -287,6 +287,8 @@ shape = SubResource("CapsuleShape2D_voixq")
 [node name="PewPew" type="Marker2D" parent="."]
 position = Vector2(0, -48.83)
 
+[node name="missileshooty" type="Marker2D" parent="."]
+
 [node name="PlayerShield" parent="." instance=ExtResource("5_x067j")]
 position = Vector2(0, -9.6375)
 scale = Vector2(0.939924, 0.943312)

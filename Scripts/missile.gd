@@ -14,4 +14,3 @@ func _on_area_entered(area):
 	if area is Enemy or Enemy2 or Enemy3:
 		area.take_damage(damage)
 		queue_free()
-

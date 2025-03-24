@@ -7,7 +7,7 @@ extends Node2D
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var laser_container = $laser_container
 @onready var enemy_container = $enemy_container
-@onready var cc = $collectables_container
+@onready var missile_container = $missile_container
 @onready var hud = $UI_Layer/HUD
 @onready var gos = $UI_Layer/GameOverScreen
 @onready var lcs = $UI_Layer/LevelCompleteScreen
@@ -47,6 +47,11 @@ func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
 	laser.global_position = location
 	laser_container.add_child(laser)
+	
+func _on_player_missile_shot(missile_scene, location):
+	var missile = missile_scene.instantiate()
+	missile.global_position = location
+	missile_container.add_child(missile)
 
 #spawnin enemias in dis house
 func _on_enemy_spawn_timer_timeout():
