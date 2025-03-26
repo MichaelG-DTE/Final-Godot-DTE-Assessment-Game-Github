@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bowjomag12llh"]
+[gd_scene load_steps=7 format=3 uid="uid://bowjomag12llh"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyShield.gd" id="1_q5160"]
 [ext_resource type="Texture2D" uid="uid://bpbdkgsunb51d" path="res://Assets/Game Assets/Enemy/Enemy Shield.png" id="2_g37hf"]
@@ -6,17 +6,63 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gm30k"]
 radius = 56.4358
 
+[sub_resource type="Animation" id="Animation_084r6"]
+resource_name = "EnemyShield"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.843137), Color(1, 1, 1, 0.321569), Color(1, 1, 1, 0.843137)]
+}
+
+[sub_resource type="Animation" id="Animation_ycvdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.701961)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhawl"]
+_data = {
+"EnemyShield": SubResource("Animation_084r6"),
+"RESET": SubResource("Animation_ycvdy")
+}
+
 [node name="EnemyShield" type="Area2D"]
 modulate = Color(1, 1, 1, 0.701961)
 scale = Vector2(0.983, 0.983)
-collision_layer = 32
+collision_layer = 34
 collision_mask = 4
 script = ExtResource("1_q5160")
 
 [node name="EnemyShield" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.568627)
+modulate = Color(1, 1, 1, 0.643137)
 texture = ExtResource("2_g37hf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.701961)
 shape = SubResource("CircleShape2D_gm30k")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xhawl")
+}
+autoplay = "EnemyShield"

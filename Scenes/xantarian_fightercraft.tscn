@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/xantarian_fightercraft.gd" id="1_an2bu"]
 [ext_resource type="Texture2D" uid="uid://byc6y2vfy4n1g" path="res://Assets/Game Assets/Enemy/Xenos Fightercraft.png" id="1_b3syx"]
 [ext_resource type="Texture2D" uid="uid://dkywxyw07vu2r" path="res://Assets/Game Assets/Enemy/Heavy Support Craft (1).png" id="2_gpkyl"]
-[ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="3_3e0vm"]
+[ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Explosion Asset.png" id="3_3e0vm"]
 [ext_resource type="Texture2D" uid="uid://cfo6ws20ogdmq" path="res://Assets/Game Assets/Enemy/NEW Enemy Thruster.png" id="5_4xobf"]
 
 [sub_resource type="Animation" id="Animation_6pbak"]
@@ -150,7 +150,7 @@ texture = ExtResource("1_b3syx")
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3.93629e-06, 9.27685e-13)
-scale = Vector2(2, 2)
+scale = Vector2(0.752, 0.752)
 texture = ExtResource("3_3e0vm")
 hframes = 3
 vframes = 3

@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://biwomlqx1u8br" path="res://Scenes/shielded_xantarian_heavy_support_craft.tscn" id="7_3ac77"]
 
 [node name="Level_Three" instance=ExtResource("1_57ftu")]
-wave1 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("2_mpa76"), ExtResource("3_8suaa"), ExtResource("4_i0jv6")])
-wave2 = Array[PackedScene]([ExtResource("5_2y4no"), ExtResource("2_mpa76"), ExtResource("3_8suaa"), ExtResource("4_i0jv6"), ExtResource("6_fwvvf")])
-wave3 = Array[PackedScene]([ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("2_mpa76"), ExtResource("7_3ac77"), ExtResource("5_2y4no")])
+wave1 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
+wave2 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("5_2y4no")])
+wave3 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("5_2y4no"), ExtResource("7_3ac77"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
 level = 3
 
 [node name="EnemySpawnTimer" parent="." index="8"]

@@ -22,8 +22,8 @@ var player = null
 func _ready():
 	player = get_tree().get_first_node_in_group("players")
 	assert(player!=null)
-	GlobalVar.shield_health = 7
-	GlobalVar.health = 10
+	GlobalVar.shield_health = 15
+	GlobalVar.health = 20
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.missile_shot.connect(_on_player_missile_shot)

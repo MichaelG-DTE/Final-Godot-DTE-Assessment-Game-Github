@@ -30,14 +30,14 @@ horizontal_alignment = 1
 
 [node name="ShieldBar" parent="." instance=ExtResource("3_2q4kj")]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 21.0
-offset_right = 505.0
-offset_bottom = 46.0
+offset_left = 27.0
+offset_top = 61.0
+offset_right = 520.0
+offset_bottom = 86.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_f305r")]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 63.0
-offset_right = 505.0
-offset_bottom = 88.0
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 520.0
+offset_bottom = 53.0

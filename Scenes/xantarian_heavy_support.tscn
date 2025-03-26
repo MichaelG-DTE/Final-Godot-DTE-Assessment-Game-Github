@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/xantarian_heavy_support.gd" id="1_sygy0"]
 [ext_resource type="Texture2D" uid="uid://dkywxyw07vu2r" path="res://Assets/Game Assets/Enemy/Heavy Support Craft (1).png" id="2_pqgra"]
-[ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="3_o8hlh"]
+[ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Explosion Asset.png" id="3_o8hlh"]
 [ext_resource type="Texture2D" uid="uid://cfo6ws20ogdmq" path="res://Assets/Game Assets/Enemy/NEW Enemy Thruster.png" id="4_5bidm"]
 
 [sub_resource type="Animation" id="Animation_6pbak"]
@@ -149,7 +149,7 @@ texture = ExtResource("2_pqgra")
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3.93629e-06, 9.27685e-13)
-scale = Vector2(1.72, 1.72)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_o8hlh")
 hframes = 3
 vframes = 3

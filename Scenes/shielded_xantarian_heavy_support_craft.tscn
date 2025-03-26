@@ -5,6 +5,6 @@
 
 [node name="Xantarian Heavy Support Craft" instance=ExtResource("1_q4q03")]
 
-[node name="EnemyShield" parent="." index="8" instance=ExtResource("2_3583t")]
+[node name="EnemyShield" parent="." index="2" instance=ExtResource("2_3583t")]
 position = Vector2(0, -7)
 scale = Vector2(1.71779, 1.71779)

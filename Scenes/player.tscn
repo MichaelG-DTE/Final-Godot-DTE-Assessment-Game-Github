@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwuut"]
 [ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="1_rfm0q"]
 [ext_resource type="Texture2D" uid="uid://cbaegknj64ytf" path="res://Assets/Game Assets/Player/Completed Thrusters.png" id="2_21gws"]
-[ext_resource type="Texture2D" uid="uid://bocc80r7iyx3x" path="res://Assets/Game Assets/Explosion Asset.png" id="5_2g7y4"]
+[ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Explosion Asset.png" id="5_2g7y4"]
 [ext_resource type="PackedScene" uid="uid://do5jy3g13s7c0" path="res://Scenes/player_shield.tscn" id="5_x067j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vbp8"]
@@ -275,7 +275,8 @@ autoplay = "Ship"
 
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(1.72, 1.72)
+position = Vector2(-0.178947, -9.35963)
+scale = Vector2(0.751969, 0.751969)
 texture = ExtResource("5_2g7y4")
 hframes = 3
 vframes = 3
@@ -291,6 +292,5 @@ position = Vector2(0, -48.83)
 position = Vector2(0, -69.495)
 
 [node name="PlayerShield" parent="." instance=ExtResource("5_x067j")]
-modulate = Color(1, 1, 1, 0.639216)
 position = Vector2(0, -9.6375)
 scale = Vector2(0.939924, 0.943312)
