@@ -12,7 +12,7 @@
 wave1 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
 wave2 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("5_2y4no")])
 wave3 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("5_2y4no"), ExtResource("7_3ac77"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
-level = 3
+level = 2
 
 [node name="EnemySpawnTimer" parent="." index="8"]
 wait_time = 0.3

@@ -114,6 +114,7 @@ func _on_end_of_wave_timeout():
 	else:
 		if waves == 0:
 			print("level finished")
+			level += 1
 			lcs.set_score(GlobalVar.score)
 			await get_tree().create_timer(3.25).timeout
 			lcs.visible = true

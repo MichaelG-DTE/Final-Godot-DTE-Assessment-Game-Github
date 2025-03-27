@@ -10,4 +10,4 @@
 wave1 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("3_4slvd"), ExtResource("4_2pk2k")])
 wave2 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw")])
 wave3 = Array[PackedScene]([ExtResource("4_2pk2k"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw"), ExtResource("5_8c576")])
-level = 2
+level = 1
