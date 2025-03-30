@@ -1,9 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=8 format=3 uid="uid://bxku0qlg6n3ny"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
-[ext_resource type="PackedScene" uid="uid://43oeh6c1hywj" path="res://Scenes/texture_progress_bar.tscn" id="3_2q4kj"]
-[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/HealthBar.tscn" id="4_f305r"]
+[ext_resource type="PackedScene" uid="uid://43oeh6c1hywj" path="res://Scenes/shield_bar.tscn" id="3_q4xpe"]
+[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/health_bar.tscn" id="4_6haqy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6r2pk"]
+font = ExtResource("2_yfgnw")
+font_size = 45
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8x45"]
+font = ExtResource("2_yfgnw")
+font_size = 45
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_02ykb"]
+font = ExtResource("2_yfgnw")
+font_size = 36
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -18,26 +36,51 @@ script = ExtResource("1_jma6v")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 264.0
-offset_top = 7.0
-offset_right = 264.0
-offset_bottom = 70.0
+offset_left = 536.0
+offset_top = 9.0
+offset_right = -5.0
+offset_bottom = 72.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_yfgnw")
-theme_override_font_sizes/font_size = 45
 text = "Score: 9999"
-horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_6r2pk")
 
-[node name="ShieldBar" parent="." instance=ExtResource("3_2q4kj")]
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 60.0
+offset_right = 889.0
+offset_bottom = 128.0
+text = "Level: 1"
+label_settings = SubResource("LabelSettings_l8x45")
+
+[node name="Shield" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 10.0
+offset_right = 206.0
+offset_bottom = 51.0
+text = "Shield"
+label_settings = SubResource("LabelSettings_02ykb")
+
+[node name="ShieldBar" parent="." instance=ExtResource("3_q4xpe")]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 61.0
+offset_top = 53.0
 offset_right = 520.0
-offset_bottom = 86.0
+offset_bottom = 78.0
 
-[node name="HealthBar" parent="." instance=ExtResource("4_f305r")]
+[node name="Health" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 83.0
+offset_right = 224.0
+offset_bottom = 124.0
+text = "Health"
+label_settings = SubResource("LabelSettings_02ykb")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_6haqy")]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 28.0
+offset_top = 130.0
 offset_right = 520.0
-offset_bottom = 53.0
+offset_bottom = 155.0

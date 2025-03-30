@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Xantarian Exterminator - Godot Final DTE Game"
-run/main_scene="res://Scenes/level_one.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ GlobalVar="*res://Scripts/GlobalVar.gd"
 
 window/size/viewport_width=900
 window/size/viewport_height=1600
+window/stretch/mode="canvas_items"
 
 [editor]
 

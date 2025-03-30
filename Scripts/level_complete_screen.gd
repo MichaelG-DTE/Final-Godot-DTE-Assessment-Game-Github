@@ -11,7 +11,7 @@ func _on_next_level_pressed():
 		pass
 
 func _on_quit_game_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
 func set_score(score):
 	$Panel/Score.text = "Score: " + str(GlobalVar.score)

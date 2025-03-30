@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=20 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
@@ -10,6 +10,8 @@
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="6_4guqa"]
 [ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="6_j5xpc"]
 [ext_resource type="PackedScene" uid="uid://cav32g27pjgwf" path="res://Scenes/level_complete_screen.tscn" id="8_33qqh"]
+[ext_resource type="PackedScene" uid="uid://xcn38tku7c7k" path="res://Scenes/pause_menu.tscn" id="9_kt6xs"]
+[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/health_bar.tscn" id="10_8354x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y75hu"]
 font = ExtResource("6_4guqa")
@@ -141,11 +143,11 @@ _data = {
 }
 
 [node name="Level_One" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_8c86t")
 wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
 wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
 wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
-level = 0
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 
@@ -205,6 +207,20 @@ visible = false
 
 [node name="LevelCompleteScreen" parent="UI_Layer" instance=ExtResource("8_33qqh")]
 visible = false
+
+[node name="PauseMenu" parent="UI_Layer" instance=ExtResource("9_kt6xs")]
+visible = false
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 1.0
+offset_bottom = 6.0
+
+[node name="TimerBar" parent="UI_Layer" instance=ExtResource("10_8354x")]
+offset_left = 243.0
+offset_top = 1520.0
+offset_right = 875.0
+offset_bottom = 1552.0
+tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
