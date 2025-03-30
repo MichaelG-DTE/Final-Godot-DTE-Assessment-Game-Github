@@ -60,6 +60,7 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	$UI_Layer/TimerBar.max_value = $EndOfWave.wait_time
 	$UI_Layer/TimerBar.value = $EndOfWave.time_left
+	
 
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
