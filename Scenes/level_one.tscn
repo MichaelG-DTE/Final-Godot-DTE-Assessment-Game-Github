@@ -143,13 +143,13 @@ _data = {
 }
 
 [node name="Level_One" type="Node2D"]
-process_mode = 3
 script = ExtResource("1_8c86t")
 wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
 wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
 wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 metadata/_edit_use_anchors_ = true
@@ -217,7 +217,7 @@ offset_bottom = 6.0
 
 [node name="TimerBar" parent="UI_Layer" instance=ExtResource("10_8354x")]
 offset_left = 243.0
-offset_top = 1520.0
+offset_top = 1526.0
 offset_right = 875.0
 offset_bottom = 1552.0
 tint_progress = Color(0.6118, 0.558706, 0.575281, 1)

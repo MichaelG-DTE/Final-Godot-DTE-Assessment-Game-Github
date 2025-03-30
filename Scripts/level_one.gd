@@ -55,22 +55,11 @@ func _ready():
 		#starts the enemy spawn timer at the beginning of the wave
 		$EnemySpawnTimer.start()
 	
-func _input(event):
-	if event.is_action_pressed("Pause"):
-		swap_pause_state()
-
-func swap_pause_state():
-	if not pause_menu.visible:
-		pause_menu.visible = true
-		get_tree().paused = true
-	else:
-		get_tree().paused = false
-		pause_menu.visible = false
-	
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
+	$UI_Layer/TimerBar.max_value = $EndOfWave.wait_time
+	$UI_Layer/TimerBar.value = $EndOfWave.time_left
 
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
@@ -154,7 +143,6 @@ func _on_end_of_wave_timeout():
 	else:
 		if waves == 0:
 			print("level finished")
-			level += 1
 			lcs.set_score(GlobalVar.score)
 			await get_tree().create_timer(3.25).timeout
 			lcs.visible = true
