@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c58t2f2eegsdt"
-path="res://.godot/imported/New Piskel-3.png.png-bbd4a373eb69c98484b9ad7daa93d97c.ctex"
+uid="uid://soujran3y17o"
+path="res://.godot/imported/Missile(1).png-e5d22f0260bcca39716f03611a34fbe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Game Assets/New Piskel-3.png.png"
-dest_files=["res://.godot/imported/New Piskel-3.png.png-bbd4a373eb69c98484b9ad7daa93d97c.ctex"]
+source_file="res://Assets/Game Assets/Missile(1).png"
+dest_files=["res://.godot/imported/Missile(1).png-e5d22f0260bcca39716f03611a34fbe7.ctex"]
 
 [params]
 

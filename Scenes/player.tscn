@@ -252,6 +252,7 @@ libraries = {
 }
 
 [node name="Thrusters_Right" type="Sprite2D" parent="Shiptexture"]
+visible = false
 position = Vector2(0, 127.355)
 scale = Vector2(1.12535, 1.10591)
 texture = ExtResource("2_21gws")
@@ -260,6 +261,7 @@ vframes = 2
 frame = 2
 
 [node name="Thrusters_Left" type="Sprite2D" parent="Shiptexture"]
+visible = false
 position = Vector2(-2.79901, 125.955)
 scale = Vector2(1.125, 1.106)
 texture = ExtResource("2_21gws")

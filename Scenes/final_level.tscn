@@ -1,0 +1,243 @@
+[gd_scene load_steps=21 format=3 uid="uid://rlyuw4y2a231"]
+
+[ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="1_f0hrq"]
+[ext_resource type="Script" path="res://Scripts/final_level.gd" id="1_osd7r"]
+[ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="2_bc3ha"]
+[ext_resource type="PackedScene" uid="uid://cr0u8bwaa0w8d" path="res://Scenes/xar'kan'thra.tscn" id="3_6t540"]
+[ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="3_hychs"]
+[ext_resource type="PackedScene" uid="uid://covgw4e8wdvcr" path="res://Scenes/game_over_screen.tscn" id="4_l0rp8"]
+[ext_resource type="PackedScene" uid="uid://cav32g27pjgwf" path="res://Scenes/level_complete_screen.tscn" id="5_n5na6"]
+[ext_resource type="Texture2D" uid="uid://da0oa0uxwtuts" path="res://Assets/Game Assets/Xar'kan'thra Approach.png" id="6_oefss"]
+[ext_resource type="PackedScene" uid="uid://xcn38tku7c7k" path="res://Scenes/pause_menu.tscn" id="6_v4ulp"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="7_xlpnu"]
+
+[sub_resource type="Animation" id="Animation_gowww"]
+resource_name = "Background"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800), Rect2(0, -128, 500, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_7ga84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fyu5l"]
+_data = {
+"Background": SubResource("Animation_gowww"),
+"RESET": SubResource("Animation_7ga84")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_hgt2l"]
+font = ExtResource("7_xlpnu")
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_gwwdv"]
+resource_name = "ApproachWarning"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HUD/Xar\'kan\'thraApproach:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 2.3, 3, 3.8, 4.6, 5.4, 6.2, 7, 7.8, 8.4, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/HUD/Approach:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2.3, 3, 3.8, 4.6, 5.4, 6.2, 7, 7.8, 8.4, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4fxfx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HUD/Xar\'kan\'thraApproach:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/HUD/Approach:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6id5"]
+_data = {
+"ApproachWarning": SubResource("Animation_gwwdv"),
+"RESET": SubResource("Animation_4fxfx")
+}
+
+[sub_resource type="Animation" id="Animation_ld0u3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Xar\'kan\'thra:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(450, -668)]
+}
+
+[sub_resource type="Animation" id="Animation_arjqo"]
+resource_name = "boss_warp"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Xar\'kan\'thra:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(450, -668), Vector2(450, 500), Vector2(450, 475)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r0oeu"]
+_data = {
+"RESET": SubResource("Animation_ld0u3"),
+"boss_warp": SubResource("Animation_arjqo")
+}
+
+[node name="Final_Level" type="Node2D"]
+script = ExtResource("1_osd7r")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-72, 0)
+scale = Vector2(3.774, 3.45593)
+texture = ExtResource("1_f0hrq")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 800)
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_fyu5l")
+}
+autoplay = "Background"
+
+[node name="Player" parent="." instance=ExtResource("2_bc3ha")]
+position = Vector2(443, 1135)
+scale = Vector2(1.63211, 1.63211)
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(446, 1127)
+
+[node name="Xar\'kan\'thra" parent="." instance=ExtResource("3_6t540")]
+position = Vector2(450, -668)
+
+[node name="xar\'kan\'thra_spawn_pos" type="Marker2D" parent="."]
+position = Vector2(450, -668)
+
+[node name="laser_container" type="Node2D" parent="."]
+
+[node name="missile_container" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_hychs")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Xar\'kan\'thraApproach" type="Sprite2D" parent="CanvasLayer/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(448.875, 770)
+scale = Vector2(2.20159, 2.15)
+texture = ExtResource("6_oefss")
+
+[node name="Approach" type="Label" parent="CanvasLayer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 205.0
+offset_top = 735.0
+offset_right = 692.0
+offset_bottom = 834.0
+text = "XAR'KAN'THRA,
+ENDER OF WORLDS"
+label_settings = SubResource("LabelSettings_hgt2l")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HUD"]
+root_node = NodePath("../../../XarkanthraApproach")
+libraries = {
+"": SubResource("AnimationLibrary_t6id5")
+}
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("4_l0rp8")]
+visible = false
+
+[node name="LevelCompleteScreen" parent="CanvasLayer" instance=ExtResource("5_n5na6")]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_v4ulp")]
+visible = false
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 1.0
+offset_bottom = 6.0
+
+[node name="Start_of_Boss_fight" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="XarkanthraApproach" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r0oeu")
+}
+
+[connection signal="timeout" from="Start_of_Boss_fight" to="." method="_on_start_of_boss_fight_timeout"]

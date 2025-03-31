@@ -23,20 +23,20 @@ var shoot_cd := false
 var missile_cd := false
 
 #if dead = false, then the player can move and shoot
-var dead = false
+
 
 #every second, the game checks for the input from the mouse or keyboard, and then assures whether the player is not dead, and the cooldown is true
 #it then calls the func "shoot"
 #after that, it creates a timer to cooldown, which then resets the shoot or missiles cooldown back to false, so the process repeats
 func _process(delta):
 	if Input.is_action_pressed("Shoot"):
-		if !shoot_cd and !dead:
+		if !shoot_cd and !GlobalVar.dead and !GlobalVar.is_in_cutscene:
 			shoot_cd = true
 			shoot()
 			await get_tree().create_timer(rate_of_fire).timeout
 			shoot_cd = false
 	if Input.is_action_pressed("MissileShoot"):
-		if !missile_cd and !dead:
+		if !missile_cd and !GlobalVar.dead and !GlobalVar.is_in_cutscene:
 			missile_cd = true
 			shoot2()
 			await get_tree().create_timer(missile_fire_rate).timeout
@@ -48,7 +48,7 @@ func _process(delta):
 #movement and banking left and right
 #the animation for the player and the thrusters is determined on whether the player is moving up, left or right
 func _physics_process(delta):
-	if !dead:
+	if !GlobalVar.dead and !GlobalVar.is_in_cutscene:
 		var direction = Input.get_vector("Left", "Right", "Up", "Down")
 		if direction.x > 0:
 			$Shiptexture.animation = "Ship_Right"
@@ -87,7 +87,7 @@ func shoot2():
 func take_damage(amount):
 	GlobalVar.health -= amount
 	if GlobalVar.health <= 0:
-		dead = true
+		GlobalVar.dead = true
 		print("Player Killed")
 		$CollisionShape2D.queue_free()
 		$Shiptexture.visible = false
