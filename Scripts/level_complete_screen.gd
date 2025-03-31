@@ -7,7 +7,9 @@ func _on_next_level_pressed():
 	elif get_tree().current_scene.level == 2:
 		print("Go to level 3")
 		get_tree().change_scene_to_file("res://Scenes/level_three.tscn")
-	else: 
+	elif get_tree().current_scene.level == 3:
+		get_tree().change_scene_to_file("res://Scenes/final_level.tscn")
+	else:
 		pass
 
 func _on_quit_game_pressed():
