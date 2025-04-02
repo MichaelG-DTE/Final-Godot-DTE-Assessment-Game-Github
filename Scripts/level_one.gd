@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 #wave arrays
 @export var wave1: Array[PackedScene] = []
 @export var wave2: Array[PackedScene] = []

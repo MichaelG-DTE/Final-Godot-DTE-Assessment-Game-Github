@@ -5,17 +5,15 @@
 
 [node name="Xar\'kan\'thra" type="Area2D" groups=["BOSS"]]
 scale = Vector2(2.94909, 2.94909)
+collision_layer = 512
+collision_mask = 132
 script = ExtResource("1_q8ync")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nb0kg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-28, 120, -32, 131, -58, 126, -64, 72, -57, 36, -48.1504, 18.3107, -63, 16, -67, 67, -75, 105, -87, 105, -92, 3, -72, -40, -54, -34, -59, -5, -42, -11, -57, -48, -74, -51, -75, -86, -67, -112, -48, -109, -34, -52, -46, -120, -27, -129, -15, -99, -17, -77, 0, -129, 19, -77, 17, -99, 29, -129, 46, -121, 34, -52, 51, -108, 68, -111, 77, -89, 74, -51, 59, -50, 41.3687, -9.83353, 57, -8, 54, -35, 72, -40, 93, 3, 89, 105, 75, 104, 68, 69, 63, 17, 48.1504, 17.2935, 56, 35, 65, 70, 60, 125, 32, 131, 29, 120, 41, 109, 33, 59, 29, 96, 22, 117, 4, 120, 4, 111, 14, 93, 4.06905, 104.778, 0, 97, -5, 105, -14, 93, -4.06905, 111.221, -4.06905, 119.698, -23, 113, -29, 91, -34.926, 61.0358, -41, 109)
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 179)
-scale = Vector2(3.88, 1.76)
+polygon = PackedVector2Array(-28, 120, -32, 131, -58, 126, -64, 72, -57, 36, -48.1504, 18.3107, -63, 16, -67, 67, -75, 105, -87, 105, -92, 3, -72, -40, -54, -34, -58.3231, -7.12084, -41.3687, -10.1726, -57, -48, -74, -51, -75, -86, -67, -112, -48, -109, -34, -52, -46, -120, -27, -129, -15, -99, -17, -77, 0, -129, 19, -77, 17, -99, 29, -129, 46, -121, 34, -52, 51, -108, 68, -111, 77, -89, 74, -51, 59, -50, 41.3687, -9.83353, 57, -8, 54, -35, 72, -40, 93, 3, 89, 105, 75, 104, 68, 69, 63, 17, 49.1677, 18.3107, 56, 35, 65, 70, 60, 125, 32, 131, 29, 120, 41, 109, 34.6475, 69.2969, 33, 59, 29, 96, 22, 117, 4, 120, 4, 111, 14, 93, 4.06905, 104.778, 0, 97, -5, 105, -14, 93, -4.06905, 111.221, -4.06905, 119.698, -23, 113, -29, 91, -34.926, 61.0358, -41, 109)
 
 [node name="Laser_1_shoot_timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -32,13 +30,27 @@ autostart = true
 wait_time = 2.0
 autostart = true
 
+[node name="Move_Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="ShieldSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [node name="PEWPEW" type="Node2D" parent="."]
 
+[node name="Missile_PEWPEW" type="Marker2D" parent="PEWPEW"]
+position = Vector2(-53.4094, 147.669)
+
+[node name="Missile_PEWPEW2" type="Marker2D" parent="PEWPEW"]
+position = Vector2(54.4205, 146.652)
+
 [node name="Laser_1_PEWPEW" type="Marker2D" parent="PEWPEW"]
-position = Vector2(-59.3403, 118.003)
+position = Vector2(-60.6967, 118.681)
 
 [node name="Laser_1_PEWPEW2" type="Marker2D" parent="PEWPEW"]
-position = Vector2(59.0013, 118.681)
+position = Vector2(60.6967, 119.698)
 
 [node name="Laser_2_PEWPEW" type="Marker2D" parent="PEWPEW"]
 position = Vector2(-82.0592, 104.1)
@@ -47,15 +59,11 @@ position = Vector2(-82.0592, 104.1)
 position = Vector2(82.0592, 106.134)
 
 [node name="Laser_3_PEWPEW" type="Marker2D" parent="PEWPEW"]
-position = Vector2(-3.8147e-06, 81.7201)
-
-[node name="Missile_PEWPEW" type="Marker2D" parent="PEWPEW"]
-position = Vector2(-32.5524, 69.513)
-
-[node name="Missile_PEWPEW2" type="Marker2D" parent="PEWPEW"]
-position = Vector2(32.8915, 69.513)
+position = Vector2(-3.8147e-06, 94.9445)
 
 [connection signal="timeout" from="Laser_1_shoot_timer" to="." method="_on_laser_1_shoot_timer_timeout"]
 [connection signal="timeout" from="Laser_2_shoot_timer" to="." method="_on_laser_2_shoot_timer_timeout"]
 [connection signal="timeout" from="Laser_3_shoot_timer" to="." method="_on_laser_3_shoot_timer_timeout"]
 [connection signal="timeout" from="Missile_shoot_timer" to="." method="_on_missile_shoot_timer_timeout"]
+[connection signal="timeout" from="Move_Timer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="ShieldSpawnTimer" to="." method="_on_shield_spawn_timer_timeout"]

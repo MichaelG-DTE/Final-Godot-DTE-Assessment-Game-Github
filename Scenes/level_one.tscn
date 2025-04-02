@@ -215,12 +215,12 @@ offset_right = 1.0
 offset_bottom = 6.0
 
 [node name="TimerBar" parent="UI_Layer" instance=ExtResource("10_8354x")]
-offset_left = 243.0
-offset_top = 1526.0
+offset_left = 43.0
+offset_top = 1544.0
 offset_right = 875.0
-offset_bottom = 1552.0
+offset_bottom = 1573.0
 max_value = 40.0
-step = 0.01
+step = 0.001
 value = 40.0
 tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
 

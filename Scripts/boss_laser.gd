@@ -2,7 +2,7 @@ extends Area2D
 
 #laser SPEEDY
 @export var speed = 1000
-@export var damage = 3
+@export var damage = 2
 
 func start(pos):
 	position = pos

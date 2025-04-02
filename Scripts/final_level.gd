@@ -15,7 +15,7 @@ extends Node2D
 var boss = null
 var player = null
 
-func _ready():
+func _ready():d
 	player = get_tree().get_first_node_in_group("players")
 	boss = get_tree().get_first_node_in_group("BOSS")
 	assert(boss!=null)
@@ -29,15 +29,14 @@ func _ready():
 	player.killed.connect(_on_player_killed)
 	$"CanvasLayer/HUD/Xar'kan'thraApproach".visible = true
 	$CanvasLayer/HUD/Approach.visible = true
-	$CanvasLayer/HUD/AnimationPlayer.play("ApproachWarning")
-	await $CanvasLayer/HUD/AnimationPlayer.animation_finished
+	$Warning.play("ApproachWarning")
+	await $Warning.animation_finished
 	$"CanvasLayer/HUD/Xar'kan'thraApproach".visible = false
 	$CanvasLayer/HUD/Approach.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
 
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
@@ -56,9 +55,7 @@ func _on_player_killed():
 	await get_tree().create_timer(2.25).timeout
 	gos.visible = true
 
-
 func _on_start_of_boss_fight_timeout():
 	$XarkanthraApproach.play("boss_warp")
 	await $XarkanthraApproach.animation_finished
 	GlobalVar.is_in_cutscene = false
-

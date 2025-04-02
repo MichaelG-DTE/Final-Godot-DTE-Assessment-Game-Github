@@ -1,14 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://v7uby3xybpkl"]
+[gd_scene load_steps=8 format=3 uid="uid://v7uby3xybpkl"]
 
 [ext_resource type="Script" path="res://Scripts/BossMissile.gd" id="1_ut4tt"]
 [ext_resource type="Texture2D" uid="uid://soujran3y17o" path="res://Assets/Game Assets/Missile(1).png" id="2_4fx3a"]
+[ext_resource type="Texture2D" uid="uid://cfo6ws20ogdmq" path="res://Assets/Game Assets/Enemy/NEW Enemy Thruster.png" id="2_apqub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ualko"]
+atlas = ExtResource("2_apqub")
+region = Rect2(0, 0, 128, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaame"]
+atlas = ExtResource("2_apqub")
+region = Rect2(128, 0, 128, 408)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trvgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ualko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaame")
+}],
+"loop": true,
+"name": &"Thruster",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqybk"]
 
 [node name="BossMissile" type="Area2D"]
-scale = Vector2(0.135748, 0.135748)
+scale = Vector2(0.0870702, 0.0870702)
 collision_layer = 1024
 script = ExtResource("1_ut4tt")
+
+[node name="Thruster" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7.62939e-06, -872.859)
+scale = Vector2(2.92261, 2.92261)
+sprite_frames = SubResource("SpriteFrames_trvgu")
+animation = &"Thruster"
+autoplay = "Thruster"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4fx3a")
@@ -18,7 +48,7 @@ scale = Vector2(16.2651, 47.3008)
 shape = SubResource("RectangleShape2D_cqybk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1, 610)
+position = Vector2(0, -699.826)
 scale = Vector2(16.5104, 3.27041)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
