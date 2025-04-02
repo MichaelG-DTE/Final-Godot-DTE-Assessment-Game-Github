@@ -61,3 +61,4 @@ func _on_start_of_boss_fight_timeout():
 	$XarkanthraApproach.play("boss_warp")
 	await $XarkanthraApproach.animation_finished
 	GlobalVar.is_in_cutscene = false
+

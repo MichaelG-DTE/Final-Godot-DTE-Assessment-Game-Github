@@ -1,8 +1,11 @@
 extends Area2D
 
 #laser SPEEDY
-@export var speed = -1000
-@export var damage = 1
+@export var speed = 1000
+@export var damage = 3
+
+func start(pos):
+	position = pos
 
 #laser go up screen and kill enemies
 func _physics_process(delta):

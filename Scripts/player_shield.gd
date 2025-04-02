@@ -1,7 +1,7 @@
 class_name Shield extends Area2D
 
 func take_damage(amount):
-	GlobalVar.shield_health -= 1
+	GlobalVar.shield_health -= amount
 
 func _process(delta):
 	if GlobalVar.shield_health <= 0:

@@ -18,42 +18,44 @@ position = Vector2(0, 179)
 scale = Vector2(3.88, 1.76)
 
 [node name="Laser_1_shoot_timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 
 [node name="Laser_2_shoot_timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
 
 [node name="Laser_3_shoot_timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Missile_shoot_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="PEWPEW" type="Node2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="Laser_1_PEWPEW" type="Marker2D" parent="PEWPEW"]
 position = Vector2(-59.3403, 118.003)
-scale = Vector2(1, 1)
 
 [node name="Laser_1_PEWPEW2" type="Marker2D" parent="PEWPEW"]
 position = Vector2(59.0013, 118.681)
-scale = Vector2(1, 1)
 
 [node name="Laser_2_PEWPEW" type="Marker2D" parent="PEWPEW"]
 position = Vector2(-82.0592, 104.1)
-scale = Vector2(1, 1)
 
 [node name="Laser_2_PEWPEW2" type="Marker2D" parent="PEWPEW"]
 position = Vector2(82.0592, 106.134)
-scale = Vector2(1, 1)
 
 [node name="Laser_3_PEWPEW" type="Marker2D" parent="PEWPEW"]
 position = Vector2(-3.8147e-06, 81.7201)
-scale = Vector2(1, 1)
 
 [node name="Missile_PEWPEW" type="Marker2D" parent="PEWPEW"]
 position = Vector2(-32.5524, 69.513)
-scale = Vector2(1, 1)
 
 [node name="Missile_PEWPEW2" type="Marker2D" parent="PEWPEW"]
 position = Vector2(32.8915, 69.513)
-scale = Vector2(1, 1)
 
 [connection signal="timeout" from="Laser_1_shoot_timer" to="." method="_on_laser_1_shoot_timer_timeout"]
+[connection signal="timeout" from="Laser_2_shoot_timer" to="." method="_on_laser_2_shoot_timer_timeout"]
+[connection signal="timeout" from="Laser_3_shoot_timer" to="." method="_on_laser_3_shoot_timer_timeout"]
+[connection signal="timeout" from="Missile_shoot_timer" to="." method="_on_missile_shoot_timer_timeout"]
