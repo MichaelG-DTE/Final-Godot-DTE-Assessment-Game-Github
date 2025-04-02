@@ -14,7 +14,7 @@ var boss_shield = preload("res://Scenes/boss_shield.tscn")
 @onready var missile_pewpew_2 = $PEWPEW/Missile_PEWPEW2
 @export var boss_fire_rate = 1
 @export var speed = 0
-var boss_direction = 0
+var boss_direction = 1
 
 func _ready():
 	GlobalVar.is_in_cutscene = true
@@ -84,11 +84,14 @@ func _on_shield_spawn_timer_timeout():
 
 func _on_move_timer_timeout():
 	if !GlobalVar.is_in_cutscene: 
-		if boss_direction == 0:
-			speed -= 150 
-			boss_direction = 1
-		else:
-			speed += 150
-			boss_direction = 0
+		if boss_direction == 1:
+			if randf() >= 0.5:
+				boss_direction = 0
+				global_position.x -= 150
+				boss_direction = 1
+			else:
+				boss_direction = 2
+				global_position.x += 150
+				boss_direction = 1
 		await get_tree().create_timer(2).timeout
 		speed = 0

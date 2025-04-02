@@ -9,16 +9,11 @@ func _process(delta):
 	$HealthBar.value = GlobalVar.health
 	
 	if get_tree().current_scene.level == 4:
-		if !GlobalVar.is_in_cutscene and get_tree().current_scene.level == 4:
-			$BossHealthBar2.visible = true
-			$BossHealthBar2.value = GlobalVar.xarkanthras_health_bar_one
-			if $BossHealthBar2.value == 0 and second_stage == false:
+		if !GlobalVar.is_in_cutscene:
+			$BossHealthBarOne.visible = true
+			$BossHealthBarOne.value = GlobalVar.xarkanthras_health_bar_one
+			if GlobalVar.xarkanthras_health_bar_one == 0:
+				$BossHealthBarOne.queue_free()
 				second_stage = true
-				$BossHealthBar2.queue_free()
-				print("second stage")
-				$BossHealthBar.visible = true
-				$BossHealthBar.value = GlobalVar.xarkanthras_health_bar_two
-				print("playing ANIMATION")
-				$BossHealthBarAnimation.play("HealthBarUp")
-				await $BossHealthBarAnimation.animation_finished
-				print("FINISHED ANIMATION")
+				$BossHealthBarTwo.visible = true
+				$BossHealthBarTwo.value = GlobalVar.xarkanthras_health_bar_two

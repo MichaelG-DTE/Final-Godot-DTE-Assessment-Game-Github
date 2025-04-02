@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxku0qlg6n3ny"]
+[gd_scene load_steps=10 format=3 uid="uid://bxku0qlg6n3ny"]
 
-[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_jma6v"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_shrny"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_yfgnw"]
 [ext_resource type="PackedScene" uid="uid://43oeh6c1hywj" path="res://Scenes/shield_bar.tscn" id="3_q4xpe"]
 [ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/health_bar.tscn" id="4_6haqy"]
-[ext_resource type="PackedScene" uid="uid://ch6tlrip57n3b" path="res://Scenes/Boss_First_Health_Bar.tscn" id="5_o3bj3"]
-[ext_resource type="PackedScene" uid="uid://1le7oe3okdqu" path="res://Scenes/Boss_Second_Health_Bar.tscn" id="6_qlabh"]
+[ext_resource type="PackedScene" uid="uid://dlro07t7g0wu6" path="res://Scenes/health_bar_one_boss.tscn" id="5_dgpsm"]
+[ext_resource type="PackedScene" uid="uid://31igyawy58tj" path="res://Scenes/health_bar_two_boss.tscn" id="6_mbacu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6r2pk"]
 font = ExtResource("2_yfgnw")
@@ -25,43 +25,6 @@ font_size = 36
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_an8x5"]
-resource_name = "HealthBarUp"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BossHealthBar:value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 200.0]
-}
-
-[sub_resource type="Animation" id="Animation_6yxwb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BossHealthBar:value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uud5m"]
-_data = {
-"HealthBarUp": SubResource("Animation_an8x5"),
-"RESET": SubResource("Animation_6yxwb")
-}
-
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -69,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jma6v")
+script = ExtResource("1_shrny")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 1
@@ -124,28 +87,20 @@ offset_top = 130.0
 offset_right = 520.0
 offset_bottom = 155.0
 
-[node name="BossHealthBar" parent="." instance=ExtResource("5_o3bj3")]
+[node name="BossHealthBarOne" parent="." instance=ExtResource("5_dgpsm")]
 visible = false
 layout_mode = 0
-offset_left = 110.0
-offset_top = 261.0
-offset_right = 779.0
-offset_bottom = 295.0
-max_value = 200.0
-value = 0.0
-tint_under = Color(1, 1, 1, 1)
+offset_left = 67.0
+offset_top = 375.0
+offset_right = 828.0
+offset_bottom = 408.0
 
-[node name="BossHealthBar2" parent="." instance=ExtResource("6_qlabh")]
+[node name="BossHealthBarTwo" parent="." instance=ExtResource("6_mbacu")]
 visible = false
 layout_mode = 0
-offset_left = 110.0
-offset_top = 261.0
-offset_right = 779.0
-offset_bottom = 295.0
-max_value = 200.0
-value = 200.0
-
-[node name="BossHealthBarAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uud5m")
-}
+offset_left = 67.0
+offset_top = 375.0
+offset_right = 828.0
+offset_bottom = 408.0
+tint_over = Color(0.113725, 0.113725, 0.113725, 1)
+tint_progress = Color(0.403922, 0, 0, 1)

@@ -15,7 +15,7 @@ extends Node2D
 var boss = null
 var player = null
 
-func _ready():d
+func _ready():
 	player = get_tree().get_first_node_in_group("players")
 	boss = get_tree().get_first_node_in_group("BOSS")
 	assert(boss!=null)
