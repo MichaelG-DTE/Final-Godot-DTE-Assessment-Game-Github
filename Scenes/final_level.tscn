@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://rlyuw4y2a231"]
+[gd_scene load_steps=33 format=3 uid="uid://rlyuw4y2a231"]
 
 [ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="1_f0hrq"]
 [ext_resource type="Script" path="res://Scripts/final_level.gd" id="1_osd7r"]
@@ -58,6 +58,10 @@ font_size = 27
 [sub_resource type="LabelSettings" id="LabelSettings_jbrsw"]
 font = ExtResource("7_xlpnu")
 font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_aulxw"]
+font = ExtResource("7_xlpnu")
+font_size = 43
 
 [sub_resource type="LabelSettings" id="LabelSettings_hgt2l"]
 font = ExtResource("7_xlpnu")
@@ -365,6 +369,164 @@ has not prevailed!
 Terra, and Humanity, 
 are safe because of you, pilot. "
 label_settings = SubResource("LabelSettings_jbrsw")
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1191.0
+offset_top = 3000.0
+offset_right = 1202.0
+offset_bottom = 8769.0
+grow_horizontal = 2
+text = "Thank You for Playing
+ Xantarian Exterminator!
+And for supporting this
+ little Indie project
+
+This game was made using 
+Godot Engine
+Version 4.2.2 (Stable)
+
+Development:
+Artist: Michael Gianotti
+Assets and artwork: 
+Michael Gianotti
+Assets and Artwork
+ made using: 
+Piskel
+https://www.piskelapp.com/
+Game Programmer:
+ Michael Gianotti
+Code written using GDScript
+
+Music:
+Music made 
+using Musescore version 4.5.0
+Xantarian Exterminator 
+OST 1 - Terran Fighter One:
+ Michael Gianotti
+Xantarian Exterminator OST 2 
+- Fighting Xenos: 
+Michael Gianotti
+Xantarian Exterminator OST 3  
+- Approaching Danger 
+(The Dying Light): 
+Michael Gianotti
+    Xantarian Exterminator OST 4 -
+    Xar’kan’thra, Ender of Worlds:
+ Michael Gianotti
+Xantarian Exterminator OST 5
+ - Victoriae: Michael Gianotti
+Xantarian Exterminator OST 6
+ - Mortem: Michael Gianotti
+Xantarian Exterminator OST 7 
+- The Terran Anthem: 
+Michael Gianotti
+Xantarian Exterminator OST 8 
+- Ultima Victoria: 
+Michael Gianotti
+Xantarian Exterminator OST 9 
+- Credits(Humanity Is Free): 
+Michael Gianotti
+
+Thanks:
+
+Organisation:
+Trello
+https://trello.com/
+
+
+Playtesters:
+Aaron Dacanay
+Dominic Linehan
+Syzmon Merillies
+Thomas Gianotti 
+
+Tech Support:
+Thomas Gianotti
+Mr John
+
+Supporters:
+Mom and Dad
+Lorenzo Sembrano
+Dominic Linehan
+
+
+
+
+
+
+Feedback:
+Aaron Dacanay
+Dominic Linehan
+Syzmon Merillies
+Thomas Gianotti
+
+Copyright and Licences:
+
+Copyright 2025: 
+Michael Gianotti
+The Music and Assets 
+belong to Michael Gianotti
+All Rights Reserved
+
+Licences:
+
+
+This game uses Godot Engine, 
+available under 
+the following license:
+
+Copyright (c) 2014-present
+ Godot Engine contributors.
+Copyright (c) 2007-2014 
+Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, 
+free of charge, 
+to any person obtaining a copy
+of this software and 
+associated documentation 
+   files (the \"Software\"), to deal
+in the Software without 
+ restriction, including without 
+limitation the rights
+to use, copy, modify, merge, 
+     publish, distribute, sublicense, 
+and/or sell copies of 
+the Software, 
+and to permit persons 
+to whom the Software is
+furnished to do so, subject to 
+the following conditions:
+
+The above copyright notice 
+and this permission notice 
+shall be included in 
+all copies or substantial 
+portions  of the Software.
+
+THE SOFTWARE IS PROVIDED
+ \"AS IS\", WITHOUT WARRANTY OF 
+ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO 
+                 THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+
+
+THANK YOU ONCE AGAIN FOR PLAYING!
+"
+label_settings = SubResource("LabelSettings_aulxw")
 horizontal_alignment = 1
 
 [node name="Xar\'kan\'thraApproach" type="Sprite2D" parent="CanvasLayer/HUD"]
