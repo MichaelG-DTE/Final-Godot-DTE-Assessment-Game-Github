@@ -77,8 +77,8 @@ func _physics_process(delta):
 #when boss takes damage, boss loses health and spawns collectables
 func take_damage(amount):
 	GlobalVar.score += 50
-	if randf() >= 0.15:
-		if randf() >= 0.25:
+	if randf() >= 0.5:
+		if randf() >= 0.5:
 			if randf() >= 0.5:
 				if randf() >= 0.5:
 					var h = health_scene.instantiate()

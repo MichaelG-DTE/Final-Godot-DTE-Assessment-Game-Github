@@ -7,7 +7,7 @@
 size = Vector2(61, 204)
 
 [node name="Boss_Laser" type="Area2D"]
-scale = Vector2(0.630952, 0.630952)
+scale = Vector2(0.849518, 0.849518)
 collision_layer = 256
 collision_mask = 17
 script = ExtResource("1_6ts8j")
