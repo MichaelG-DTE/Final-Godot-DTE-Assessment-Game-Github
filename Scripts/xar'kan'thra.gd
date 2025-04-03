@@ -72,25 +72,28 @@ func shoot2(location):
 #Boss Moves left and right, keeping the battle spicy
 func _physics_process(delta):
 	global_position.x += speed * delta
-	
+
+#when boss takes damage, boss loses health and spawns collectables
 func take_damage(amount):
 	GlobalVar.score += 50
 	if randf() >= 0.5:
 		if randf() >= 0.5:
 			if randf() >= 0.5:
-				var h = health_scene.instantiate()
-				get_tree().root.add_child(h)
-				h.global_position = spawn_collectables.global_position
-			else:
-				var s = shield_scene.instantiate()
-				get_tree().root.add_child(s)
-				s.global_position = spawn_collectables.global_position
+				if randf() >= 0.5:
+					var h = health_scene.instantiate()
+					get_tree().root.add_child(h)
+					h.global_position = spawn_collectables.global_position
+				else:
+					var s = shield_scene.instantiate()
+					get_tree().root.add_child(s)
+					s.global_position = spawn_collectables.global_position
 	GlobalVar.xarkanthras_health_bar_one -= amount
 	if GlobalVar.xarkanthras_health_bar_one <= 0:
 		GlobalVar.xarkanthras_health_bar_two -= amount
 		if GlobalVar.xarkanthras_health_bar_two <= 0:
 			queue_free()
 
+#spawns shield when the timer runs out
 func _on_shield_spawn_timer_timeout():
 	if !GlobalVar.is_in_cutscene:
 		var s = boss_shield.instantiate()
@@ -99,6 +102,7 @@ func _on_shield_spawn_timer_timeout():
 		$TIMERS/ShieldSpawnTimer.wait_time = randf_range(10, 20)
 		$TIMERS/ShieldSpawnTimer.start()
 
+#moves around to keep the battle spicy
 func _on_move_timer_timeout():
 	if !GlobalVar.is_in_cutscene: 
 		if boss_direction == 1:

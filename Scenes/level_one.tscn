@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=22 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
@@ -104,6 +104,10 @@ _data = {
 "RESET": SubResource("Animation_gtm3d"),
 "WarningFlashing": SubResource("Animation_ux418")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pcbx"]
+font = ExtResource("6_4guqa")
+font_size = 40
 
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
@@ -224,6 +228,16 @@ max_value = 40.0
 step = 0.001
 value = 40.0
 tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
+
+[node name="WaveCounter" type="Label" parent="UI_Layer"]
+offset_left = 33.0
+offset_top = 1473.0
+offset_right = 267.0
+offset_bottom = 1525.0
+text = "Wave: 1"
+label_settings = SubResource("LabelSettings_1pcbx")
+horizontal_alignment = 1
+vertical_alignment = 3
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

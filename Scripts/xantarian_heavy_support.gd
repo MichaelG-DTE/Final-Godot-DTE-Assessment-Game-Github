@@ -2,6 +2,7 @@ class_name Enemy3 extends Area2D
 
 signal killed(score)
 
+#variables
 var bullet_scene =  preload("res://Scenes/enemy_laser.tscn")
 var health_scene = preload("res://Scenes/health_collectable.tscn")
 var shield_scene = preload("res://Scenes/shield_collectable.tscn")
@@ -13,9 +14,11 @@ var health_min = 0
 @export var damage = 1
 @export var points = 150
 
+#enemy moves down screen
 func _physics_process(delta):
 	global_position.y += speed * delta
 
+#drops collectable on death
 func die():
 	if randf() >= 0.85:
 		if randf() >= 0.5:
@@ -28,22 +31,25 @@ func die():
 			s.global_position = $".".global_position
 	set_deferred("monitoring", false)
 
+#instantiates, shoots
 func _on_shoot_timer_timeout():
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
 	b.start($pewpPew.global_position)
 
-
+#enters player and dies
 func _on_body_entered(body):
 	if body is Player:
 		body.take_damage(damage)
 		print("Enemy 3 Committed Die")
 		queue_free()
-	
+
+#leave screen die you get it know
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	GlobalVar.score -= points / 2
 	queue_free()
-	
+
+#dies if you kill it wow
 func take_damage(amount):
 	hp -= amount
 	if hp <= 0:

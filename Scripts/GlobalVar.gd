@@ -1,16 +1,19 @@
 extends Node
 
+#setting score
 var score = 0
 
+#setting player variables
 var shield_health = 15
 
 var health = 20
 
-var xarkanthras_health_bar_one = 550
+#setting boss variables
+var xarkanthras_health_bar_one = 750
 
-var xarkanthras_health_bar_two = 700
+var xarkanthras_health_bar_two = 850
 
-var xarkanthras_shield = 75
+var xarkanthras_shield = 90
 
 #if dead = false, then the player can move and shoot
 var dead = false

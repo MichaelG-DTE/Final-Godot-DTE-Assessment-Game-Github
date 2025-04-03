@@ -1,8 +1,10 @@
 class_name Shield extends Area2D
 
+#shield takes damage from enemy lasers
 func take_damage(amount):
 	GlobalVar.shield_health -= amount
 
+#makes the shield visible and invisible depending on whether shield health is there or not
 func _process(delta):
 	if GlobalVar.shield_health <= 0:
 		set_deferred("monitorable", false)

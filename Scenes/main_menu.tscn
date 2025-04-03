@@ -40,10 +40,10 @@ color = Color(0.123473, 0.123473, 0.123473, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-offset_left = 44.0
-offset_top = 43.0
-offset_right = 1024.0
-offset_bottom = 226.0
+offset_left = 55.0
+offset_top = 70.0
+offset_right = 1035.0
+offset_bottom = 253.0
 text = "XANTARIAN
 EXTERMINATOR"
 label_settings = SubResource("LabelSettings_c0kw1")
@@ -55,9 +55,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 64.0
-offset_top = -450.0
+offset_top = -374.0
 offset_right = 583.0
-offset_bottom = -292.0
+offset_bottom = -216.0
 grow_vertical = 2
 theme = SubResource("Theme_y1miy")
 theme_override_fonts/font = ExtResource("1_kpvpt")
@@ -70,9 +70,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 64.0
-offset_top = -184.0
+offset_top = -5.0
 offset_right = 583.0
-offset_bottom = -26.0
+offset_bottom = 153.0
 grow_vertical = 2
 theme = SubResource("Theme_y1miy")
 theme_override_fonts/font = ExtResource("1_kpvpt")
@@ -80,25 +80,9 @@ theme_override_font_sizes/font_size = 75
 text = "QUIT
 "
 
-[node name="Credits" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 59.0
-offset_top = 83.0
-offset_right = 578.0
-offset_bottom = 241.0
-grow_vertical = 2
-theme = SubResource("Theme_y1miy")
-theme_override_fonts/font = ExtResource("1_kpvpt")
-theme_override_font_sizes/font_size = 75
-text = "CREDITS"
-
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ldri6")
 autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
