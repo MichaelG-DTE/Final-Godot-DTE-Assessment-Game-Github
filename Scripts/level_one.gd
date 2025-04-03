@@ -112,7 +112,10 @@ func _on_player_killed():
 	print("game over")
 	gos.set_score(GlobalVar.score)
 	await get_tree().create_timer(2.25).timeout
+	$LevelMusic.playing = false
 	gos.visible = true
+	await get_tree().create_timer(1.25)
+	gos.get_node("LevelFailMusic").playing = true
 
 func _on_end_of_wave_timeout():
 	waves -= 1
@@ -144,4 +147,7 @@ func _on_end_of_wave_timeout():
 			print("level finished")
 			lcs.set_score(GlobalVar.score)
 			await get_tree().create_timer(3.25).timeout
+			$LevelMusic.playing = false
 			lcs.visible = true
+			await get_tree().create_timer(1.25)
+			lcs.get_node("LevelCompleteMusic").playing = true 

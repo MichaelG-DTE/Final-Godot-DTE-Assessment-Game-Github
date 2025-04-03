@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ve5mn7lmmip0"
+path="res://.godot/imported/Victoriae.mp3-64e5c6ac0754b1ce88d0bea0d38fe616.mp3str"
+
+[deps]
+
+source_file="res://Assets/Game Assets/Music/Victoriae.mp3"
+dest_files=["res://.godot/imported/Victoriae.mp3-64e5c6ac0754b1ce88d0bea0d38fe616.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

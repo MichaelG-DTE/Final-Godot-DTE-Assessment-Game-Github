@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6iot2ihp81i1"
+path="res://.godot/imported/Xantarian Exterminator OST 3 - Approaching Danger (The Dying Light).mp3-17e086b1ef258b12c478b17ed2004fff.mp3str"
+
+[deps]
+
+source_file="res://Assets/Game Assets/Music/Xantarian Exterminator OST 3 - Approaching Danger (The Dying Light).mp3"
+dest_files=["res://.godot/imported/Xantarian Exterminator OST 3 - Approaching Danger (The Dying Light).mp3-17e086b1ef258b12c478b17ed2004fff.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

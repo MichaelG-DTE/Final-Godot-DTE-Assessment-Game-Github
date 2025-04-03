@@ -10,10 +10,16 @@ func _process(delta):
 	
 	if get_tree().current_scene.level == 4:
 		if !GlobalVar.is_in_cutscene:
-			$BossHealthBarOne.visible = true
-			$BossHealthBarOne.value = GlobalVar.xarkanthras_health_bar_one
-			if GlobalVar.xarkanthras_health_bar_one == 0:
-				$BossHealthBarOne.queue_free()
-				second_stage = true
-				$BossHealthBarTwo.visible = true
+			if get_node_or_null("BossHealthBarOne") != null:
+				$BossHealthBarOne.visible = true
+				$BossHealthBarOne.value = GlobalVar.xarkanthras_health_bar_one
+			if GlobalVar.xarkanthras_health_bar_one <= 0:
+				$BossHealthBarOne.visible = false
 				$BossHealthBarTwo.value = GlobalVar.xarkanthras_health_bar_two
+				$BossHealthBarTwo.visible = true
+				if second_stage == false:
+					$BossHealthUp.play("HealthUp")
+					await $BossHealthUp.animation_finished
+					second_stage = true
+					if GlobalVar.xarkanthras_health_bar_two <= 0:
+						$BossHealthBarTwo.visible = false

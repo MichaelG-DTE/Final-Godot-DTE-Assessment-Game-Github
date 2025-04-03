@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://v7uby3xybpkl"]
 
 [ext_resource type="Script" path="res://Scripts/BossMissile.gd" id="1_ut4tt"]
-[ext_resource type="Texture2D" uid="uid://soujran3y17o" path="res://Assets/Game Assets/Missile(1).png" id="2_4fx3a"]
+[ext_resource type="Texture2D" uid="uid://soujran3y17o" path="res://Assets/Game Assets/Enemy/Missile(1).png" id="2_4fx3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqybk"]
 

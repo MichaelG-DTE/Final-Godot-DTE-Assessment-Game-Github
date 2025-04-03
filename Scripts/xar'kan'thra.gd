@@ -2,8 +2,10 @@ class_name Boss extends Area2D
 
 
 var boss_laser = preload("res://Scenes/boss_laser.tscn")
-var boss_missile = preload("res://Scenes/boss_missile.tscn")
+var boss_missile = preload("res://Scenes/boss_missile_2.tscn")
 var boss_shield = preload("res://Scenes/boss_shield.tscn")
+var health_scene = preload("res://Scenes/health_collectable.tscn")
+var shield_scene = preload("res://Scenes/shield_collectable.tscn")
 
 @onready var laser_1_pewpew = $PEWPEW/Laser_1_PEWPEW
 @onready var laser_1_pewpew_2 = $PEWPEW/Laser_1_PEWPEW2
@@ -12,6 +14,10 @@ var boss_shield = preload("res://Scenes/boss_shield.tscn")
 @onready var laser_3_pewpew = $PEWPEW/Laser_3_PEWPEW
 @onready var missile_pewpew = $PEWPEW/Missile_PEWPEW
 @onready var missile_pewpew_2 = $PEWPEW/Missile_PEWPEW2
+@onready var missile_pewpew_3 = $PEWPEW/Missile_PEWPEW3
+@onready var missile_pewpew_4 = $PEWPEW/Missile_PEWPEW4
+@onready var spawn_collectables = $PEWPEW/SpawnCollectables
+@onready var screensize = get_viewport_rect().size
 @export var boss_fire_rate = 1
 @export var speed = 0
 var boss_direction = 1
@@ -24,28 +30,30 @@ func _ready():
 func _on_laser_1_shoot_timer_timeout():
 	shoot(laser_1_pewpew.global_position)
 	shoot(laser_1_pewpew_2.global_position)
-	$Laser_1_shoot_timer.wait_time = 3.7567
-	$Laser_1_shoot_timer.start()
+	$TIMERS/Laser_1_shoot_timer.wait_time = 3.756
+	$TIMERS/Laser_1_shoot_timer.start()
 
 #Same here
 func _on_laser_2_shoot_timer_timeout():
 	shoot(laser_2_pewpew.global_position)
 	shoot(laser_2_pewpew_2.global_position)
-	$Laser_2_shoot_timer.wait_time = 5.5224
-	$Laser_2_shoot_timer.start()
+	$TIMERS/Laser_2_shoot_timer.wait_time = 5.52
+	$TIMERS/Laser_2_shoot_timer.start()
 	
 #And here
 func _on_laser_3_shoot_timer_timeout():
 	shoot(laser_3_pewpew.global_position)
-	$Laser_3_shoot_timer.wait_time = 2.245
-	$Laser_3_shoot_timer.start()
+	$TIMERS/Laser_3_shoot_timer.wait_time = 2.72
+	$TIMERS/Laser_3_shoot_timer.start()
 
 #calls the Missile shoot func on the Missile pewpews global positions
 func _on_missile_shoot_timer_timeout():
 	shoot2(missile_pewpew.global_position)
 	shoot2(missile_pewpew_2.global_position)
-	$Missile_shoot_timer.wait_time = 7.5324
-	$Missile_shoot_timer.start()
+	shoot2(missile_pewpew_3.global_position)
+	shoot2(missile_pewpew_4.global_position)
+	$TIMERS/Missile_shoot_timer.wait_time = 8.24
+	$TIMERS/Missile_shoot_timer.start()
 
 #Instantiates the laser at the (location) which is replaced with the pewpew global position
 func shoot(location):
@@ -64,34 +72,46 @@ func shoot2(location):
 #Boss Moves left and right, keeping the battle spicy
 func _physics_process(delta):
 	global_position.x += speed * delta
-
+	
 func take_damage(amount):
 	GlobalVar.score += 50
+	if randf() >= 0.5:
+		if randf() >= 0.5:
+			if randf() >= 0.5:
+				var h = health_scene.instantiate()
+				get_tree().root.add_child(h)
+				h.global_position = spawn_collectables.global_position
+			else:
+				var s = shield_scene.instantiate()
+				get_tree().root.add_child(s)
+				s.global_position = spawn_collectables.global_position
 	GlobalVar.xarkanthras_health_bar_one -= amount
-	if GlobalVar.xarkanthras_health_bar_one == 0:
+	if GlobalVar.xarkanthras_health_bar_one <= 0:
 		GlobalVar.xarkanthras_health_bar_two -= amount
-		if GlobalVar.xarkanthras_health_bar_two == 0:
+		if GlobalVar.xarkanthras_health_bar_two <= 0:
 			queue_free()
-
 
 func _on_shield_spawn_timer_timeout():
 	if !GlobalVar.is_in_cutscene:
 		var s = boss_shield.instantiate()
-		get_tree().root.add_child(s)
+		self.add_child(s)
 		s.global_position = $".".global_position
-		$ShieldSpawnTimer.wait_time = randf_range(10, 20)
-		$ShieldSpawnTimer.start()
+		$TIMERS/ShieldSpawnTimer.wait_time = randf_range(10, 20)
+		$TIMERS/ShieldSpawnTimer.start()
 
 func _on_move_timer_timeout():
 	if !GlobalVar.is_in_cutscene: 
 		if boss_direction == 1:
-			if randf() >= 0.5:
-				boss_direction = 0
-				global_position.x -= 150
-				boss_direction = 1
-			else:
-				boss_direction = 2
-				global_position.x += 150
-				boss_direction = 1
+			speed -= 100
+			boss_direction = 2
+		elif boss_direction == 2:
+			speed += 100
+			boss_direction = 3
+		elif boss_direction == 3:
+			speed += 100
+			boss_direction = 4
+		elif boss_direction == 4:
+			speed -= 100
+			boss_direction = 1
 		await get_tree().create_timer(2).timeout
 		speed = 0

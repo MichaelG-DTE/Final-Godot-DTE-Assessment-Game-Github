@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://covgw4e8wdvcr"]
+[gd_scene load_steps=8 format=3 uid="uid://covgw4e8wdvcr"]
 
 [ext_resource type="Script" path="res://Scripts/GameOverScreen.gd" id="1_6byfx"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="2_77qy6"]
+[ext_resource type="AudioStream" uid="uid://conjegr30pb1t" path="res://Assets/Game Assets/Music/Mortem.mp3" id="3_20m27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ylgv"]
 corner_radius_top_left = 35
@@ -121,6 +122,9 @@ theme_override_fonts/font = ExtResource("2_77qy6")
 theme_override_font_sizes/font_size = 45
 text = "Quit
 "
+
+[node name="LevelFailMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_20m27")
 
 [connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]

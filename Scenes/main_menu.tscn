@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctfru7ihmin6r"]
+[gd_scene load_steps=7 format=3 uid="uid://ctfru7ihmin6r"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dygg4"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="1_kpvpt"]
+[ext_resource type="AudioStream" uid="uid://c7sc7a6ps0q11" path="res://Assets/Game Assets/Music/The Terran Anthem.mp3" id="3_ldri6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c0kw1"]
 font = ExtResource("1_kpvpt")
@@ -93,6 +94,10 @@ theme = SubResource("Theme_y1miy")
 theme_override_fonts/font = ExtResource("1_kpvpt")
 theme_override_font_sizes/font_size = 75
 text = "CREDITS"
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ldri6")
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

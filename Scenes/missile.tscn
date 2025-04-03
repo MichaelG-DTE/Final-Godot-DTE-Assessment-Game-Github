@@ -31,7 +31,7 @@ animations = [{
 [node name="Missile" type="Area2D"]
 scale = Vector2(0.391683, 0.391683)
 collision_layer = 128
-collision_mask = 2
+collision_mask = 514
 script = ExtResource("1_wyd4x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

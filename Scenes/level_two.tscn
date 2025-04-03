@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd4cpl1aa2bol"]
+[gd_scene load_steps=7 format=3 uid="uid://cd4cpl1aa2bol"]
 
 [ext_resource type="PackedScene" uid="uid://ccci6yu4n1p5n" path="res://Scenes/level_one.tscn" id="1_f62v5"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="2_ry3bw"]
 [ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="3_4slvd"]
 [ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/xantarian_heavy_support.tscn" id="4_2pk2k"]
 [ext_resource type="PackedScene" uid="uid://c0bs8nfnwnwug" path="res://Scenes/shielded_xantarian_skimmer.tscn" id="5_8c576"]
+[ext_resource type="AudioStream" uid="uid://cbud7ejff6vyi" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 2 - Fighting Xenos.mp3" id="6_68itq"]
 
 [node name="Level_Two" instance=ExtResource("1_f62v5")]
 wave1 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("3_4slvd"), ExtResource("4_2pk2k")])
 wave2 = Array[PackedScene]([ExtResource("2_ry3bw"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw")])
 wave3 = Array[PackedScene]([ExtResource("4_2pk2k"), ExtResource("4_2pk2k"), ExtResource("2_ry3bw"), ExtResource("5_8c576")])
 level = 2
+
+[node name="LevelMusic" parent="." index="10"]
+stream = ExtResource("6_68itq")

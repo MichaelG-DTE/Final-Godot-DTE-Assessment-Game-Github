@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://soujran3y17o"
-path="res://.godot/imported/Missile(1).png-e5d22f0260bcca39716f03611a34fbe7.ctex"
+uid="uid://bkcenoo8abouj"
+path="res://.godot/imported/Boss Laser.png-b52107a81d72dc22efef798a4ee80cea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Game Assets/Missile(1).png"
-dest_files=["res://.godot/imported/Missile(1).png-e5d22f0260bcca39716f03611a34fbe7.ctex"]
+source_file="res://Assets/Game Assets/Enemy/Boss Laser.png"
+dest_files=["res://.godot/imported/Boss Laser.png-b52107a81d72dc22efef798a4ee80cea.ctex"]
 
 [params]
 

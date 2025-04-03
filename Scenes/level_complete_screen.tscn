@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cav32g27pjgwf"]
+[gd_scene load_steps=8 format=3 uid="uid://cav32g27pjgwf"]
 
 [ext_resource type="Script" path="res://Scripts/level_complete_screen.gd" id="1_24na0"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="1_gxgfr"]
+[ext_resource type="AudioStream" uid="uid://ve5mn7lmmip0" path="res://Assets/Game Assets/Music/Victoriae.mp3" id="3_cbuj1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbxvx"]
 corner_radius_top_left = 35
@@ -128,6 +129,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_gxgfr")
 theme_override_font_sizes/font_size = 45
 text = "Quit Game"
+
+[node name="LevelCompleteMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cbuj1")
 
 [connection signal="pressed" from="Panel/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="Panel/QuitGame" to="." method="_on_quit_game_pressed"]

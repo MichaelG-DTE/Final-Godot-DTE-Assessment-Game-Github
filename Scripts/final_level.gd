@@ -53,7 +53,10 @@ func _on_player_killed():
 	print("game over")
 	gos.set_score(GlobalVar.score)
 	await get_tree().create_timer(2.25).timeout
+	$BOSSMUSIC.playing = false
 	gos.visible = true
+	await get_tree().create_timer(1.25)
+	gos.get_node("LevelFailMusic").playing = true
 
 func _on_start_of_boss_fight_timeout():
 	$XarkanthraApproach.play("boss_warp")
