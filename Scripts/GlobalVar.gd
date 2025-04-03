@@ -9,9 +9,9 @@ var shield_health = 15
 var health = 20
 
 #setting boss variables
-var xarkanthras_health_bar_one = 750
+var xarkanthras_health_bar_one = 800
 
-var xarkanthras_health_bar_two = 850
+var xarkanthras_health_bar_two = 900
 
 var xarkanthras_shield = 90
 

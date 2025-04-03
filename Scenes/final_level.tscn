@@ -281,3 +281,4 @@ stream = ExtResource("11_vduv3")
 autoplay = true
 
 [connection signal="timeout" from="Start_of_Boss_fight" to="." method="_on_start_of_boss_fight_timeout"]
+[connection signal="finished" from="BOSSMUSIC" to="." method="_on_bossmusic_finished"]

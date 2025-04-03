@@ -1,9 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr0u8bwaa0w8d"]
+[gd_scene load_steps=6 format=3 uid="uid://cr0u8bwaa0w8d"]
 
 [ext_resource type="Texture2D" uid="uid://bcq4eil2q0bfl" path="res://Assets/Game Assets/Enemy/Boss.png" id="1_nb0kg"]
 [ext_resource type="Script" path="res://Scripts/xar'kan'thra.gd" id="1_q8ync"]
 
+[sub_resource type="Animation" id="Animation_a4bf7"]
+resource_name = "BossDeath"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 465), Vector2(470, 465), Vector2(450, 465)]
+}
+
+[sub_resource type="Animation" id="Animation_djjlj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(450, 465)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxwl0"]
+_data = {
+"BossDeath": SubResource("Animation_a4bf7"),
+"RESET": SubResource("Animation_djjlj")
+}
+
 [node name="Xar\'kan\'thra" type="Area2D" groups=["BOSS"]]
+position = Vector2(450, 465)
 scale = Vector2(2.94909, 2.94909)
 collision_layer = 512
 collision_mask = 132
@@ -71,6 +109,11 @@ position = Vector2(-3.8147e-06, 94.9445)
 
 [node name="SpawnCollectables" type="Marker2D" parent="PEWPEW"]
 position = Vector2(0, 119.698)
+
+[node name="BossDeath" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bxwl0")
+}
 
 [connection signal="timeout" from="TIMERS/Laser_1_shoot_timer" to="." method="_on_laser_1_shoot_timer_timeout"]
 [connection signal="timeout" from="TIMERS/Laser_2_shoot_timer" to="." method="_on_laser_2_shoot_timer_timeout"]
