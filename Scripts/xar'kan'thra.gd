@@ -1,5 +1,6 @@
 class_name Boss extends Area2D
 
+signal killed
 
 var boss_laser = preload("res://Scenes/boss_laser.tscn")
 var boss_missile = preload("res://Scenes/boss_missile_2.tscn")
@@ -76,8 +77,8 @@ func _physics_process(delta):
 #when boss takes damage, boss loses health and spawns collectables
 func take_damage(amount):
 	GlobalVar.score += 50
-	if randf() >= 0.5:
-		if randf() >= 0.5:
+	if randf() >= 0.15:
+		if randf() >= 0.25:
 			if randf() >= 0.5:
 				if randf() >= 0.5:
 					var h = health_scene.instantiate()
@@ -91,8 +92,15 @@ func take_damage(amount):
 	if GlobalVar.xarkanthras_health_bar_one <= 0:
 		GlobalVar.xarkanthras_health_bar_two -= amount
 		if GlobalVar.xarkanthras_health_bar_two <= 0:
+			GlobalVar.is_in_cutscene = true
+			$Explosion.visible = true
+			self.visible = false
+			$BossDeath.play("BossDeath")
+			await $BossDeath.animation_finished
+			$Explosion.visible = false
+			killed.emit()
 			queue_free()
-
+			
 #spawns shield when the timer runs out
 func _on_shield_spawn_timer_timeout():
 	if !GlobalVar.is_in_cutscene:

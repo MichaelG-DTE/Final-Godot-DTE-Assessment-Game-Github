@@ -27,4 +27,7 @@ func _process(delta):
 					await $BossHealthUp.animation_finished
 					second_stage = true
 					if GlobalVar.xarkanthras_health_bar_two <= 0:
+						$BossHealthBarOne.visible = false
 						$BossHealthBarTwo.visible = false
+						$BossHealthBarOne.queue_free()
+						$BossHealthBarTwo.queue_free()

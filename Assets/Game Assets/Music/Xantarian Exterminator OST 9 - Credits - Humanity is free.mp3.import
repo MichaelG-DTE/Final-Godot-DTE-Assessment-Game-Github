@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xiepgn2ri5eb"
+path="res://.godot/imported/Xantarian Exterminator OST 9 - Credits - Humanity is free.mp3-e08c9f2fde237b69dd0121b977ba0fba.mp3str"
+
+[deps]
+
+source_file="res://Assets/Game Assets/Music/Xantarian Exterminator OST 9 - Credits - Humanity is free.mp3"
+dest_files=["res://.godot/imported/Xantarian Exterminator OST 9 - Credits - Humanity is free.mp3-e08c9f2fde237b69dd0121b977ba0fba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://rlyuw4y2a231"]
+[gd_scene load_steps=32 format=3 uid="uid://rlyuw4y2a231"]
 
 [ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="1_f0hrq"]
 [ext_resource type="Script" path="res://Scripts/final_level.gd" id="1_osd7r"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://xcn38tku7c7k" path="res://Scenes/pause_menu.tscn" id="6_v4ulp"]
 [ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/kenvector_future.ttf" id="7_xlpnu"]
 [ext_resource type="AudioStream" uid="uid://c1ip2plqnv35k" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 4 - Xar'kan'thra, Ender Of Worlds.mp3" id="11_vduv3"]
+[ext_resource type="AudioStream" uid="uid://v2lixyco7m77" path="res://Assets/Game Assets/Music/Victoria Ultima.mp3" id="12_7njs4"]
 
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
@@ -49,6 +50,14 @@ _data = {
 "Background": SubResource("Animation_gowww"),
 "RESET": SubResource("Animation_7ga84")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmarw"]
+font = ExtResource("7_xlpnu")
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbrsw"]
+font = ExtResource("7_xlpnu")
+font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_hgt2l"]
 font = ExtResource("7_xlpnu")
@@ -187,6 +196,101 @@ _data = {
 "RESET": SubResource("Animation_4fxfx")
 }
 
+[sub_resource type="Animation" id="Animation_857t4"]
+resource_name = "PlayerMove"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(349, 1339), Vector2(450, 1050)]
+}
+
+[sub_resource type="Animation" id="Animation_d1jdv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(349, 1339)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HUD/You Won:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, -968)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/HUD/ThanksToYou:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -300)]
+}
+
+[sub_resource type="Animation" id="Animation_dd4vd"]
+resource_name = "LabelMoveDown"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HUD/You Won:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 5, 50, 55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-26, -968), Vector2(-26, 265), Vector2(-26, 265), Vector2(-26, 1620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HUD/ThanksToYou:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7, 10, 50, 55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-15, -300), Vector2(-15, 545), Vector2(-15, 545), Vector2(-15, 1900)]
+}
+
+[sub_resource type="Animation" id="Animation_vv1ad"]
+resource_name = "Credits"
+length = 152.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pk0o6"]
+_data = {
+"Credits": SubResource("Animation_vv1ad"),
+"LabelMoveDown": SubResource("Animation_dd4vd"),
+"PlayerMove": SubResource("Animation_857t4"),
+"RESET": SubResource("Animation_d1jdv")
+}
+
 [node name="Final_Level" type="Node2D"]
 script = ExtResource("1_osd7r")
 
@@ -207,7 +311,7 @@ libraries = {
 autoplay = "Background"
 
 [node name="Player" parent="." instance=ExtResource("2_bc3ha")]
-position = Vector2(443, 1135)
+position = Vector2(349, 1339)
 scale = Vector2(1.63211, 1.63211)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
@@ -227,6 +331,41 @@ position = Vector2(450, -668)
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_hychs")]
 metadata/_edit_use_anchors_ = true
+
+[node name="You Won" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -476.0
+offset_top = -968.0
+offset_right = -236.0
+offset_bottom = -903.0
+grow_horizontal = 2
+scale = Vector2(4.06963, 4.1588)
+text = "HUMANITY IS 
+SAFE!
+"
+label_settings = SubResource("LabelSettings_mmarw")
+horizontal_alignment = 1
+
+[node name="ThanksToYou" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -465.0
+offset_top = -300.0
+offset_right = 469.0
+offset_bottom = -68.0
+grow_horizontal = 2
+text = "Thanks to yor efforts, 
+the evil Xantarian Syndicate 
+has not prevailed! 
+Terra, and Humanity, 
+are safe because of you, pilot. "
+label_settings = SubResource("LabelSettings_jbrsw")
+horizontal_alignment = 1
 
 [node name="Xar\'kan\'thraApproach" type="Sprite2D" parent="CanvasLayer/HUD"]
 visible = false
@@ -279,6 +418,14 @@ libraries = {
 [node name="BOSSMUSIC" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_vduv3")
 autoplay = true
+
+[node name="VictoriaUltima" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_7njs4")
+
+[node name="EndOfGame" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pk0o6")
+}
 
 [connection signal="timeout" from="Start_of_Boss_fight" to="." method="_on_start_of_boss_fight_timeout"]
 [connection signal="finished" from="BOSSMUSIC" to="." method="_on_bossmusic_finished"]
