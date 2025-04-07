@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=26 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
@@ -14,10 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/health_bar.tscn" id="10_8354x"]
 [ext_resource type="AudioStream" uid="uid://c1m7pr0qn443r" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 1 - Terran Fighter One.mp3" id="13_xpgwb"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_madmr"]
+font = ExtResource("6_4guqa")
+font_size = 35
+
 [sub_resource type="LabelSettings" id="LabelSettings_y75hu"]
 font = ExtResource("6_4guqa")
 font_size = 80
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pcbx"]
+font = ExtResource("6_4guqa")
+font_size = 40
 
 [sub_resource type="Animation" id="Animation_gtm3d"]
 length = 0.001
@@ -105,10 +113,6 @@ _data = {
 "WarningFlashing": SubResource("Animation_ux418")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_1pcbx"]
-font = ExtResource("6_4guqa")
-font_size = 40
-
 [sub_resource type="Animation" id="Animation_gowww"]
 resource_name = "Background"
 length = 0.9
@@ -147,6 +151,115 @@ _data = {
 "RESET": SubResource("Animation_7ga84")
 }
 
+[sub_resource type="Animation" id="Animation_xspyn"]
+resource_name = "BeginningOfGame"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(20, 25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BeginningText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8, 15, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(44.5, -500), Vector2(44.5, 500), Vector2(44.5, 500), Vector2(44.5, 2000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../PlayerSpawnPos:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(26),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(450, 1750)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Player:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(26, 26.5, 26.6, 26.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(450, 1750), Vector2(450, 1000), Vector2(450, 975), Vector2(450, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_j4bug"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BeginningText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(44.5, -200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../PlayerSpawnPos:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 2000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Player:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 2000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80454"]
+_data = {
+"BeginningOfGame": SubResource("Animation_xspyn"),
+"RESET": SubResource("Animation_j4bug")
+}
+
 [node name="Level_One" type="Node2D"]
 script = ExtResource("1_8c86t")
 wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
@@ -155,6 +268,35 @@ wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtR
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="UI_Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BeginningText" type="Label" parent="UI_Layer"]
+anchors_preset = -1
+offset_left = 44.5
+offset_top = -200.0
+offset_right = 865.5
+offset_bottom = 270.0
+grow_horizontal = 2
+text = "Welcome, Pilot! 
+We need your help, 
+as the Xantarian Syndicate
+ is fast approaching Terra. 
+Humanities homeworld 
+is at stake! 
+We need your Superfighter 
+to hold them off, 
+and prevent the distruction 
+and enslavement of humanity.
+Good Luck!"
+label_settings = SubResource("LabelSettings_madmr")
+horizontal_alignment = 1
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
 
@@ -201,10 +343,30 @@ label_settings = SubResource("LabelSettings_y75hu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WaveCounter" type="Label" parent="UI_Layer/HUD"]
+offset_left = 33.0
+offset_top = 1473.0
+offset_right = 267.0
+offset_bottom = 1525.0
+text = "Wave: 1"
+label_settings = SubResource("LabelSettings_1pcbx")
+horizontal_alignment = 1
+vertical_alignment = 3
+
 [node name="WaveFlashing" type="AnimationPlayer" parent="UI_Layer/HUD"]
 libraries = {
 "": SubResource("AnimationLibrary_t0qlg")
 }
+
+[node name="TimerBar" parent="UI_Layer/HUD" instance=ExtResource("10_8354x")]
+offset_left = 43.0
+offset_top = 1544.0
+offset_right = 875.0
+offset_bottom = 1573.0
+max_value = 40.0
+step = 0.001
+value = 40.0
+tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
 
 [node name="GameOverScreen" parent="UI_Layer" instance=ExtResource("5_s5oaj")]
 visible = false
@@ -218,26 +380,6 @@ offset_left = 1.0
 offset_top = 6.0
 offset_right = 1.0
 offset_bottom = 6.0
-
-[node name="TimerBar" parent="UI_Layer" instance=ExtResource("10_8354x")]
-offset_left = 43.0
-offset_top = 1544.0
-offset_right = 875.0
-offset_bottom = 1573.0
-max_value = 40.0
-step = 0.001
-value = 40.0
-tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
-
-[node name="WaveCounter" type="Label" parent="UI_Layer"]
-offset_left = 33.0
-offset_top = 1473.0
-offset_right = 267.0
-offset_bottom = 1525.0
-text = "Wave: 1"
-label_settings = SubResource("LabelSettings_1pcbx")
-horizontal_alignment = 1
-vertical_alignment = 3
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -256,11 +398,12 @@ libraries = {
 autoplay = "Background"
 
 [node name="Player" parent="." instance=ExtResource("1_620ks")]
-position = Vector2(500, 999)
+position = Vector2(500, 2000)
 scale = Vector2(1.63211, 1.63211)
+speed = 750
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(500, 1000)
+position = Vector2(500, 2000)
 
 [node name="laser_container" type="Node2D" parent="."]
 
@@ -279,6 +422,12 @@ autostart = true
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_xpgwb")
 autoplay = true
+
+[node name="BEGINNING OF GAME" type="AnimationPlayer" parent="."]
+root_node = NodePath("../UI_Layer/ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_80454")
+}
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="EndOfWave" to="." method="_on_end_of_wave_timeout"]

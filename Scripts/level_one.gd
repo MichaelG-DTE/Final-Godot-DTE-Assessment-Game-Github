@@ -24,6 +24,8 @@ var player = null
 
 #spawn da playa, and put him on his spawn pos
 func _ready():
+	GlobalVar.is_in_cutscene = true
+	$UI_Layer/HUD.visible = false
 	#get the player from its group
 	player = get_tree().get_first_node_in_group("players")
 	#make sure the player exists at the start of the game
@@ -33,32 +35,38 @@ func _ready():
 	GlobalVar.health = 20
 	#player position at the start of the game
 	player.global_position = Vector2(screensize.x / 2, player_spawn_pos.global_position.y)
+	$EnemySpawnTimer.stop()
+	$"BEGINNING OF GAME".play("BeginningOfGame")
+	await $"BEGINNING OF GAME".animation_finished
+	GlobalVar.is_in_cutscene = false
+	$UI_Layer/HUD.visible = true
 	#connecting signals from the player to the game script
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.missile_shot.connect(_on_player_missile_shot)
 	player.killed.connect(_on_player_killed)
-	$EnemySpawnTimer.stop()
-	if waves == 3:
-		#makes the first wave warning symbol appear, then plays an animation
-		$UI_Layer/HUD/WaveWarning.visible = true
-		$UI_Layer/HUD/Wave1.visible = true
-		$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
-		#creates a timer that determines the break between waves
-		await get_tree().create_timer(wave_warning_timer).timeout
-		#waits for the animtion to be finished
-		await $UI_Layer/HUD/WaveFlashing.animation_finished
-		#makes the flashing invisible
-		$UI_Layer/HUD/WaveWarning.visible = false
-		$UI_Layer/HUD/Wave1.visible = false
-		#starts the enemy spawn timer at the beginning of the wave
+	if GlobalVar.is_in_cutscene:
 		$EnemySpawnTimer.start()
+		if waves == 3:
+			#makes the first wave warning symbol appear, then plays an animation
+			$UI_Layer/HUD/WaveWarning.visible = true
+			$UI_Layer/HUD/Wave1.visible = true
+			$UI_Layer/HUD/WaveFlashing.play("WarningFlashing")
+			#creates a timer that determines the break between waves
+			await get_tree().create_timer(wave_warning_timer).timeout
+			#waits for the animtion to be finished
+			await $UI_Layer/HUD/WaveFlashing.animation_finished
+			#makes the flashing invisible
+			$UI_Layer/HUD/WaveWarning.visible = false
+			$UI_Layer/HUD/Wave1.visible = false
+			#starts the enemy spawn timer at the beginning of the wave
+			$EnemySpawnTimer.start()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	$UI_Layer/TimerBar.max_value = $EndOfWave.wait_time
-	$UI_Layer/TimerBar.value = $EndOfWave.time_left
-	$UI_Layer/WaveCounter.text = "Waves Left: " +str(waves)
+	$UI_Layer/HUD/TimerBar.max_value = $EndOfWave.wait_time
+	$UI_Layer/HUD/TimerBar.value = $EndOfWave.time_left
+	$UI_Layer/HUD/WaveCounter.text = "Waves Left: " +str(waves)
 
 #shootin lasars in dis house
 func _on_player_laser_shot(laser_scene, location):
