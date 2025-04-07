@@ -219,7 +219,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/path = NodePath("CanvasLayer/HUD/ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -242,7 +242,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(3, 5, 50, 55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-26, -968), Vector2(-26, 265), Vector2(-26, 265), Vector2(-26, 1620)]
+"values": [Vector2(-26, -968), Vector2(-26, 265), Vector2(-26, 265), Vector2(-26, 1650)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -254,7 +254,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(7, 10, 50, 55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-15, -300), Vector2(-15, 545), Vector2(-15, 545), Vector2(-15, 1900)]
+"values": [Vector2(-15, -300), Vector2(-15, 545), Vector2(-15, 545), Vector2(-15, 1950)]
 }
 
 [sub_resource type="Animation" id="Animation_857t4"]
@@ -326,7 +326,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/4/path = NodePath("CanvasLayer/HUD/ColorRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -385,6 +385,16 @@ position = Vector2(450, -668)
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_hychs")]
 metadata/_edit_use_anchors_ = true
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="You Won" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 5
@@ -428,7 +438,7 @@ anchor_right = 0.5
 offset_left = -1191.0
 offset_top = 3000.0
 offset_right = 1202.0
-offset_bottom = 10745.4
+offset_bottom = 10745.6
 grow_horizontal = 2
 text = "Thank You for Playing
  Xantarian Exterminator!
@@ -614,15 +624,6 @@ offset_left = 1.0
 offset_top = 6.0
 offset_right = 1.0
 offset_bottom = 6.0
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Start_of_Boss_fight" type="Timer" parent="."]
 wait_time = 12.5

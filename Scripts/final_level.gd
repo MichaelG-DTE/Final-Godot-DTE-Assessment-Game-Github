@@ -84,9 +84,10 @@ func _on_boss_killed():
 	$EndOfGame.animation_changed
 	$EndOfGame.play("LabelMoveDown")
 	await get_tree().create_timer(5).timeout
+	await $VictoriaUltima.finished 
 	$Credits.playing = true
-	$EndOfGame.animation_changed
+	$EndOfGame.animation_finished
 	$EndOfGame.play("Credits")
 	await $EndOfGame.animation_finished
 	await get_tree().create_timer(5).timeout
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	

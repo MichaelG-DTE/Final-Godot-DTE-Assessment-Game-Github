@@ -7,7 +7,7 @@ func _on_quit_button_pressed():
 
 #try again!
 func _on_restart_button_pressed():
-	GlobalVar.score = 0
+	GlobalVar.dead = false
 	get_tree().reload_current_scene()
 	
 #sets the current score to be displayed on the gameoverscreen
