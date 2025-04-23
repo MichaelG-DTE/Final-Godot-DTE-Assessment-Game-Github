@@ -66,7 +66,7 @@ func _on_player_killed():
 	await get_tree().create_timer(2.25).timeout
 	$BOSSMUSIC.playing = false
 	gos.visible = true
-	await get_tree().create_timer(1.25)
+	get_tree().create_timer(1.25)
 	gos.get_node("LevelFailMusic").playing = true
 
 #timer timesout, and boss 'warps in'
@@ -88,6 +88,9 @@ func _on_boss_killed():
 	$Credits.playing = true
 	$EndOfGame.animation_finished
 	$EndOfGame.play("Credits")
+	$CanvasLayer/HUD/EndOfGame.visible = true
 	await $EndOfGame.animation_finished
 	await get_tree().create_timer(5).timeout
-	
+
+func _on_end_of_game_pressed():
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqybk"]
 
 [node name="BossMissile" type="Area2D"]
-scale = Vector2(0.135748, 0.135748)
+scale = Vector2(0.121122, 0.121122)
 collision_layer = 1024
 script = ExtResource("1_ut4tt")
 

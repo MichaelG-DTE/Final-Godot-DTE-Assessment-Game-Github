@@ -8,6 +8,8 @@ func _on_quit_button_pressed():
 #try again!
 func _on_restart_button_pressed():
 	GlobalVar.dead = false
+	GlobalVar.xarkanthras_health_bar_one = 800
+	GlobalVar.xarkanthras_health_bar_two = 900
 	get_tree().reload_current_scene()
 	
 #sets the current score to be displayed on the gameoverscreen
