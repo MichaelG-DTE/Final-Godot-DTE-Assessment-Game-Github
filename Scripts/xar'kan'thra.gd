@@ -93,6 +93,7 @@ func take_damage(amount):
 		GlobalVar.xarkanthras_health_bar_two -= amount
 		if GlobalVar.xarkanthras_health_bar_two <= 0:
 			GlobalVar.is_in_cutscene = true
+			$Explosions.visible = true
 			$BossDeath.play("BossDeath")
 			await $BossDeath.animation_finished
 			killed.emit()
