@@ -249,26 +249,26 @@ length = 60.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/HUD/You Won:position")
+tracks/0/path = NodePath("CanvasLayer/HUD/You Won:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3, 5, 50, 55),
+"times": PackedFloat32Array(5, 7, 52.5, 54),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-26, -968), Vector2(-26, 265), Vector2(-26, 265), Vector2(-26, 1750)]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/HUD/ThanksToYou:position")
+tracks/1/path = NodePath("CanvasLayer/HUD/ThanksToYou:visible_ratio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(7, 10, 50, 55),
+"times": PackedFloat32Array(9, 17, 50, 52),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-15, -400), Vector2(-15, 545), Vector2(-15, 545), Vector2(-15, 2050)]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_857t4"]
@@ -304,62 +304,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/HUD/You Won:position")
+tracks/1/path = NodePath("CanvasLayer/HUD/Credits:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-26, -968)]
+"values": [Vector2(-741, 3000)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/HUD/ThanksToYou:position")
+tracks/2/path = NodePath("CanvasLayer/HUD/ColorRect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-15, -300)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/HUD/Credits:position")
+tracks/3/path = NodePath("CanvasLayer/HUD/EndOfGame:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-741, 3000)]
+"values": [Vector2(100, 658)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/HUD/ColorRect:modulate")
+tracks/4/path = NodePath("CanvasLayer/HUD/You Won:visible_ratio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/HUD/EndOfGame:position")
+tracks/5/path = NodePath("CanvasLayer/HUD/ThanksToYou:visible_ratio")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(100, 658)]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk0o6"]
@@ -427,9 +427,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -476.0
-offset_top = -968.0
+offset_top = 265.0
 offset_right = -236.0
-offset_bottom = -903.0
+offset_bottom = 330.0
 grow_horizontal = 2
 scale = Vector2(4.06963, 4.1588)
 text = "HUMANITY IS 
@@ -437,6 +437,8 @@ SAFE!
 "
 label_settings = SubResource("LabelSettings_mmarw")
 horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="ThanksToYou" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -444,9 +446,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -465.0
-offset_top = -300.0
+offset_top = 545.0
 offset_right = 469.0
-offset_bottom = 26.0
+offset_bottom = 871.0
 grow_horizontal = 2
 text = "Thanks to your efforts, 
 the evil Xantarian Syndicate 
@@ -457,15 +459,17 @@ Our appreciation and gratitude
 for you knows no bounds."
 label_settings = SubResource("LabelSettings_jbrsw")
 horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Credits" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -1191.0
+offset_left = -741.0
 offset_top = 3000.0
-offset_right = -250.0
+offset_right = 200.0
 offset_bottom = 10745.0
 grow_horizontal = 2
 text = "Thank You for Playing

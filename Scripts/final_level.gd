@@ -16,6 +16,7 @@ var boss = null
 var player = null
 
 func _ready():
+	$CanvasLayer/HUD/ThanksToYou.visible = false
 	#on ready, get the player and boss, and confirm they are not null
 	player = get_tree().get_first_node_in_group("players")
 	boss = get_tree().get_first_node_in_group("BOSS")
@@ -82,6 +83,7 @@ func _on_boss_killed():
 	await get_tree().create_timer(5).timeout
 	$VictoriaUltima.playing = true
 	$EndOfGame.animation_changed
+	$CanvasLayer/HUD/ThanksToYou.visible = true
 	$EndOfGame.play("LabelMoveDown")
 	await get_tree().create_timer(5).timeout
 	await $VictoriaUltima.finished 

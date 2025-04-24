@@ -18,7 +18,7 @@ func _process(delta):
 				#assigns the value of the boss health bar to the global variable
 				$BossHealthBarOne.value = GlobalVar.xarkanthras_health_bar_one
 			if GlobalVar.xarkanthras_health_bar_one <= 0:
-				$BossHealthBarOne.visible = false
+				$BossHealthBarOne.global_position.x = -1000
 				#assigns the value of the second boss health bar to the global variable
 				$BossHealthBarTwo.value = GlobalVar.xarkanthras_health_bar_two
 				$BossHealthBarTwo.visible = true
@@ -26,8 +26,5 @@ func _process(delta):
 					$BossHealthUp.play("HealthUp")
 					await $BossHealthUp.animation_finished
 					second_stage = true
-					if GlobalVar.xarkanthras_health_bar_two <= 0:
-						$BossHealthBarOne.visible = false
-						$BossHealthBarTwo.visible = false
-						$BossHealthBarOne.queue_free()
-						$BossHealthBarTwo.queue_free()
+			if GlobalVar.xarkanthras_health_bar_two <= 0:
+				$BossHealthBarTwo.global_position.x = -1000

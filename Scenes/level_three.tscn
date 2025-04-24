@@ -10,13 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://b6iot2ihp81i1" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 3 - Approaching Danger (The Dying Light).mp3" id="8_m1i2w"]
 
 [node name="Level_Three" instance=ExtResource("1_57ftu")]
-wave1 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
+wave1 = Array[PackedScene]([])
 wave2 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("5_2y4no")])
 wave3 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("5_2y4no"), ExtResource("7_3ac77"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
 level = 3
 
 [node name="EnemySpawnTimer" parent="." index="8"]
-wait_time = 0.3
+wait_time = 0.4
 
 [node name="LevelMusic" parent="." index="10"]
 stream = ExtResource("8_m1i2w")

@@ -149,7 +149,7 @@ _data = {
 
 [node name="Level_One" type="Node2D"]
 script = ExtResource("1_8c86t")
-wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc")])
+wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
 wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
 wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
 
@@ -166,6 +166,7 @@ region_rect = Rect2(0, 0, 500, 800)
 process_mode = 3
 
 [node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
+metadata/_edit_use_anchors_ = true
 
 [node name="WaveWarning" type="Sprite2D" parent="UI_Layer/HUD"]
 visible = false
@@ -220,6 +221,7 @@ text = "Wave: 1"
 label_settings = SubResource("LabelSettings_1pcbx")
 horizontal_alignment = 1
 vertical_alignment = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="WaveFlashing" type="AnimationPlayer" parent="UI_Layer/HUD"]
 libraries = {
@@ -236,6 +238,7 @@ max_value = 40.0
 step = 0.001
 value = 40.0
 tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="GameOverScreen" parent="UI_Layer" instance=ExtResource("5_s5oaj")]
 visible = false

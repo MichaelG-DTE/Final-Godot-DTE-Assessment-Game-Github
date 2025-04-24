@@ -24,6 +24,7 @@ var player = null
 
 #spawn da playa, and put him on his spawn pos
 func _ready():
+	GlobalVar.is_in_cutscene = false
 	#get the player from its group
 	player = get_tree().get_first_node_in_group("players")
 	#make sure the player exists at the start of the game
