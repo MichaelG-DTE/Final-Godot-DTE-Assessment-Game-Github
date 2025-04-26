@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pnm5sdntoxps"
+path="res://.godot/imported/367987__chrisbutler99__launch.wav-c23bbec2e831837dbed32d728fd1c628.sample"
+
+[deps]
+
+source_file="res://Assets/Game Assets/Sound Effects/367987__chrisbutler99__launch.wav"
+dest_files=["res://.godot/imported/367987__chrisbutler99__launch.wav-c23bbec2e831837dbed32d728fd1c628.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

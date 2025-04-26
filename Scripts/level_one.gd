@@ -116,6 +116,7 @@ func _on_player_killed():
 	await get_tree().create_timer(2.25).timeout
 	$LevelMusic.playing = false
 	gos.visible = true
+	GlobalVar.is_in_cutscene = true
 	await get_tree().create_timer(3.5)
 	gos.get_node("LevelFailMusic").playing = true
 
@@ -151,5 +152,6 @@ func _on_end_of_wave_timeout():
 			await get_tree().create_timer(3.25).timeout
 			$LevelMusic.playing = false
 			lcs.visible = true
+			GlobalVar.is_in_cutscene = true
 			await get_tree().create_timer(3.5)
 			lcs.get_node("LevelCompleteMusic").playing = true 

@@ -13,6 +13,9 @@ signal killed
 @onready var screensize = get_viewport_rect().size
 @onready var pew_pew = $PewPew
 @onready var ms = $missileshooty
+@onready var explosion_sfx = $Explosion_SFX
+@onready var shoot_sfx = $Shoot_SFX
+@onready var shoot_missile_sfx = $Shoot_Missile_SFX
 
 #preloading laser
 var laser_scene = preload("res://Scenes/laser.tscn")
@@ -33,12 +36,14 @@ func _process(delta):
 		if !shoot_cd and !GlobalVar.dead and !GlobalVar.is_in_cutscene:
 			shoot_cd = true
 			shoot()
+			shoot_sfx.play()
 			await get_tree().create_timer(rate_of_fire).timeout
 			shoot_cd = false
 	if Input.is_action_pressed("MissileShoot"):
 		if !missile_cd and !GlobalVar.dead and !GlobalVar.is_in_cutscene:
 			missile_cd = true
 			shoot2()
+			shoot_missile_sfx.play()
 			await get_tree().create_timer(missile_fire_rate).timeout
 			missile_cd = false
 	else:
@@ -93,7 +98,9 @@ func take_damage(amount):
 		$Shiptexture.visible = false
 		$Explosion.visible = true
 		$AnimationPlayer.play("Explosion")
+		explosion_sfx.play()
 		killed.emit()
 		await $AnimationPlayer.animation_finished 
 		$Explosion.visible = false
 		queue_free()
+

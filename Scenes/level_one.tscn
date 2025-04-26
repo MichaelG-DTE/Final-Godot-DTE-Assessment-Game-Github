@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccci6yu4n1p5n"]
+[gd_scene load_steps=23 format=3 uid="uid://ccci6yu4n1p5n"]
 
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_8c86t"]
 [ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/player.tscn" id="1_620ks"]
 [ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/hud.tscn" id="2_hpc5o"]
 [ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
+[ext_resource type="PackedScene" uid="uid://q8go1x8i3lrt" path="res://Scenes/xantarian_skimmer2.tscn" id="3_4o1ot"]
 [ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
 [ext_resource type="PackedScene" uid="uid://covgw4e8wdvcr" path="res://Scenes/game_over_screen.tscn" id="5_s5oaj"]
 [ext_resource type="Texture2D" uid="uid://bwhrt5ovw38mj" path="res://Assets/Game Assets/Wave Warning.png" id="5_x6us6"]
@@ -149,7 +150,7 @@ _data = {
 
 [node name="Level_One" type="Node2D"]
 script = ExtResource("1_8c86t")
-wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
+wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("3_4o1ot")])
 wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
 wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
 
@@ -284,6 +285,7 @@ autostart = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_xpgwb")
+volume_db = 5.0
 autoplay = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

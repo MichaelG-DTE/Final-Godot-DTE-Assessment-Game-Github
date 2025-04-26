@@ -1,12 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr0u8bwaa0w8d"]
+[gd_scene load_steps=11 format=3 uid="uid://cr0u8bwaa0w8d"]
 
 [ext_resource type="Texture2D" uid="uid://bcq4eil2q0bfl" path="res://Assets/Game Assets/Enemy/Boss.png" id="1_nb0kg"]
 [ext_resource type="Script" path="res://Scripts/xar'kan'thra.gd" id="1_q8ync"]
 [ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Explosion Asset.png" id="3_rsv6b"]
+[ext_resource type="AudioStream" uid="uid://dthxc560dvfgx" path="res://Assets/Game Assets/Sound Effects/151016__bubaproducer__laser-shot-big-1.wav" id="4_gh5qe"]
+[ext_resource type="AudioStream" uid="uid://pnm5sdntoxps" path="res://Assets/Game Assets/Sound Effects/367987__chrisbutler99__launch.wav" id="5_nuv0j"]
+[ext_resource type="AudioStream" uid="uid://plxs3w5636o7" path="res://Assets/Game Assets/Sound Effects/506326__thevoicesgames__retro-explosion-1.wav" id="6_kucql"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ulf7n"]
+radius = 184.803
+height = 696.486
 
 [sub_resource type="Animation" id="Animation_a4bf7"]
 resource_name = "BossDeath"
 length = 11.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -350,7 +358,7 @@ tracks/28/path = NodePath("Explosions/SuperExplosion:frame")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
-"times": PackedFloat32Array(10.3, 10.35, 10.4, 10.45, 10.5, 10.55, 10.6, 10.65, 10.7, 10.75),
+"times": PackedFloat32Array(10.35, 10.4, 10.45, 10.5, 10.55, 10.6, 10.65, 10.7, 10.75, 10.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [8, 0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -378,6 +386,354 @@ tracks/30/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Explosion_SFX/Explosion_SFX:playing")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Explosion_SFX/Explosion_SFX2:playing")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Explosion_SFX/Explosion_SFX3:playing")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Explosion_SFX/Explosion_SFX4:playing")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Explosion_SFX/Explosion_SFX5:playing")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Explosion_SFX/Explosion_SFX6:playing")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(1.95),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Explosion_SFX/Explosion_SFX7:playing")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Explosion_SFX/Explosion_SFX8:playing")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(2.55),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Explosion_SFX/Explosion_SFX9:playing")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(2.95),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("Explosion_SFX/Explosion_SFX10:playing")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(3.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("Explosion_SFX/Explosion_SFX11:playing")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(3.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Explosion_SFX/Explosion_SFX12:playing")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(4.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("Explosion_SFX/Explosion_SFX13:playing")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(4.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("Explosion_SFX/Explosion_SFX14:playing")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(4.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("Explosion_SFX/Explosion_SFX15:playing")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(5.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Explosion_SFX/Explosion_SFX16:playing")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(5.45),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Explosion_SFX/Explosion_SFX17:playing")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(5.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Explosion_SFX/Explosion_SFX18:playing")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(6.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Explosion_SFX/Explosion_SFX19:playing")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("Explosion_SFX/Explosion_SFX20:playing")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("Explosion_SFX/Explosion_SFX21:playing")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(7.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("Explosion_SFX/Explosion_SFX22:playing")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(7.65),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("Explosion_SFX/Explosion_SFX23:playing")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("Explosion_SFX/Explosion_SFX24:playing")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(8.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("Explosion_SFX/Explosion_SFX25:playing")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(8.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("Explosion_SFX/Explosion_SFX26:playing")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(9.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("Explosion_SFX/Explosion_SFX27:playing")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(9.45),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("Explosion_SFX/Explosion_SFX28:playing")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(9.85),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("Explosion_SFX/Explosion_SFX29:playing")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(10.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_djjlj"]
@@ -754,6 +1110,354 @@ tracks/30/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Explosion_SFX/Explosion_SFX:playing")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Explosion_SFX/Explosion_SFX2:playing")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Explosion_SFX/Explosion_SFX3:playing")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Explosion_SFX/Explosion_SFX4:playing")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Explosion_SFX/Explosion_SFX5:playing")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Explosion_SFX/Explosion_SFX6:playing")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Explosion_SFX/Explosion_SFX7:playing")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Explosion_SFX/Explosion_SFX8:playing")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Explosion_SFX/Explosion_SFX9:playing")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("Explosion_SFX/Explosion_SFX10:playing")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("Explosion_SFX/Explosion_SFX11:playing")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Explosion_SFX/Explosion_SFX12:playing")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("Explosion_SFX/Explosion_SFX13:playing")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("Explosion_SFX/Explosion_SFX14:playing")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("Explosion_SFX/Explosion_SFX15:playing")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Explosion_SFX/Explosion_SFX16:playing")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Explosion_SFX/Explosion_SFX17:playing")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Explosion_SFX/Explosion_SFX18:playing")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Explosion_SFX/Explosion_SFX19:playing")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("Explosion_SFX/Explosion_SFX20:playing")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("Explosion_SFX/Explosion_SFX21:playing")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("Explosion_SFX/Explosion_SFX22:playing")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("Explosion_SFX/Explosion_SFX23:playing")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("Explosion_SFX/Explosion_SFX24:playing")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("Explosion_SFX/Explosion_SFX25:playing")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("Explosion_SFX/Explosion_SFX26:playing")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("Explosion_SFX/Explosion_SFX27:playing")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("Explosion_SFX/Explosion_SFX28:playing")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("Explosion_SFX/Explosion_SFX29:playing")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bxwl0"]
 _data = {
@@ -765,11 +1469,16 @@ _data = {
 position = Vector2(460, 465)
 scale = Vector2(2.94909, 2.94909)
 collision_layer = 512
-collision_mask = 132
+collision_mask = 133
 script = ExtResource("1_q8ync")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nb0kg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -256.35)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_ulf7n")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-28, 120, -32, 131, -58, 126, -64, 72, -57, 36, -48.1504, 18.3107, -63, 16, -67, 67, -75, 105, -87, 105, -92, 3, -72, -40, -54, -34, -58.3231, -7.12084, -41.3687, -10.1726, -57, -48, -74, -51, -75, -86, -67, -112, -48, -109, -34, -52, -46, -120, -27, -129, -15, -99, -17, -77, 0, -129, 19, -77, 17, -99, 29, -129, 46, -121, 34, -52, 51, -108, 68, -111, 77, -89, 74, -51, 59, -50, 41.3687, -9.83353, 57, -8, 54, -35, 72, -40, 93, 3, 89, 105, 75, 104, 68, 69, 63, 17, 49.1677, 18.3107, 56, 35, 65, 70, 60, 125, 32, 131, 29, 120, 41, 109, 34.6475, 69.2969, 33, 59, 29, 96, 22, 117, 4, 120, 4, 111, 14, 93, 4.06905, 104.778, 0, 97, -5, 105, -14, 93, -4.06905, 111.221, -4.06905, 119.698, -23, 113, -29, 91, -34.926, 61.0358, -41, 109)
@@ -1070,6 +1779,134 @@ hframes = 3
 vframes = 3
 frame = 8
 
+[node name="Shoot_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gh5qe")
+volume_db = -10.0
+
+[node name="Missile_Shoot_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nuv0j")
+volume_db = -10.0
+
+[node name="Explosion_SFX" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="Explosion_SFX" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX2" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX3" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX4" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX5" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX6" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX7" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX8" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX9" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX10" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX11" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX12" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX13" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX14" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX15" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX16" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX17" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX18" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX19" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX20" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX21" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX22" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX23" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX24" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX25" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX26" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX27" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX28" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[node name="Explosion_SFX29" type="AudioStreamPlayer" parent="Explosion_SFX"]
+stream = ExtResource("6_kucql")
+volume_db = 3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TIMERS/Laser_1_shoot_timer" to="." method="_on_laser_1_shoot_timer_timeout"]
 [connection signal="timeout" from="TIMERS/Laser_2_shoot_timer" to="." method="_on_laser_2_shoot_timer_timeout"]
 [connection signal="timeout" from="TIMERS/Laser_3_shoot_timer" to="." method="_on_laser_3_shoot_timer_timeout"]

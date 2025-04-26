@@ -13,6 +13,9 @@ var health_max = 4
 var health_min = 0
 @export var damage = 1
 @export var points = 150
+@onready var explosion_sfx = $Explosion_SFX
+@onready var shoot_sfx = $Shoot_SFX
+
 
 #enemy moves down screen
 func _physics_process(delta):
@@ -36,12 +39,23 @@ func _on_shoot_timer_timeout():
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
 	b.start($pewpPew.global_position)
-
+	shoot_sfx.play()
+	
 #enters player and dies
 func _on_body_entered(body):
 	if body is Player:
 		body.take_damage(damage)
-		print("Enemy 3 Committed Die")
+		$Explosion.visible = true
+		$Ship.visible = false
+		$EnemyThrusters.visible = false
+		$CollisionShape2D.queue_free()
+		$ShootTimer.queue_free()
+		$AnimationPlayer.play("Explosion")
+		explosion_sfx.play()
+		killed.emit(points)
+		die()
+		await $AnimationPlayer.animation_finished
+		$Explosion.visible = false
 		queue_free()
 
 #leave screen die you get it know
@@ -60,10 +74,10 @@ func take_damage(amount):
 		$CollisionShape2D.queue_free()
 		$ShootTimer.queue_free()
 		$AnimationPlayer.play("Explosion")
+		explosion_sfx.play()
 		killed.emit(points)
 		die()
 		await $AnimationPlayer.animation_finished
 		$Explosion.visible = false
-		set_deferred("monitoring", false)
 		queue_free()
 

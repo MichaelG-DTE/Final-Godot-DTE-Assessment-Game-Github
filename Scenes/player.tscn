@@ -1,10 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://dx4avp3lndswk"]
+[gd_scene load_steps=24 format=3 uid="uid://dx4avp3lndswk"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwuut"]
 [ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="1_rfm0q"]
 [ext_resource type="Texture2D" uid="uid://cbaegknj64ytf" path="res://Assets/Game Assets/Player/Completed Thrusters.png" id="2_21gws"]
 [ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Explosion Asset.png" id="5_2g7y4"]
 [ext_resource type="PackedScene" uid="uid://do5jy3g13s7c0" path="res://Scenes/player_shield.tscn" id="5_x067j"]
+[ext_resource type="AudioStream" uid="uid://4qlvb2cikwrj" path="res://Assets/Game Assets/Sound Effects/488294__combine2005__explosionretro.wav" id="6_8td76"]
+[ext_resource type="AudioStream" uid="uid://c0ae6u4a2kspd" path="res://Assets/Game Assets/Sound Effects/143611__dwoboyle__weapons-synth-blast-01.wav" id="7_odpvu"]
+[ext_resource type="AudioStream" uid="uid://pnm5sdntoxps" path="res://Assets/Game Assets/Sound Effects/367987__chrisbutler99__launch.wav" id="8_iqbvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vbp8"]
 atlas = ExtResource("1_rfm0q")
@@ -227,7 +230,7 @@ height = 70.0
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 position = Vector2(246, 589)
 scale = Vector2(1.46773, 1.46773)
-collision_mask = 10
+collision_mask = 778
 motion_mode = 1
 script = ExtResource("1_nwuut")
 
@@ -296,3 +299,16 @@ position = Vector2(0, -69.495)
 [node name="PlayerShield" parent="." instance=ExtResource("5_x067j")]
 position = Vector2(0, -9.6375)
 scale = Vector2(0.939924, 0.943312)
+
+[node name="Explosion_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8td76")
+volume_db = -5.0
+
+[node name="Shoot_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_odpvu")
+volume_db = -10.0
+
+[node name="Shoot_Missile_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_iqbvx")
+volume_db = -10.0
+pitch_scale = 0.5

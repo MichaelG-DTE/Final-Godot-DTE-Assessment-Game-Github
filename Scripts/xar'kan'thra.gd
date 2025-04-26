@@ -18,6 +18,8 @@ var shield_scene = preload("res://Scenes/shield_collectable.tscn")
 @onready var missile_pewpew_3 = $PEWPEW/Missile_PEWPEW3
 @onready var missile_pewpew_4 = $PEWPEW/Missile_PEWPEW4
 @onready var spawn_collectables = $PEWPEW/SpawnCollectables
+@onready var shoot_sfx = $Shoot_SFX
+@onready var missile_shoot_sfx = $Missile_Shoot_SFX
 @onready var screensize = get_viewport_rect().size
 @export var boss_fire_rate = 1
 @export var speed = 0
@@ -62,6 +64,7 @@ func shoot(location):
 		var b = boss_laser.instantiate()
 		get_tree().root.add_child(b)
 		b.start(location)
+		shoot_sfx.play()
 
 #Instantiates the missile at the (location) which is replaced with the pewpew global position
 func shoot2(location):
@@ -69,6 +72,7 @@ func shoot2(location):
 		var m = boss_missile.instantiate()
 		get_tree().root.add_child(m)
 		m.start(location)
+		missile_shoot_sfx.play()
 
 #Boss Moves left and right, keeping the battle spicy
 func _physics_process(delta):
@@ -95,8 +99,8 @@ func take_damage(amount):
 			GlobalVar.is_in_cutscene = true
 			$Explosions.visible = true
 			$BossDeath.play("BossDeath")
-			await $BossDeath.animation_finished
 			killed.emit()
+			await $BossDeath.animation_finished
 			queue_free()
 			
 #spawns shield when the timer runs out
@@ -125,3 +129,9 @@ func _on_move_timer_timeout():
 			boss_direction = 1
 		await get_tree().create_timer(2).timeout
 		speed = 0
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.take_damage(GlobalVar.health - 20)
+		

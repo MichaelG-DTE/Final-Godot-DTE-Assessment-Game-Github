@@ -17,6 +17,9 @@ var health_min = 0
 @export var rate_of_fire = 1
 @onready var pewpew_1 = $pewpew1
 @onready var pewpew_2 = $pewpew2
+@onready var explosion_sfx = $Explosion_SFX
+@onready var shoot_sfx = $Shoot_SFX
+
 
 func _ready():
 	rate_of_fire = randf_range(1, 20)
@@ -42,7 +45,17 @@ func die():
 func _on_body_entered(body):
 	if body is Player:
 		body.take_damage(damage)
-		print("Enemy Committed Die")
+		$Explosion.visible = true
+		$Ship.visible = false
+		$EnemyThrusters.visible = false
+		$CollisionShape2D.queue_free()
+		$ShootTimer.queue_free()
+		$AnimationPlayer.play("Explosion")
+		explosion_sfx.play()
+		killed.emit(points)
+		die()
+		await $AnimationPlayer.animation_finished
+		$Explosion.visible = false
 		queue_free()
 
 #shoots, instantiates, shoots, etc
@@ -56,13 +69,14 @@ func shoot(location):
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
 	b.start(location)
+	shoot_sfx.play()
 
 #no im not doing this again
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	GlobalVar.score -= points / 2
 	queue_free()
 
-#take damage off you go bye
+#take damage, off you go bye
 func take_damage(amount):
 	hp -= amount
 	if hp <= 0:
@@ -73,6 +87,7 @@ func take_damage(amount):
 		$CollisionShape2D.queue_free()
 		$ShootTimer.queue_free()
 		$AnimationPlayer.play("Explosion")
+		explosion_sfx.play()
 		killed.emit(points)
 		die()
 		await $AnimationPlayer.animation_finished
