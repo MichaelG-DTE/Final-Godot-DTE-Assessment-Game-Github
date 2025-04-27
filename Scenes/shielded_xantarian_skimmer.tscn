@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0bs8nfnwnwug"]
-
-[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/xantarian_skimmer.tscn" id="1_ukjpx"]
-[ext_resource type="PackedScene" uid="uid://bowjomag12llh" path="res://Scenes/enemy_shield.tscn" id="2_wify2"]
-
-[node name="Xantarian Skimmer" instance=ExtResource("1_ukjpx")]
-
-[node name="EnemyShield" parent="." index="3" instance=ExtResource("2_wify2")]
-position = Vector2(-5.96046e-08, 4)

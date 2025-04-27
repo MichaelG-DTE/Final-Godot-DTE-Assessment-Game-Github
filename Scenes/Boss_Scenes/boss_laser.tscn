@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://4xnn1i0obpqj"]
+
+[ext_resource type="Script" path="res://Scripts/Boss_Scripts/boss_laser.gd" id="1_l4c8h"]
+[ext_resource type="Texture2D" uid="uid://bkcenoo8abouj" path="res://Assets/Game Assets/Enemy/Boss Laser.png" id="2_fy7n0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n31t"]
+size = Vector2(61, 204)
+
+[node name="Boss_Laser" type="Area2D"]
+scale = Vector2(0.849518, 0.849518)
+collision_layer = 256
+collision_mask = 17
+script = ExtResource("1_l4c8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fy7n0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_3n31t")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -139)
+scale = Vector2(3.8, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_shield_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,320 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkd6pa4qriori"]
+
+[ext_resource type="Script" path="res://Scripts/Level_Scripts/beginning_cutscene.gd" id="1_nvk4k"]
+[ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Misc/Space_BG (2 frames) (64 x 64).png" id="2_acogq"]
+[ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/Player_Scenes/player.tscn" id="3_nnh2h"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/Misc/kenvector_future.ttf" id="4_a0p8s"]
+
+[sub_resource type="Animation" id="Animation_gowww"]
+resource_name = "Background"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800), Rect2(0, -128, 500, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_7ga84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fyu5l"]
+_data = {
+"Background": SubResource("Animation_gowww"),
+"RESET": SubResource("Animation_7ga84")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_65toy"]
+font = ExtResource("4_a0p8s")
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_dv8f5"]
+font = ExtResource("4_a0p8s")
+font_size = 44
+
+[sub_resource type="Animation" id="Animation_8ye46"]
+resource_name = "GameStart"
+length = 38.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Layer/Control/GameStart:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(8, 26, 28, 29),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Layer/Control/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(29.5, 33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(33, 33.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(447, 5000), Vector2(447, 880)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI_Layer/Control/Button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(34.5, 38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(135.5, -314), Vector2(135.5, 400)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI_Layer/Control/Headphones:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI_Layer/Control/Headphones:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2xy72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Layer/Control/GameStart:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Layer/Control/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(447, 1876)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI_Layer/Control/Button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(135.5, -314)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI_Layer/Control/Headphones:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI_Layer/Control/Headphones:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8p4h5"]
+_data = {
+"GameStart": SubResource("Animation_8ye46"),
+"RESET": SubResource("Animation_2xy72")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nvk4k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-72, 0)
+scale = Vector2(3.774, 3.45593)
+texture = ExtResource("2_acogq")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 800)
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_fyu5l")
+}
+autoplay = "Background"
+
+[node name="Player" parent="." instance=ExtResource("3_nnh2h")]
+position = Vector2(447, 1876)
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI_Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 899.0
+offset_bottom = 1602.0
+
+[node name="ColorRect" type="ColorRect" parent="UI_Layer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="UI_Layer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 135.5
+offset_top = -314.0
+offset_right = 763.5
+offset_bottom = -114.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_a0p8s")
+theme_override_font_sizes/font_size = 80
+text = "Begin"
+
+[node name="GameStart" type="Label" parent="UI_Layer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -406.0
+offset_right = 416.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hurry, Pilot! 
+Humanity Needs Your Help!
+The Xantarian syndicate, 
+and their Cruel leader, Xar'Kan'Thra,
+have ravaged the Terran Empire, and are approaching Earth.
+We need your superfighter, the last of its kind, 
+to protect us from the onslaught!
+Use your weapons and defeat the xenos scum and their evil leader,
+and stop Earth from being wiped out!
+good Luck!
+"
+label_settings = SubResource("LabelSettings_65toy")
+horizontal_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Headphones" type="Label" parent="UI_Layer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.5
+offset_top = -108.0
+offset_right = 462.5
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Headphones are recommended for the best experience."
+label_settings = SubResource("LabelSettings_dv8f5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="GameStart" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8p4h5")
+}
+
+[connection signal="pressed" from="UI_Layer/Control/Button" to="." method="_on_button_pressed"]

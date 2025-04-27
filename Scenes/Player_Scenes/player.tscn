@@ -1,0 +1,314 @@
+[gd_scene load_steps=24 format=3 uid="uid://dx4avp3lndswk"]
+
+[ext_resource type="Script" path="res://Scripts/Player_Scripts/player.gd" id="1_eedc8"]
+[ext_resource type="Texture2D" uid="uid://b2yuyabp41b3j" path="res://Assets/Game Assets/Player/Terran Sydicate Fighter.png" id="2_0qc78"]
+[ext_resource type="Texture2D" uid="uid://cbaegknj64ytf" path="res://Assets/Game Assets/Player/Completed Thrusters.png" id="3_opxmi"]
+[ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Misc/Explosion Asset.png" id="4_dodwo"]
+[ext_resource type="PackedScene" uid="uid://do5jy3g13s7c0" path="res://Scenes/Player_Scenes/player_shield.tscn" id="5_l0ad7"]
+[ext_resource type="AudioStream" uid="uid://4qlvb2cikwrj" path="res://Assets/Game Assets/Sound Effects/488294__combine2005__explosionretro.wav" id="6_50r3u"]
+[ext_resource type="AudioStream" uid="uid://c0ae6u4a2kspd" path="res://Assets/Game Assets/Sound Effects/143611__dwoboyle__weapons-synth-blast-01.wav" id="7_hrrhr"]
+[ext_resource type="AudioStream" uid="uid://pnm5sdntoxps" path="res://Assets/Game Assets/Sound Effects/367987__chrisbutler99__launch.wav" id="8_rsqk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vbp8"]
+atlas = ExtResource("2_0qc78")
+region = Rect2(0, 0, 220, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dweg"]
+atlas = ExtResource("2_0qc78")
+region = Rect2(0, 220, 220, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_677lh"]
+atlas = ExtResource("2_0qc78")
+region = Rect2(220, 0, 220, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2oso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vbp8")
+}],
+"loop": true,
+"name": &"Ship",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dweg")
+}],
+"loop": true,
+"name": &"Ship_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_677lh")
+}],
+"loop": true,
+"name": &"Ship_Right",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od8tx"]
+atlas = ExtResource("3_opxmi")
+region = Rect2(0, 0, 300, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ag00"]
+atlas = ExtResource("3_opxmi")
+region = Rect2(300, 0, 300, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idwsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od8tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ag00")
+}],
+"loop": true,
+"name": &"Thrusters",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_cua7x"]
+resource_name = "LeftThrusters"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Left:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ovfbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Right:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shiptexture/Thrusters_Left:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_he8vn"]
+resource_name = "RightThrusters"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shiptexture/Thrusters_Right:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyucb"]
+_data = {
+"LeftThrusters": SubResource("Animation_cua7x"),
+"RESET": SubResource("Animation_ovfbu"),
+"RightThrusters": SubResource("Animation_he8vn")
+}
+
+[sub_resource type="Animation" id="Animation_kjx8w"]
+resource_name = "Explosion"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_2aqh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyn1r"]
+_data = {
+"Explosion": SubResource("Animation_kjx8w"),
+"RESET": SubResource("Animation_2aqh4")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_voixq"]
+radius = 20.0
+height = 70.0
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+position = Vector2(246, 589)
+scale = Vector2(1.46773, 1.46773)
+collision_mask = 778
+motion_mode = 1
+script = ExtResource("1_eedc8")
+
+[node name="Shiptexture" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.459091, 0.459091)
+sprite_frames = SubResource("SpriteFrames_w2oso")
+animation = &"Ship"
+autoplay = "Ship"
+
+[node name="Thrusters" type="AnimatedSprite2D" parent="Shiptexture"]
+position = Vector2(-1.77384, 141.907)
+scale = Vector2(0.995, 1.11627)
+sprite_frames = SubResource("SpriteFrames_idwsp")
+animation = &"Thrusters"
+autoplay = "Thrusters"
+frame_progress = 0.698385
+
+[node name="ThrustersAnimation" type="AnimationPlayer" parent="Shiptexture"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_pyucb")
+}
+
+[node name="Thrusters_Right" type="Sprite2D" parent="Shiptexture"]
+visible = false
+position = Vector2(0, 127.355)
+scale = Vector2(1.12535, 1.10591)
+texture = ExtResource("3_opxmi")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="Thrusters_Left" type="Sprite2D" parent="Shiptexture"]
+visible = false
+position = Vector2(-2.79901, 125.955)
+scale = Vector2(1.125, 1.106)
+texture = ExtResource("3_opxmi")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uyn1r")
+}
+autoplay = "Ship"
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.178947, -9.35963)
+scale = Vector2(0.751969, 0.751969)
+texture = ExtResource("4_dodwo")
+hframes = 3
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_voixq")
+
+[node name="PewPew" type="Marker2D" parent="."]
+position = Vector2(0, -48.83)
+
+[node name="missileshooty" type="Marker2D" parent="."]
+position = Vector2(0, -69.495)
+
+[node name="PlayerShield" parent="." instance=ExtResource("5_l0ad7")]
+position = Vector2(0, -9.6375)
+scale = Vector2(0.939924, 0.943312)
+
+[node name="Explosion_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_50r3u")
+volume_db = -5.0
+
+[node name="Shoot_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hrrhr")
+volume_db = -10.0
+
+[node name="Shoot_Missile_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rsqk4")
+volume_db = -10.0
+pitch_scale = 0.5

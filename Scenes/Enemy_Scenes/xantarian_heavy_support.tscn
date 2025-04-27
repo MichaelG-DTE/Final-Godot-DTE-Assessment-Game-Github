@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=3 uid="uid://nktrlm6a8k8l"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy_Scripts/xantarian_heavy_support.gd" id="1_8jioo"]
+[ext_resource type="Texture2D" uid="uid://dkywxyw07vu2r" path="res://Assets/Game Assets/Enemy/Heavy Support Craft (1).png" id="2_a5f5s"]
+[ext_resource type="Texture2D" uid="uid://bqbj86ym8v10a" path="res://Assets/Game Assets/Misc/Explosion Asset.png" id="3_t7s0a"]
+[ext_resource type="Texture2D" uid="uid://cfo6ws20ogdmq" path="res://Assets/Game Assets/Enemy/NEW Enemy Thruster.png" id="4_mt3tx"]
+[ext_resource type="AudioStream" uid="uid://4qlvb2cikwrj" path="res://Assets/Game Assets/Sound Effects/488294__combine2005__explosionretro.wav" id="5_trttc"]
+[ext_resource type="AudioStream" uid="uid://dta4wxk6481ck" path="res://Assets/Game Assets/Sound Effects/151025__bubaproducer__laser-shot-small-1 (1).wav" id="6_7v3bq"]
+
+[sub_resource type="Animation" id="Animation_6pbak"]
+resource_name = "Explosion"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_5tw2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_rkui2"]
+resource_name = "Ship"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_a5f5s"), ExtResource("2_a5f5s")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfxbe"]
+_data = {
+"Explosion": SubResource("Animation_6pbak"),
+"RESET": SubResource("Animation_5tw2q"),
+"Ship": SubResource("Animation_rkui2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yfbn"]
+radius = 55.0
+height = 184.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t1c3"]
+atlas = ExtResource("4_mt3tx")
+region = Rect2(0, 0, 128, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwfd4"]
+atlas = ExtResource("4_mt3tx")
+region = Rect2(128, 0, 128, 408)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvt6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t1c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwfd4")
+}],
+"loop": true,
+"name": &"Thruster",
+"speed": 5.0
+}]
+
+[node name="Xantarian Heavy Support Craft" type="Area2D"]
+collision_layer = 2
+collision_mask = 133
+script = ExtResource("1_8jioo")
+speed = 200
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kfxbe")
+}
+
+[node name="Ship" type="Sprite2D" parent="."]
+texture = ExtResource("2_a5f5s")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3.93629e-06, 9.27685e-13)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_t7s0a")
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_3yfbn")
+
+[node name="EnemyThrusters" type="Node2D" parent="."]
+
+[node name="Thruster" type="AnimatedSprite2D" parent="EnemyThrusters"]
+position = Vector2(-16, -120)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_jvt6u")
+animation = &"Thruster"
+autoplay = "Thruster"
+
+[node name="Thruster2" type="AnimatedSprite2D" parent="EnemyThrusters"]
+position = Vector2(16, -120)
+scale = Vector2(0.296875, 0.296875)
+sprite_frames = SubResource("SpriteFrames_jvt6u")
+animation = &"Thruster"
+autoplay = "Thruster"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53674e-07, -96)
+scale = Vector2(2.2, 1)
+
+[node name="pewpPew" type="Marker2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Explosion_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_trttc")
+volume_db = -10.0
+
+[node name="Shoot_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7v3bq")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

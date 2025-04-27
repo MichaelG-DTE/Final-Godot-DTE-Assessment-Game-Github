@@ -1,0 +1,22 @@
+[gd_scene load_steps=9 format=3 uid="uid://5k3gfx2g4gbm"]
+
+[ext_resource type="PackedScene" uid="uid://ccci6yu4n1p5n" path="res://Scenes/Levels/level_one.tscn" id="1_57ftu"]
+[ext_resource type="PackedScene" uid="uid://c0bs8nfnwnwug" path="res://Scenes/Enemy_Scenes/shielded_xantarian_skimmer.tscn" id="2_mpa76"]
+[ext_resource type="PackedScene" uid="uid://nktrlm6a8k8l" path="res://Scenes/Enemy_Scenes/xantarian_heavy_support.tscn" id="3_8suaa"]
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/Enemy_Scenes/xantarian_fightercraft.tscn" id="4_i0jv6"]
+[ext_resource type="PackedScene" uid="uid://dycbg8mlr2qav" path="res://Scenes/Enemy_Scenes/shielded_xantarian_fightercraft.tscn" id="5_2y4no"]
+[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/Enemy_Scenes/xantarian_skimmer.tscn" id="6_fwvvf"]
+[ext_resource type="PackedScene" uid="uid://biwomlqx1u8br" path="res://Scenes/Enemy_Scenes/shielded_xantarian_heavy_support_craft.tscn" id="7_3ac77"]
+[ext_resource type="AudioStream" uid="uid://b6iot2ihp81i1" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 3 - Approaching Danger (The Dying Light).mp3" id="8_m1i2w"]
+
+[node name="Level_Three" instance=ExtResource("1_57ftu")]
+wave1 = Array[PackedScene]([ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("2_mpa76")])
+wave2 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("6_fwvvf"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("5_2y4no")])
+wave3 = Array[PackedScene]([ExtResource("2_mpa76"), ExtResource("5_2y4no"), ExtResource("7_3ac77"), ExtResource("4_i0jv6"), ExtResource("3_8suaa"), ExtResource("6_fwvvf")])
+level = 3
+
+[node name="EnemySpawnTimer" parent="." index="8"]
+wait_time = 0.4
+
+[node name="LevelMusic" parent="." index="10"]
+stream = ExtResource("8_m1i2w")

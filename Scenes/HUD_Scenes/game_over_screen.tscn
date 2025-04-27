@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://covgw4e8wdvcr"]
+
+[ext_resource type="Script" path="res://Scripts/HUD_Scripts/GameOverScreen.gd" id="1_pv3vm"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/Misc/kenvector_future.ttf" id="2_c01kr"]
+[ext_resource type="AudioStream" uid="uid://conjegr30pb1t" path="res://Assets/Game Assets/Music/Mortem.mp3" id="3_qngau"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ylgv"]
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_38mpj"]
+font = ExtResource("2_c01kr")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxadu"]
+font = ExtResource("2_c01kr")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_sob2l"]
+font = ExtResource("2_c01kr")
+font_size = 58
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pv3vm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.494118)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.123473, 0.123473, 0.123473, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -607.0
+offset_right = 339.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ylgv")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 57.0
+offset_right = 589.0
+offset_bottom = 159.0
+grow_horizontal = 2
+scale = Vector2(0.746555, 0.810293)
+text = "Mission Failed!"
+label_settings = SubResource("LabelSettings_38mpj")
+horizontal_alignment = 1
+
+[node name="TerraIsLost" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.0
+offset_top = 146.0
+offset_right = 156.0
+offset_bottom = 169.0
+grow_horizontal = 2
+text = "Terra is lost
+"
+label_settings = SubResource("LabelSettings_sxadu")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -112.0
+offset_right = 235.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 9999"
+label_settings = SubResource("LabelSettings_sob2l")
+
+[node name="RestartButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 351.0
+offset_right = 551.0
+offset_bottom = 467.0
+theme_override_fonts/font = ExtResource("2_c01kr")
+theme_override_font_sizes/font_size = 45
+text = "Restart
+"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 496.0
+offset_right = 552.0
+offset_bottom = 612.0
+theme_override_fonts/font = ExtResource("2_c01kr")
+theme_override_font_sizes/font_size = 45
+text = "Quit
+"
+
+[node name="LevelFailMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qngau")
+
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]

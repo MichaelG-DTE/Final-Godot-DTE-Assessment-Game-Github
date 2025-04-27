@@ -1,0 +1,292 @@
+[gd_scene load_steps=23 format=3 uid="uid://ccci6yu4n1p5n"]
+
+[ext_resource type="Script" path="res://Scripts/Level_Scripts/level_one.gd" id="1_8c86t"]
+[ext_resource type="PackedScene" uid="uid://dx4avp3lndswk" path="res://Scenes/Player_Scenes/player.tscn" id="1_620ks"]
+[ext_resource type="PackedScene" uid="uid://bxku0qlg6n3ny" path="res://Scenes/HUD_Scenes/hud.tscn" id="2_hpc5o"]
+[ext_resource type="Texture2D" uid="uid://rwna8mkqkuoa" path="res://Assets/Game Assets/Misc/Space_BG (2 frames) (64 x 64).png" id="2_oss7l"]
+[ext_resource type="PackedScene" uid="uid://q8go1x8i3lrt" path="res://Scenes/Enemy_Scenes/xantarian_skimmer2.tscn" id="3_4o1ot"]
+[ext_resource type="PackedScene" uid="uid://4pwqojn2wtyb" path="res://Scenes/Enemy_Scenes/xantarian_fightercraft.tscn" id="4_vxc3a"]
+[ext_resource type="PackedScene" uid="uid://covgw4e8wdvcr" path="res://Scenes/HUD_Scenes/game_over_screen.tscn" id="5_s5oaj"]
+[ext_resource type="Texture2D" uid="uid://bwhrt5ovw38mj" path="res://Assets/Game Assets/Misc/Wave Warning.png" id="5_x6us6"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/Misc/kenvector_future.ttf" id="6_4guqa"]
+[ext_resource type="PackedScene" uid="uid://cbjr3pu0m2hjr" path="res://Scenes/Enemy_Scenes/xantarian_skimmer.tscn" id="6_j5xpc"]
+[ext_resource type="PackedScene" uid="uid://cav32g27pjgwf" path="res://Scenes/HUD_Scenes/level_complete_screen.tscn" id="8_33qqh"]
+[ext_resource type="PackedScene" uid="uid://xcn38tku7c7k" path="res://Scenes/HUD_Scenes/pause_menu.tscn" id="9_kt6xs"]
+[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/HealthAndShield_Scenes/health_bar.tscn" id="10_8354x"]
+[ext_resource type="AudioStream" uid="uid://c1m7pr0qn443r" path="res://Assets/Game Assets/Music/Xantarian Exterminator OST 1 - Terran Fighter One.mp3" id="13_xpgwb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y75hu"]
+font = ExtResource("6_4guqa")
+font_size = 80
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pcbx"]
+font = ExtResource("6_4guqa")
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_gtm3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveWarning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave2:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wave3:label_settings:font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wave1:label_settings:font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ux418"]
+resource_name = "WarningFlashing"
+length = 7.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveWarning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.05, 2.3, 3.15, 3.9, 4.7, 5.5, 6.25, 6.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave1:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.05, 2.3, 3.15, 3.9, 4.7, 5.5, 6.25, 6.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0qlg"]
+_data = {
+"RESET": SubResource("Animation_gtm3d"),
+"WarningFlashing": SubResource("Animation_ux418")
+}
+
+[sub_resource type="Animation" id="Animation_gowww"]
+resource_name = "Background"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800), Rect2(0, -128, 500, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_7ga84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 500, 800)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fyu5l"]
+_data = {
+"Background": SubResource("Animation_gowww"),
+"RESET": SubResource("Animation_7ga84")
+}
+
+[node name="Level_One" type="Node2D"]
+script = ExtResource("1_8c86t")
+wave1 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("3_4o1ot")])
+wave2 = Array[PackedScene]([ExtResource("6_j5xpc"), ExtResource("6_j5xpc"), ExtResource("4_vxc3a")])
+wave3 = Array[PackedScene]([ExtResource("4_vxc3a"), ExtResource("4_vxc3a"), ExtResource("6_j5xpc")])
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-72, 0)
+scale = Vector2(3.774, 3.45593)
+texture = ExtResource("2_oss7l")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 800)
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="HUD" parent="UI_Layer" instance=ExtResource("2_hpc5o")]
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveWarning" type="Sprite2D" parent="UI_Layer/HUD"]
+visible = false
+position = Vector2(449.137, 715.375)
+scale = Vector2(3.54798, 3.54798)
+texture = ExtResource("5_x6us6")
+
+[node name="Wave1" type="Label" parent="UI_Layer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 274.0
+offset_top = 643.0
+offset_right = 646.0
+offset_bottom = 793.0
+text = "Wave 1"
+label_settings = SubResource("LabelSettings_y75hu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave2" type="Label" parent="UI_Layer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 267.0
+offset_top = 638.0
+offset_right = 639.0
+offset_bottom = 788.0
+text = "Wave 2"
+label_settings = SubResource("LabelSettings_y75hu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wave3" type="Label" parent="UI_Layer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 267.0
+offset_top = 638.0
+offset_right = 639.0
+offset_bottom = 788.0
+text = "Wave 3
+"
+label_settings = SubResource("LabelSettings_y75hu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveCounter" type="Label" parent="UI_Layer/HUD"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 1473.0
+offset_right = 267.0
+offset_bottom = 1525.0
+text = "Wave: 1"
+label_settings = SubResource("LabelSettings_1pcbx")
+horizontal_alignment = 1
+vertical_alignment = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveFlashing" type="AnimationPlayer" parent="UI_Layer/HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_t0qlg")
+}
+
+[node name="TimerBar" parent="UI_Layer/HUD" instance=ExtResource("10_8354x")]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 1544.0
+offset_right = 875.0
+offset_bottom = 1573.0
+max_value = 40.0
+step = 0.001
+value = 40.0
+tint_progress = Color(0.6118, 0.558706, 0.575281, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOverScreen" parent="UI_Layer" instance=ExtResource("5_s5oaj")]
+visible = false
+
+[node name="LevelCompleteScreen" parent="UI_Layer" instance=ExtResource("8_33qqh")]
+visible = false
+
+[node name="PauseMenu" parent="UI_Layer" instance=ExtResource("9_kt6xs")]
+visible = false
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 1.0
+offset_bottom = 6.0
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_fyu5l")
+}
+autoplay = "Background"
+
+[node name="Player" parent="." instance=ExtResource("1_620ks")]
+position = Vector2(450, 1750)
+scale = Vector2(1.63211, 1.63211)
+speed = 750
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(450, 1100)
+
+[node name="laser_container" type="Node2D" parent="."]
+
+[node name="enemy_container" type="Node2D" parent="."]
+
+[node name="missile_container" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="EndOfWave" type="Timer" parent="."]
+wait_time = 40.0
+autostart = true
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xpgwb")
+volume_db = 5.0
+autoplay = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="EndOfWave" to="." method="_on_end_of_wave_timeout"]

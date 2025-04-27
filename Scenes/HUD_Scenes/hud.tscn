@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxku0qlg6n3ny"]
+
+[ext_resource type="Script" path="res://Scripts/HUD_Scripts/HUD.gd" id="1_kdlet"]
+[ext_resource type="FontFile" uid="uid://curv7mnfbfjud" path="res://Assets/Game Assets/Misc/kenvector_future.ttf" id="2_cnb6w"]
+[ext_resource type="PackedScene" uid="uid://43oeh6c1hywj" path="res://Scenes/HealthAndShield_Scenes/shield_bar.tscn" id="3_5x5g7"]
+[ext_resource type="PackedScene" uid="uid://clbakaiyc3qut" path="res://Scenes/HealthAndShield_Scenes/health_bar.tscn" id="4_oiloi"]
+[ext_resource type="PackedScene" uid="uid://dlro07t7g0wu6" path="res://Scenes/HealthAndShield_Scenes/health_bar_one_boss.tscn" id="5_8f8md"]
+[ext_resource type="PackedScene" uid="uid://31igyawy58tj" path="res://Scenes/HealthAndShield_Scenes/health_bar_two_boss.tscn" id="6_ytrd0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6r2pk"]
+font = ExtResource("2_cnb6w")
+font_size = 45
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8x45"]
+font = ExtResource("2_cnb6w")
+font_size = 45
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_02ykb"]
+font = ExtResource("2_cnb6w")
+font_size = 36
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_446l7"]
+resource_name = "HealthUp"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossHealthBarTwo:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 900.0]
+}
+
+[sub_resource type="Animation" id="Animation_d0hcb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossHealthBarTwo:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7nifo"]
+_data = {
+"HealthUp": SubResource("Animation_446l7"),
+"RESET": SubResource("Animation_d0hcb")
+}
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdlet")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 509.0
+offset_top = 9.0
+offset_right = -32.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "Score: 9999"
+label_settings = SubResource("LabelSettings_6r2pk")
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 60.0
+offset_right = 862.0
+offset_bottom = 128.0
+text = "Level: 1"
+label_settings = SubResource("LabelSettings_l8x45")
+
+[node name="Shield" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 10.0
+offset_right = 206.0
+offset_bottom = 51.0
+text = "Shield"
+label_settings = SubResource("LabelSettings_02ykb")
+
+[node name="ShieldBar" parent="." instance=ExtResource("3_5x5g7")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 53.0
+offset_right = 488.0
+offset_bottom = 78.0
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 83.0
+offset_right = 224.0
+offset_bottom = 124.0
+text = "Health"
+label_settings = SubResource("LabelSettings_02ykb")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_oiloi")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 130.0
+offset_right = 490.0
+offset_bottom = 155.0
+
+[node name="BossHealthBarOne" parent="." instance=ExtResource("5_8f8md")]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 375.0
+offset_right = 828.0
+offset_bottom = 408.0
+max_value = 800.0
+
+[node name="BossHealthBarTwo" parent="." instance=ExtResource("6_ytrd0")]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 375.0
+offset_right = 828.0
+offset_bottom = 408.0
+max_value = 900.0
+value = 0.0
+tint_over = Color(0.113725, 0.113725, 0.113725, 1)
+tint_progress = Color(0.403922, 0, 0, 1)
+
+[node name="BossHealthUp" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7nifo")
+}
